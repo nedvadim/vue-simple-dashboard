@@ -29,7 +29,7 @@ export default {
 .container {
   background: rgb(214, 214, 214);
   height: 100vh;
-  width: 10%;
+  width: 150px;
   box-shadow: 2px 0px 6px -4px #000;
 }
 </style>
