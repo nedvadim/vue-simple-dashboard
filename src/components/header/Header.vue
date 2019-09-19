@@ -24,13 +24,13 @@ export default {
   box-shadow: 0px -2px 8px 0px #000000;
   display: flex;
   align-items: center;
-  background-color: azure;
+  background-color: #000000;
   z-index: 20;
   h1 {
-    color: #5f5f5f;
+    color: #fff;
     margin-left: 25px;
     span {
-      color: black;
+      color: #f7f7f7;
     }
   }
 }
