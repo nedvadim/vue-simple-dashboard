@@ -6,7 +6,6 @@
 
 <script>
 import SideMenuItem from "./SideMenuItem";
-//import { mapGetters } from "vuex";
 export default {
   components: {
     appItem: SideMenuItem
@@ -31,5 +30,6 @@ export default {
   height: 93vh;
   width: 150px;
   box-shadow: 2px 1px 7px -5px #000;
+  z-index: 10; /* ? */
 }
 </style>

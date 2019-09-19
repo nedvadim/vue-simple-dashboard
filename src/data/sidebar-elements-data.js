@@ -28,6 +28,6 @@ export default [
   {
     id: 4,
     elementsHeader: "UI Features",
-    pages: [{ componentName: "Grid", linkToComponent: "/" }]
+    pages: [{ componentName: "Grid", linkToComponent: "/grid" }]
   }
 ];

@@ -1,13 +1,10 @@
 <template>
-  <div>
+  <div class="app-bg">
     <app-header></app-header>
     <div class="page-content">
       <app-side-menu></app-side-menu>
       <div class="my-container">
         <div class="my-row">
-          <div class="box c-1">1</div>
-          <div class="box c-2">2</div>
-          <div class="box c-9">9</div>
           <router-view class="c-12"></router-view>
         </div>
       </div>
@@ -33,17 +30,17 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./style/grid.css";
+@import "./style/grid-mobile-first.css";
 
 * {
-  font-family: "Varela Round", sans-serif;
+  font-family: "Lato", sans-serif;
   font-size: 20px;
   color: rgb(77, 77, 77);
 }
-.box {
-  background-color: khaki;
-}
 .page-content {
   display: flex;
+}
+.app-bg {
+  background-color: #a0a0a0;
 }
 </style>
