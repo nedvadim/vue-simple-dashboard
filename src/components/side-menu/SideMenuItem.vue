@@ -8,7 +8,13 @@
     <div class="collapse-container">
       <transition name="slide" mode="out-in">
         <ul v-if="show">
-          <li v-for="headers in content.pages">{{headers.componentName}}</li>
+          <div v-for="headers in content.pages">
+            <router-link :to="headers.linkToComponent" tag="li">
+              <a>{{headers.componentName}}</a>
+            </router-link>
+          </div>
+          <!-- <router-link to="/portfolio" activeClass="active" tag="li"><a>{{headers.componentName}}</a></router-link>
+          <li v-for="headers in content.pages">{{headers.componentName}}</li>-->
         </ul>
       </transition>
     </div>
@@ -26,19 +32,22 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 button {
   width: 100%;
   border: none;
-  background-color: #f7f7f7;
+  background-color: #e6e6e6;
   height: 50px;
   cursor: pointer;
-  border-bottom: 1px solid #d8d8d8;
+  border-bottom: 1px solid #c7c7c7;
 }
 li {
   border-bottom: 1px solid #a8a8a8;
   text-align: center;
   font-size: 16px;
+  a {
+    text-decoration: none;
+  }
 }
 .slide-enter-active {
   transition: all 0.1s cubic-bezier(1, 0.5, 0.8, 1);

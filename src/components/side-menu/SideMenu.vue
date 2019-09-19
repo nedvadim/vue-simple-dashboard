@@ -27,9 +27,9 @@ export default {
   box-sizing: border-box;
 }
 .container {
-  background: rgb(214, 214, 214);
-  height: 100vh;
+  background: rgb(245, 245, 245);
+  height: 93vh;
   width: 150px;
-  box-shadow: 2px 0px 6px -4px #000;
+  box-shadow: 2px 1px 7px -5px #000;
 }
 </style>
