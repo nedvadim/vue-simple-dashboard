@@ -39,8 +39,11 @@ export default {
 }
 .page-content {
   display: flex;
+  padding-left: 150px;
 }
 .app-bg {
   background-color: #a0a0a0;
+  height: 100%;
+  min-height: 100vh;
 }
 </style>

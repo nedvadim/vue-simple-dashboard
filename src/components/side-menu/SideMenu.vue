@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="sidebar-container">
     <app-item v-for="s in sidebarContent" :content="s"></app-item>
   </div>
 </template>
@@ -25,7 +25,9 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-.container {
+.sidebar-container {
+  position: fixed;
+  left: 0;
   background: rgb(245, 245, 245);
   height: 93vh;
   width: 150px;
