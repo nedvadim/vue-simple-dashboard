@@ -1,9 +1,9 @@
 <template>
   <div class="header">
-    <h1>
+    <router-link to="/" tag="h1" class="logo">
       <span>V</span>ue
       <span>D</span>ashboard
-    </h1>
+    </router-link>
   </div>
 </template>
 
@@ -18,6 +18,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .header {
+  position: fixed;
   top: 0;
   width: 100%;
   height: 7vh;
@@ -29,6 +30,7 @@ export default {
   h1 {
     color: #fff;
     margin-left: 25px;
+    cursor: pointer;
     span {
       color: #f7f7f7;
     }

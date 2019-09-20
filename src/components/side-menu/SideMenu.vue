@@ -28,6 +28,7 @@ export default {
 .sidebar-container {
   position: fixed;
   left: 0;
+  top: 7vh;
   background: rgb(245, 245, 245);
   height: 93vh;
   width: 150px;

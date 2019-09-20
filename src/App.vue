@@ -40,9 +40,10 @@ export default {
 .page-content {
   display: flex;
   padding-left: 150px;
+  padding-top: 7vh;
 }
 .app-bg {
-  background-color: #a0a0a0;
+  background-color: #e8e8e8;
   height: 100%;
   min-height: 100vh;
 }

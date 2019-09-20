@@ -4,14 +4,14 @@
       <div class="content-wrapper">
         <h1 class="header">Grid System</h1>
 
-        <p>"c-N" is a default value which always should be initialized</p>
+        <p>"c-" is a default prefix which always should be initialized</p>
         <div class="my-container">
           <div class="my-row">
             <div class="box c-9">[c-9]</div>
             <div class="box c-3">[c-3]</div>
           </div>
         </div>
-        <p>"c-md-N" is a special value for medium screens and up</p>
+        <p>"c-md-" is a special prefix for medium screens and up</p>
         <p>without initialization default "c-N" value, box sizes would be unhandled on diferent screen sizes as the example below</p>
         <div class="my-container">
           <div class="my-row">
@@ -20,7 +20,7 @@
             <div class="box c-md-4">[c-md-4]</div>
           </div>
         </div>
-        <p>with the default value of "c-N" we can handle sizes of boxes which are not considered as medium</p>
+        <p>With the default prefix "c-" we can handle sizes of boxes which are not considered as medium</p>
         <div class="my-container">
           <div class="my-row">
             <div class="box c-12 c-md-4">[c-12][c-md-4]</div>
@@ -29,7 +29,7 @@
           </div>
         </div>
 
-        <p>You can specify box-spreading for all screen sizes, but do not forget to specify default "c-N" value which is affects smallest screens</p>
+        <p>You can specify box-spreading for all screen sizes, but do not forget to specify default "c-" prefix which is affects smallest screens</p>
         <div class="my-container">
           <div class="my-row">
             <div

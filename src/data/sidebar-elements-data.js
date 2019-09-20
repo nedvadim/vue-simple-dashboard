@@ -4,7 +4,7 @@ export default [
     elementsHeader: "Layouts",
     pages: [
       { componentName: "Stepper", linkToComponent: "/stepper" },
-      { componentName: "List", linkToComponent: "/list" }
+      { componentName: "List", linkToComponent: "/lists" }
     ]
   },
   {

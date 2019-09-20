@@ -32,7 +32,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 button {
   width: 100%;
   border: none;
@@ -40,6 +40,7 @@ button {
   height: 50px;
   cursor: pointer;
   border-bottom: 1px solid #c7c7c7;
+  outline-color: #4b4b4b;
 }
 li {
   border-bottom: 1px solid #a8a8a8;
