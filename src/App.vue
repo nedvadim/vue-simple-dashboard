@@ -5,7 +5,9 @@
       <app-side-menu></app-side-menu>
       <div class="my-container">
         <div class="my-row">
-          <router-view class="c-12"></router-view>
+          <transition name="slide" mode="out-in">
+            <router-view class="c-12"></router-view>
+          </transition>
         </div>
       </div>
     </div>
@@ -25,12 +27,15 @@ export default {
   },
   created() {
     this.$store.dispatch("initSideBarContent");
+    this.$store.dispatch("initListTwoContent");
   }
 };
 </script>
 
 <style lang="scss">
 @import "./style/grid-mobile-first.css";
+
+$top-margin: 1.5em;
 
 * {
   font-family: "Lato", sans-serif;
@@ -46,5 +51,24 @@ export default {
   background-color: #e8e8e8;
   height: 100%;
   min-height: 100vh;
+}
+
+.slide-enter-active {
+  animation: slide-in 100ms ease-out forwards;
+}
+
+.slide-leave-active {
+  animation: slide-out 100ms ease-out forwards;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 </style>

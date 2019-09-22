@@ -1,6 +1,6 @@
 .my-container {
-  width: 99%;
-  margin: 20px auto;
+  width: 100%;
+  margin: 0 auto;
 }
 .my-row {
   display: grid;

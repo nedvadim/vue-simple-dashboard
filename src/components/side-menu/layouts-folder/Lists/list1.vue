@@ -26,6 +26,7 @@ $borderColor: #a0a0a0;
 .list-container {
   background-color: #f5f5f5;
   padding: 15px;
+  height: fit-content;
   .list-header {
     p {
       font-size: 25px;
