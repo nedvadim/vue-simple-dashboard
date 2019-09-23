@@ -12,6 +12,9 @@
         <div class="c-12 c-md-6">
           <app-stepper-two></app-stepper-two>
         </div>
+        <div class="c-12 c-md-6">
+          <app-stepper-three></app-stepper-three>
+        </div>
       </div>
     </div>
   </div>
@@ -19,10 +22,12 @@
 <script>
 import stepperOne from "./stepper1";
 import stepperTwo from "./stepper2";
+import stepperThree from "./stepper3";
 export default {
   components: {
     appStepperOne: stepperOne,
-    appStepperTwo: stepperTwo
+    appStepperTwo: stepperTwo,
+    appStepperThree: stepperThree
   }
 };
 </script>
