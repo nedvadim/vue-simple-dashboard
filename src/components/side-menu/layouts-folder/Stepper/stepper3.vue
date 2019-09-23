@@ -2,16 +2,28 @@
   <div class="stepper-wrapper">
     <div class="steps">
       <!-- step 1 -->
-      <div class="circle" v-bind:class="{ markedCircle: this.steps[0].isMarked }">1</div>
+      <div class="circle" v-bind:class="{ markedCircle: this.steps[0].isMarked }">
+        <div class="tick" v-if="isFirstStepMarked"></div>
+        <span v-else>1</span>
+      </div>
       <div class="line" v-bind:class="{ markedLine: this.steps[0].isMarked}"></div>
       <!-- step 2 -->
-      <div class="circle" v-bind:class="{ markedCircle: this.steps[1].isMarked}">2</div>
+      <div class="circle" v-bind:class="{ markedCircle: this.steps[1].isMarked}">
+        <div class="tick" v-if="isSecondStepMarked"></div>
+        <span v-else>2</span>
+      </div>
       <div class="line" v-bind:class="{ markedLine: this.steps[1].isMarked}"></div>
       <!-- step 3 -->
-      <div class="circle" v-bind:class="{ markedCircle: this.steps[2].isMarked }">3</div>
+      <div class="circle" v-bind:class="{ markedCircle: this.steps[2].isMarked }">
+        <div class="tick" v-if="isThirdStepMarked"></div>
+        <span v-else>3</span>
+      </div>
       <div class="line" v-bind:class="{ markedLine: this.steps[2].isMarked}"></div>
       <!-- step 4 -->
-      <div class="circle" v-bind:class="{ markedCircle: this.steps[3].isMarked }">4</div>
+      <div class="circle" v-bind:class="{ markedCircle: this.steps[3].isMarked }">
+        <div class="tick" v-if="isFourthStepMarked"></div>
+        <span v-else>4</span>
+      </div>
     </div>
     <div class="content">
       <div v-if="markedSteps===0">
@@ -68,6 +80,18 @@ export default {
     },
     isNoneStepIsMarked() {
       return this.markedSteps === 0;
+    },
+    isFirstStepMarked() {
+      return this.steps[0].isMarked;
+    },
+    isSecondStepMarked() {
+      return this.steps[1].isMarked;
+    },
+    isThirdStepMarked() {
+      return this.steps[2].isMarked;
+    },
+    isFourthStepMarked() {
+      return this.steps[3].isMarked;
     }
   },
   methods: {
@@ -125,6 +149,16 @@ export default {
       text-align: center;
       line-height: 30px;
       background-color: #e2e2e2;
+      .tick {
+        height: 8px;
+        position: relative;
+        top: 8px;
+        left: 6px;
+        width: 16px;
+        border-left: 2px solid #ffffff;
+        border-bottom: 2px solid #ffffff;
+        transform: rotate(-55deg);
+      }
     }
     .markedCircle {
       background-color: #3366ff;
