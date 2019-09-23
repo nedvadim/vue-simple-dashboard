@@ -5,21 +5,31 @@
     </div>
     <div class="list">
       <ul>
-        <li>Japan</li>
-        <li>Hungary</li>
-        <li>USA</li>
-        <li>Israel</li>
-        <li>India</li>
-        <li>Slovakia</li>
-        <li>France</li>
-        <li>Canada</li>
-        <li>Iran</li>
-        <li>Bulgaria</li>
+        <li v-for="c in countries">{{c}}</li>
       </ul>
     </div>
   </div>
 </template>
-
+<script>
+export default {
+  data() {
+    return {
+      countries: [
+        "Japan",
+        "Hungary",
+        "USA",
+        "Israel",
+        "Slovakia",
+        "France",
+        "Canada",
+        "Iran",
+        "Bulgaria",
+        "India"
+      ]
+    };
+  }
+};
+</script>
 <style lang="scss" scoped>
 $borderColor: #a0a0a0;
 

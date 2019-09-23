@@ -15,11 +15,25 @@
         <div class="circle" v-bind:class="{ markedCircle: this.steps[3].isMarked }">4</div>
       </div>
       <div class="content">
-        <h1 v-if="markedSteps===0">One</h1>
-        <h1 v-if="markedSteps===1">Two</h1>
-        <h1 v-if="markedSteps===2">Three</h1>
-        <h1 v-if="markedSteps===3">Four</h1>
-        <h1 v-if="markedSteps===4">SUCCESS!</h1>
+        <div v-if="markedSteps===0">
+          <h1>Step One</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam odio pariatur tenetur recusandae id? Saepe modi esse velit facere exercitationem?</p>
+        </div>
+        <div v-if="markedSteps===1">
+          <h1>Step Two</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus debitis unde eius tempora non facilis, dolores ducimus!</p>
+        </div>
+        <div v-if="markedSteps===2">
+          <h1>Step Three</h1>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio ab earum quos, aliquid labore sunt quasi deleniti, autem repudiandae nemo nisi commodi provident voluptas tempore beatae adipisci tenetur minus dignissimos? Libero beatae obcaecati perspiciatis fugiat qui sint dolorem laborum ut?</p>
+        </div>
+        <div v-if="markedSteps===3">
+          <h1>Step Four</h1>
+          <p>Almost there! Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni.</p>
+        </div>
+        <div v-if="markedSteps===4">
+          <h1>SUCCESS!</h1>
+        </div>
       </div>
       <div class="buttons">
         <button
@@ -102,12 +116,12 @@ export default {
     width: 90%;
     margin: 0 auto;
     .circle {
-      min-height: 50px;
-      min-width: 50px;
+      min-height: 30px;
+      min-width: 30px;
       border-radius: 50%;
       color: #000000;
       text-align: center;
-      line-height: 49px;
+      line-height: 30px;
       background-color: #e2e2e2;
     }
     .markedCircle {
@@ -126,7 +140,8 @@ export default {
     }
   }
   .content {
-    width: 10vw;
+    width: 40vw;
+    text-align: center;
     margin: 0 auto;
   }
   .buttons {

@@ -7,13 +7,22 @@
         </div>
       </div>
     </div>
+    <div class="my-container">
+      <div class="my-row">
+        <div class="c-12 c-md-6">
+          <app-stepper-two></app-stepper-two>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
 import stepperOne from "./stepper1";
+import stepperTwo from "./stepper2";
 export default {
   components: {
-    appStepperOne: stepperOne
+    appStepperOne: stepperOne,
+    appStepperTwo: stepperTwo
   }
 };
 </script>
