@@ -29,19 +29,15 @@
       <div class="content">
         <div v-if="markedSteps===0">
           <h1>Step One</h1>
-          <p>In 1994, Williams and six other young filmmakers, including P.J. Pesce and Academy Award nominee Bernard Joffa (the 1990 Best Live Action Short 'Senzeni Na?'), were featured in movie journalist Billy Frolick's book called 'What I Really Want to Do Is Direct: Seven Film School Graduates Go to Hollywood'. The book followed the lives of seven young, would-be directors over three years as they struggled with the ups-and-downs of the Hollywood world.</p>
         </div>
         <div v-if="markedSteps===1">
           <h1>Step Two</h1>
-          <p>A summer-stock revival, including Bill "Bojangles" Robinson, produced by Cheryl Crawford, played for one week in 1941 at the Maplewood Theater, in Maplewood, New Jersey.</p>
         </div>
         <div v-if="markedSteps===2">
           <h1>Step Three</h1>
-          <p>The rebuilding took place at the Salt River Works in Cape Town and was based on the principles developed by Argentinian mechanical engineer L.D. Porta.</p>
         </div>
         <div v-if="markedSteps===3">
           <h1>Step Four</h1>
-          <p>In biology, naturalisation (or naturalization) is any process by which a non-native organism or species spreads into the wild and its reproduction is sufficient to maintain its population. Such populations are said to be naturalised.Some populations do not sustain themselves reproductively, but exist because of continued influx from elsewhere. Such a non-sustaining population, or the individuals within it, are said to be adventive.</p>
         </div>
         <div v-if="markedSteps===4">
           <h1>SUCCESS!</h1>
@@ -177,6 +173,9 @@ export default {
     width: 40vw;
     text-align: center;
     margin: 0 auto;
+    h1 {
+      font-size: 44px;
+    }
   }
   .buttons {
     width: 220px;
