@@ -1,6 +1,10 @@
 <template>
-  <div class="tab-wrapper">
-    <app-tab-one></app-tab-one>
+  <div class="tabs-wrapper">
+    <div class="my-container">
+      <div class="my-row">
+        <app-tab-one class="c-12 c-md-6"></app-tab-one>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -16,4 +20,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.tabs-wrapper {
+  width: 95%;
+  margin: 1.5em auto;
+}
 </style>
