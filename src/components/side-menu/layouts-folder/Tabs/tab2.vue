@@ -1,17 +1,24 @@
 <template>
   <div class="tabs-wrapper">
     <div class="tabs">
-      <div
+      <router-link
         class="tab"
         v-for="(data, index) in tabData"
         :key="data.id"
-        @click="setContent(index); setTabActive(index)"
-        :class="{tabActive: isThatTabActive(index)}"
+        :to="data.tabLink"
+        tag="div"
       >
-        <p>{{data.tabName}}</p>
-      </div>
+        <p
+          @click="setContent(index); setTabActive(index)"
+          :class="{tabActive: isThatTabActive(index)}"
+        >{{data.tabName}}</p>
+      </router-link>
     </div>
-    <div class="tab-content">{{tabData[currentContentNumber].tabContent}}</div>
+    <div class="tab-content">
+      <transition name="fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
+    </div>
   </div>
 </template>
 <script>
@@ -20,7 +27,7 @@ export default {
   data() {
     return {
       currentContentNumber: 0,
-      tabActivness: [true, false, false] // which of tabs are active
+      tabActivness: [] // which of tabs are active. filled on created hook, so size depends on tab elements
     };
   },
   methods: {
@@ -36,13 +43,24 @@ export default {
     isThatTabActive(index) {
       return this.tabActivness[index];
     }
+  },
+  created: function() {
+    this.tabData.forEach(element => {
+      this.tabActivness.push(false);
+    });
+    this.tabActivness[0] = true; // making a first tab active
   }
 };
 </script>
 <style lang="scss" scoped>
-* {
-  box-sizing: border-box;
+.fade-enter-active {
+  transition: all 0.2s ease-in;
 }
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
 .tabs-wrapper {
   background-color: #f5f5f5;
   padding: 15px;
@@ -53,17 +71,17 @@ export default {
     width: 100%;
 
     .tab {
-      width: 20%;
+      width: 25%;
       text-align: center;
+    }
+    p {
+      font-size: 16px;
+      font-weight: 700;
+      padding: 6px 0;
+      cursor: pointer;
       border-bottom: 3px solid #f5f5f5;
       &:hover {
         border-bottom: 3px solid #3366ff;
-      }
-      p {
-        font-size: 16px;
-        font-weight: 700;
-        padding: 6px 0;
-        cursor: pointer;
       }
     }
     .tabActive {

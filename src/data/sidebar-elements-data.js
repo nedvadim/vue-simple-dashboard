@@ -3,32 +3,32 @@ export default [
     id: 1,
     elementsHeader: "Layouts",
     pages: [
-      { componentName: "Stepper", linkToComponent: "/stepper" },
-      { componentName: "List", linkToComponent: "/lists" },
-      { componentName: "Tabs", linkToComponent: "/tabs" }
+      { id: 1, componentName: "Stepper", linkToComponent: "/stepper" },
+      { id: 2, componentName: "List", linkToComponent: "/lists" },
+      { id: 3, componentName: "Tabs", linkToComponent: "/tabs" }
     ]
   },
   {
     id: 2,
     elementsHeader: "Forms",
     pages: [
-      { componentName: "Form Inputs", linkToComponent: "/" },
-      { componentName: "Form Layouts", linkToComponent: "/" },
-      { componentName: "Buttons", linkToComponent: "/" }
+      { id: 1, componentName: "Form Inputs", linkToComponent: "/" },
+      { id: 2, componentName: "Form Layouts", linkToComponent: "/" },
+      { id: 3, componentName: "Buttons", linkToComponent: "/" }
     ]
   },
   {
     id: 3,
     elementsHeader: "Modal & Overlays",
     pages: [
-      { componentName: "Dialog", linkToComponent: "/" },
-      { componentName: "Window", linkToComponent: "/" },
-      { componentName: "Popover", linkToComponent: "/" }
+      { id: 1, componentName: "Dialog", linkToComponent: "/" },
+      { id: 2, componentName: "Window", linkToComponent: "/" },
+      { id: 3, componentName: "Popover", linkToComponent: "/" }
     ]
   },
   {
     id: 4,
     elementsHeader: "UI Features",
-    pages: [{ componentName: "Grid", linkToComponent: "/grid" }]
+    pages: [{ id: 1, componentName: "Grid", linkToComponent: "/grid" }]
   }
 ];

@@ -8,9 +8,9 @@
     <div class="collapse-container">
       <transition name="slide" mode="out-in">
         <ul v-if="show">
-          <div v-for="headers in content.pages">
-            <router-link :to="headers.linkToComponent" tag="li">
-              <a>{{headers.componentName}}</a>
+          <div v-for="pages in content.pages" v-bind:key="pages.id">
+            <router-link :to="pages.linkToComponent" tag="li">
+              <a>{{pages.componentName}}</a>
             </router-link>
           </div>
           <!-- <router-link to="/portfolio" activeClass="active" tag="li"><a>{{headers.componentName}}</a></router-link>
