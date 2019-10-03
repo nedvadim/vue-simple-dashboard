@@ -12,7 +12,7 @@ export default [
     id: 2,
     elementsHeader: "Forms",
     pages: [
-      { id: 1, componentName: "Form Inputs", linkToComponent: "/" },
+      { id: 1, componentName: "Form Inputs", linkToComponent: "/form-inputs" },
       { id: 2, componentName: "Form Layouts", linkToComponent: "/" },
       { id: 3, componentName: "Buttons", linkToComponent: "/" }
     ]
