@@ -44,7 +44,7 @@ export default {
   box-sizing: border-box;
 }
 .tabs-wrapper {
-  background-color: #f5f5f5;
+  background-color: gray;
   padding: 15px;
   height: fit-content;
   .tabs {

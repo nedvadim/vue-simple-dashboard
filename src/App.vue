@@ -34,17 +34,16 @@ export default {
 
 <style lang="scss">
 @import "./style/grid-mobile-first.css";
-
 $top-margin: 1.5em;
 
 * {
   font-family: "Lato", sans-serif;
   font-size: 20px;
-  color: rgb(77, 77, 77);
+  color: #4d4d4d;
 }
 .page-content {
   display: flex;
-  padding-left: 150px;
+  padding: 0 10px 0 165px;
   padding-top: 7vh;
 }
 .app-bg {

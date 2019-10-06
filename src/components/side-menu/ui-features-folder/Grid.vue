@@ -49,7 +49,7 @@
 </template>
 <style lang="scss">
 .grid-page-wrapper {
-  width: 95%;
+  width: 100%;
   margin: 1.5em auto;
   background-color: #f5f5f5;
   //box-shadow: 0px 0px 4px -1px black;

@@ -25,7 +25,7 @@
   background-color: #f5f5f5;
   padding: 15px;
   height: fit-content;
-  width: 95%;
+  width: 100%;
   margin: 1.5em auto;
   .form-header {
     p {

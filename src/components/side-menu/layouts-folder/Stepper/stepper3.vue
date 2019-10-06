@@ -131,7 +131,7 @@ export default {
 
 <style lang="scss" scoped>
 .stepper-wrapper {
-  width: 95%;
+  width: 100%;
   margin: 1.5em auto;
   background-color: #f5f5f5;
   padding: 25px;

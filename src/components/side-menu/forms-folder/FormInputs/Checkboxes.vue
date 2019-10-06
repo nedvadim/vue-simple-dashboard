@@ -1,26 +1,27 @@
 <template>
-  <div class="template-container">
-    <div class="template-header">
-      <p>{{header}}</p>
+  <div class="checkboxes-container">
+    <div class="checkboxes-header">
+      <p>Checkboxes</p>
     </div>
   </div>
 </template>
+
+
 <script>
-export default {
-  props: ["header"]
-};
+export default {};
 </script>
+
 <style lang="scss" scoped>
-.template-container {
+.checkboxes-container {
   background-color: #f5f5f5;
   padding: 15px;
   height: fit-content;
   width: 100%;
   margin: 1.5em auto;
-  .template-header {
+  .checkboxes-header {
     p {
       font-size: 25px;
-      border-bottom: 1px solid rgb(211, 211, 211);
+      border-bottom: 1px solid #d3d3d3;
     }
   }
 }

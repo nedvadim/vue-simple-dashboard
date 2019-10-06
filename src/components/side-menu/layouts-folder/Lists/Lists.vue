@@ -28,7 +28,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .lists-page-wrapper {
-  width: 95%;
+  width: 100%;
   margin: 1.5em auto;
 }
 </style>
