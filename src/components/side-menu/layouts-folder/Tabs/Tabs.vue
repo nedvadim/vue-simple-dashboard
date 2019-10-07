@@ -34,7 +34,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .tabs-wrapper {
-  width: 95%;
-  margin: 1.5em auto;
+  width: $component-width;
 }
 </style>

@@ -125,9 +125,9 @@ export default {
 
 <style lang="scss" scoped>
 .stepper-wrapper {
-  width: 100%;
-  margin: 1.5em auto;
-  background-color: #f5f5f5;
+  width: $component-width;
+  margin: $margin-container;
+  background-color: $component-bg-color;
   padding: 25px;
   .steps {
     display: flex;

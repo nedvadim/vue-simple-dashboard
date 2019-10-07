@@ -49,15 +49,15 @@
 </template>
 <style lang="scss">
 .grid-page-wrapper {
-  width: 100%;
-  margin: 1.5em auto;
-  background-color: #f5f5f5;
+  width: $component-width;
+  margin: $margin-container;
+  background-color: $component-bg-color;
   //box-shadow: 0px 0px 4px -1px black;
 
   .content-wrapper {
     padding: 30px;
     .header {
-      border-bottom: 1px solid #b8b8b8;
+      border-bottom: 1px solid $components-header-border-color;
       margin-bottom: 25px;
     }
     .box {

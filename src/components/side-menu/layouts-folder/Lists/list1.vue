@@ -31,16 +31,16 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-$borderColor: #a0a0a0;
-
 .list-container {
-  background-color: $components-bg-color;
+  background-color: $component-bg-color;
   padding: 15px;
   height: fit-content;
+  width: $component-width;
+  margin: $margin-container;
   .list-header {
     p {
       font-size: 25px;
-      border-bottom: 1px solid $borderColor;
+      border-bottom: 1px solid $components-header-border-color;
     }
   }
   ul {

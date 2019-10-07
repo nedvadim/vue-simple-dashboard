@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="list-header">
-      <p>{{content.listHeader}}</p>
-    </div>
     <div class="list-container">
+      <div class="list-header">
+        <p>{{content.listHeader}}</p>
+      </div>
       <div class="list">
         <ul>
           <li v-for="con in content.descriptions">
@@ -28,22 +28,23 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-$borderColor: #a0a0a0;
-.list-header {
-  width: 100%;
-  height: 50px;
-  background-color: #f5f5f5;
-  padding: 15px;
-  p {
-    font-size: 25px;
-    border-bottom: 1px solid $borderColor;
-  }
-}
 .list-container {
-  background-color: #f5f5f5;
+  background-color: $component-bg-color;
+  width: $component-width;
   padding: 0 15px 15px 15px;
+  margin: $margin-container;
   height: 263px;
   overflow-y: scroll;
+  .list-header {
+    width: $component-width;
+    height: 50px;
+    background-color: $component-bg-color;
+    padding: 15px;
+    p {
+      font-size: 25px;
+      border-bottom: 1px solid $components-header-border-color;
+    }
+  }
   li {
     list-style: none;
     padding: 10px;

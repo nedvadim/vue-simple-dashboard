@@ -44,13 +44,14 @@ export default {
   box-sizing: border-box;
 }
 .tabs-wrapper {
-  background-color: gray;
+  background-color: $component-bg-color;
   padding: 15px;
+  margin: $margin-container;
   height: fit-content;
   .tabs {
     display: flex;
     border-bottom: 1px solid #d8d8d8;
-    width: 100%;
+    width: $component-width;
 
     .tab {
       width: 20%;

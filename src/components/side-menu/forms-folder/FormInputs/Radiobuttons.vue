@@ -7,7 +7,13 @@
     <div class="radio-group">
       <label class="radio-item" v-for="data in RadiobuttonsData" :key="data.id">
         {{data.value}}
-        <input type="radio" name="data.name" id="data.checkId" value="data.checkId" />
+        <input
+          type="radio"
+          name="data.name"
+          id="data.radioId"
+          value="data.radioId"
+          checked="checked"
+        />
         <span class="marked"></span>
       </label>
     </div>
@@ -16,24 +22,21 @@
 
 <script>
 export default {
-  data() {
-    return {};
-  },
   props: ["RadiobuttonsData"]
 };
 </script>
 <style lang="scss" scoped>
 .radiobuttons-radios-container {
-  background-color: #f5f5f5;
+  background-color: $component-bg-color;
   padding: 15px;
   height: fit-content;
-  width: 100%;
-  margin: 1.5em auto;
+  width: $component-width;
+  margin: $margin-container;
   .radiobuttons-radios-header {
     p {
       padding-bottom: 10px;
       font-size: 25px;
-      border-bottom: 1px solid #d3d3d3;
+      border-bottom: 1px solid $components-header-border-color;
     }
   }
 }
@@ -87,11 +90,6 @@ export default {
         height: 14px;
         border-radius: 50%;
         background-color: #1064ff;
-      }
-      &:after {
-        content: "";
-        position: absolute;
-        display: none;
       }
     }
   }

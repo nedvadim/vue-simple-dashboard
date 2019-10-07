@@ -1,11 +1,9 @@
 <template>
   <div>
-    <div class="lists-page-wrapper">
-      <div class="my-container">
-        <div class="my-row">
-          <app-list-one class="c-12 c-md-6"></app-list-one>
-          <app-list-two class="c-12 c-md-6" :content="listContent"></app-list-two>
-        </div>
+    <div class="my-container">
+      <div class="my-row">
+        <app-list-one class="c-12 c-md-6"></app-list-one>
+        <app-list-two class="c-12 c-md-6" :content="listContent"></app-list-two>
       </div>
     </div>
   </div>
@@ -27,8 +25,4 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.lists-page-wrapper {
-  width: 100%;
-  margin: 1.5em auto;
-}
 </style>
