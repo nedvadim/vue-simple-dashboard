@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="my-cotainer">
+    <div class="my-container">
       <div class="my-row">
         <div class="c-12">
           <app-stepper-one></app-stepper-one>

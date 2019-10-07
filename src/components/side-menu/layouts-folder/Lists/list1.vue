@@ -34,7 +34,7 @@ export default {
 $borderColor: #a0a0a0;
 
 .list-container {
-  background-color: #f5f5f5;
+  background-color: $components-bg-color;
   padding: 15px;
   height: fit-content;
   .list-header {
