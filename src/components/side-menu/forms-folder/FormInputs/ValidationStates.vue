@@ -28,7 +28,6 @@
         <span class="marked"></span>
         Danger
       </label>
-      <input type="checkbox" /> not custom
     </div>
   </div>
 </template>

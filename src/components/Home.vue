@@ -7,7 +7,7 @@
 <style lang="scss" scoped>
 div {
   h1 {
-    color: darkblue;
+    color: rgb(0, 0, 104);
   }
 }
 </style>

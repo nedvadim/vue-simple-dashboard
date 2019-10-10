@@ -11,7 +11,7 @@ import RouteTab2 from "./components/side-menu/layouts-folder/Tabs/tab2Route2.vue
 
 // Form Inputs
 import FormInputs from "./components/side-menu/forms-folder/FormInputs/FormInputs.vue";
-
+import Buttons from "./components/side-menu/forms-folder/Buttons/Buttons.vue";
 // UI Features folder
 import Grid from "./components/side-menu/ui-features-folder/Grid.vue";
 
@@ -29,5 +29,6 @@ export const routes = [
     ]
   },
   { path: "/form-inputs", component: FormInputs },
+  { path: "/buttons", component: Buttons },
   { path: "/grid", component: Grid }
 ];

@@ -34,8 +34,6 @@
     }
   }
 }
-.app-inputs {
-}
 .app-input {
   //display: block;
   margin-top: 20px;
