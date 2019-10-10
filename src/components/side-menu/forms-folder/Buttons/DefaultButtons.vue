@@ -1,20 +1,21 @@
 <template>
   <div class="default-buttons-container">
     <div class="default-buttons-header">
-      <p>DefaultButtons</p>
+      <p>ButtonItems</p>
       <div class="default-buttons">
-        <app-default-button
+        <app-button-item
           class="margin"
           v-for="(buttonType, index) in buttonTypes"
           :key="index"
           :type="buttonType"
-        ></app-default-button>
+          :btnText="buttonType"
+        ></app-button-item>
       </div>
     </div>
   </div>
 </template>
 <script>
-import DefaultButton from "./DefaultButton";
+import ButtonItem from "./ButtonItem";
 export default {
   data() {
     return {
@@ -29,7 +30,7 @@ export default {
     };
   },
   components: {
-    appDefaultButton: DefaultButton
+    appButtonItem: ButtonItem
   }
 };
 </script>
