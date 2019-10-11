@@ -35,7 +35,6 @@ export default {
     }
   }
 }
-
 .button-sizes-buttons {
   margin-top: 20px;
   display: flex;

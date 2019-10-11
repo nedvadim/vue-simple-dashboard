@@ -5,21 +5,32 @@
         <p>Default Inputs</p>
       </div>
       <div class="app-inputs">
-        <input type="text" class="app-input" placeholder="Project" />
-        <input type="text" class="app-input" placeholder="Full name" />
-        <input type="password" class="app-input" placeholder="Password" />
-        <input type="text" class="app-input rect" placeholder="Recangle border" />
-        <input type="text" class="app-input semi-round" placeholder="Semi round border" />
-        <input type="text" class="app-input round" placeholder="Round border" />
-        <input type="text" class="app-input" placeholder="Disabled" disabled />
-        <textarea class="app-input app-textarea semi-round" placeholder="Text Area"></textarea>
-        <input type="text" class="app-input small" placeholder="Small" />
-        <input type="text" class="app-input large rect" placeholder="Large" />
+        <app-text-input-item :inputPlaceholder="'Project'"></app-text-input-item>
+        <app-text-input-item :inputPlaceholder="'FullName'"></app-text-input-item>
+        <app-text-input-item :inputPlaceholder="'Password'" :inputType="'password'"></app-text-input-item>
+        <app-text-input-item :inputPlaceholder="'Rectangle Border'" :shape="'rectangle'"></app-text-input-item>
+        <app-text-input-item :inputPlaceholder="'Semi-round Border'" :shape="'semi-round'"></app-text-input-item>
+        <app-text-input-item :inputPlaceholder="'Round Border'" :shape="'round'"></app-text-input-item>
+        <app-text-input-item :inputPlaceholder="'Disabled'" :disabled="true"></app-text-input-item>
+        <app-text-input-item
+          :inputPlaceholder="'Text Area'"
+          :inputType="'textarea'"
+          :shape="'semi-round'"
+        ></app-text-input-item>
+        <app-text-input-item :inputPlaceholder="'Small'" :size="'small'"></app-text-input-item>
+        <app-text-input-item :inputPlaceholder="'Large'" :size="'large'"></app-text-input-item>
       </div>
     </div>
   </div>
 </template>
-
+<script>
+import TextInputItem from "./TextInputItem";
+export default {
+  components: {
+    appTextInputItem: TextInputItem
+  }
+};
+</script>
 <style lang="scss" scoped>
 .form-container {
   background-color: $component-bg-color;
