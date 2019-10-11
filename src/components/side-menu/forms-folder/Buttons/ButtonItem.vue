@@ -24,7 +24,8 @@ export default {
 
 <style lang="scss" scoped>
 .button {
-  min-width: 130px;
+  //min-width: 130px;
+  padding: 0 8px;
   height: 40px;
   cursor: pointer;
   border: none;
@@ -182,25 +183,25 @@ export default {
   border-radius: 25px;
 }
 .tiny {
-  min-width: 60px;
+  //min-width: 60px;
   height: 22px;
   font-size: 11px;
 }
 .small {
-  min-width: 100px;
+  //min-width: 100px;
   height: 35px;
   font-size: 14px;
 }
 .medium {
 }
 .large {
-  min-width: 145px;
+  //min-width: 145px;
   height: 50px;
   font-size: 20px;
   font-weight: 900;
 }
 .giant {
-  min-width: 150px;
+  // min-width: 150px;
   height: 60px;
   font-size: 22px;
   font-weight: 900;

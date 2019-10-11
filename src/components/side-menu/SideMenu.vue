@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar-container">
-    <app-item v-for="s in sidebarContent" :content="s"></app-item>
+    <app-item v-for="s in sidebarContent" :content="s" :key="s.id"></app-item>
   </div>
 </template>
 

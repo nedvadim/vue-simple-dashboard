@@ -5,20 +5,29 @@
         <p>Default Inputs</p>
       </div>
       <div class="app-inputs">
-        <app-text-input-item :inputPlaceholder="'Project'"></app-text-input-item>
-        <app-text-input-item :inputPlaceholder="'FullName'"></app-text-input-item>
-        <app-text-input-item :inputPlaceholder="'Password'" :inputType="'password'"></app-text-input-item>
-        <app-text-input-item :inputPlaceholder="'Rectangle Border'" :shape="'rectangle'"></app-text-input-item>
-        <app-text-input-item :inputPlaceholder="'Semi-round Border'" :shape="'semi-round'"></app-text-input-item>
-        <app-text-input-item :inputPlaceholder="'Round Border'" :shape="'round'"></app-text-input-item>
-        <app-text-input-item :inputPlaceholder="'Disabled'" :disabled="true"></app-text-input-item>
+        <app-text-input-item class="margin" :inputPlaceholder="'Project'"></app-text-input-item>
+        <app-text-input-item class="margin" :inputPlaceholder="'FullName'"></app-text-input-item>
+        <app-text-input-item class="margin" :inputPlaceholder="'Password'" :inputType="'password'"></app-text-input-item>
         <app-text-input-item
+          class="margin"
+          :inputPlaceholder="'Rectangle Border'"
+          :shape="'rectangle'"
+        ></app-text-input-item>
+        <app-text-input-item
+          class="margin"
+          :inputPlaceholder="'Semi-round Border'"
+          :shape="'semi-round'"
+        ></app-text-input-item>
+        <app-text-input-item class="margin" :inputPlaceholder="'Round Border'" :shape="'round'"></app-text-input-item>
+        <app-text-input-item class="margin" :inputPlaceholder="'Disabled'" :disabled="true"></app-text-input-item>
+        <app-text-input-item
+          class="margin"
           :inputPlaceholder="'Text Area'"
           :inputType="'textarea'"
           :shape="'semi-round'"
         ></app-text-input-item>
-        <app-text-input-item :inputPlaceholder="'Small'" :size="'small'"></app-text-input-item>
-        <app-text-input-item :inputPlaceholder="'Large'" :size="'large'"></app-text-input-item>
+        <app-text-input-item class="margin" :inputPlaceholder="'Small'" :size="'small'"></app-text-input-item>
+        <app-text-input-item class="margin" :inputPlaceholder="'Large'" :size="'large'"></app-text-input-item>
       </div>
     </div>
   </div>
@@ -85,5 +94,8 @@ input[type="text"]:disabled {
 }
 .large {
   padding: 12px;
+}
+.margin {
+  margin: 10px 0;
 }
 </style>

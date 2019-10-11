@@ -1,6 +1,6 @@
 <template>
-  <div class="template-container">
-    <div class="template-header">
+  <div class="mytemplate-container">
+    <div class="mytemplate-header">
       <p>{{header}}</p>
     </div>
   </div>
@@ -11,13 +11,13 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.template-container {
+.mytemplate-container {
   background-color: $component-bg-color;
   padding: 15px;
   height: fit-content;
   width: $component-width;
   margin: $margin-container;
-  .template-header {
+  .mytemplate-header {
     p {
       font-size: 25px;
       border-bottom: 1px solid $components-header-border-color;

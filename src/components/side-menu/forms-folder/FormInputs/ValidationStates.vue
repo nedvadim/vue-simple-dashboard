@@ -4,11 +4,11 @@
       <p>Validation States</p>
     </div>
     <div class="inputs">
-      <app-text-input-item :inputPlaceholder="'Primary Input'" :status="'primary'"></app-text-input-item>
-      <app-text-input-item :inputPlaceholder="'Success Input'" :status="'success'"></app-text-input-item>
-      <app-text-input-item :inputPlaceholder="'Warning Input'" :status="'warning'"></app-text-input-item>
-      <app-text-input-item :inputPlaceholder="'Danger Input'" :status="'danger'"></app-text-input-item>
-      <app-text-input-item :inputPlaceholder="'Info Input'" :status="'info'"></app-text-input-item>
+      <app-text-input-item class="margin" :inputPlaceholder="'Primary Input'" :status="'primary'"></app-text-input-item>
+      <app-text-input-item class="margin" :inputPlaceholder="'Success Input'" :status="'success'"></app-text-input-item>
+      <app-text-input-item class="margin" :inputPlaceholder="'Warning Input'" :status="'warning'"></app-text-input-item>
+      <app-text-input-item class="margin" :inputPlaceholder="'Danger Input'" :status="'danger'"></app-text-input-item>
+      <app-text-input-item class="margin" :inputPlaceholder="'Info Input'" :status="'info'"></app-text-input-item>
     </div>
 
     <div class="checkboxes">
@@ -59,8 +59,10 @@ export default {
     }
   }
 }
+.margin {
+  margin: 10px 0;
+}
 
-//checkboxes general styling -------------------------------
 .checkboxes {
   margin: 15px 0 15px 0;
   display: flex;

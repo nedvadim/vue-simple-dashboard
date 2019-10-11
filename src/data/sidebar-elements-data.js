@@ -13,7 +13,11 @@ export default [
     elementsHeader: "Forms",
     pages: [
       { id: 1, componentName: "Form Inputs", linkToComponent: "/form-inputs" },
-      { id: 2, componentName: "Form Layouts", linkToComponent: "/" },
+      {
+        id: 2,
+        componentName: "Form Layouts",
+        linkToComponent: "/form-layouts"
+      },
       { id: 3, componentName: "Buttons", linkToComponent: "/buttons" }
     ]
   },

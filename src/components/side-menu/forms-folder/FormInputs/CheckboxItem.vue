@@ -30,6 +30,8 @@ export default {
   margin-bottom: 2px;
   padding-left: 25px;
   user-select: none;
+  font-size: 17px;
+  font-weight: 600;
   input[type="checkbox"] {
     position: absolute;
     opacity: 0;
@@ -51,7 +53,7 @@ export default {
   .marked {
     cursor: pointer;
     position: absolute;
-    top: 5px;
+    top: 3px;
     left: 0;
     width: 16px;
     height: 16px;

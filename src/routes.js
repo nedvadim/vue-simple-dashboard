@@ -9,14 +9,16 @@ import Tabs from "./components/side-menu/layouts-folder/Tabs/Tabs.vue";
 import RouteTab1 from "./components/side-menu/layouts-folder/Tabs/tab2Route1.vue";
 import RouteTab2 from "./components/side-menu/layouts-folder/Tabs/tab2Route2.vue";
 
-// Form Inputs
+// Forms
 import FormInputs from "./components/side-menu/forms-folder/FormInputs/FormInputs.vue";
 import Buttons from "./components/side-menu/forms-folder/Buttons/Buttons.vue";
+import FormLayouts from "./components/side-menu/forms-folder/FormLayouts/FormLayouts.vue";
 // UI Features folder
 import Grid from "./components/side-menu/ui-features-folder/Grid.vue";
 
 export const routes = [
   { path: "/", component: Home },
+  // Layouts Folder========================================
   { path: "/lists", component: Lists },
   { path: "/stepper", component: Stepper },
   {
@@ -28,7 +30,10 @@ export const routes = [
       { path: "/tabs/route-tab-2", component: RouteTab2 }
     ]
   },
+  // Forms Folder========================================
   { path: "/form-inputs", component: FormInputs },
   { path: "/buttons", component: Buttons },
+  { path: "/form-layouts", component: FormLayouts },
+  // UI Features Folder========================================
   { path: "/grid", component: Grid }
 ];

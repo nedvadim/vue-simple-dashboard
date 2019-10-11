@@ -50,7 +50,7 @@ export default {
 <style lang="scss" scoped>
 .app-input {
   //display: block;
-  margin-top: 20px;
+  //margin-top: 20px;
   width: 100%;
   padding: 8px 12px;
   border-radius: 5px;
