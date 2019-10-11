@@ -9,8 +9,8 @@
           <app-select :options="selectOptions"></app-select>
           <app-validation-states></app-validation-states>
           <div class="my-row">
-            <app-radiobuttons class="c-12 c-md-6" :RadiobuttonsData="RadiobuttonsData"></app-radiobuttons>
-            <app-checkboxes class="c-12 c-md-6" :CheckboxesData="CheckboxesData"></app-checkboxes>
+            <app-radiobuttons class="c-12 c-md-6"></app-radiobuttons>
+            <app-checkboxes class="c-12 c-md-6"></app-checkboxes>
           </div>
         </div>
       </div>
@@ -42,19 +42,6 @@ export default {
         { id: 1, value: "rabbit", option: "Rabbit" },
         { id: 2, value: "turtle", option: "Turtle" },
         { id: 3, value: "elephant", option: "Elephant" }
-      ],
-      RadiobuttonsData: [
-        { id: 1, radioId: "north", name: "directions", value: "North" },
-        { id: 2, radioId: "south", name: "directions", value: "South" },
-        { id: 3, radioId: "east", name: "directions", value: "East" },
-        { id: 4, radioId: "west", name: "directions", value: "West" }
-      ],
-      CheckboxesData: [
-        { id: 1, name: "Purple", value: "purple" },
-        { id: 2, name: "Green", value: "green" },
-        { id: 3, name: "Orange", value: "orange" },
-        { id: 4, name: "Black", value: "black" },
-        { id: 5, name: "Brown", value: "brown" }
       ]
     };
   }

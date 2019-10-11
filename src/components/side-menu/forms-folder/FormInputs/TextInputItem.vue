@@ -4,7 +4,7 @@
       v-if="inputType !== 'textarea'"
       :type="inputType"
       class="app-input"
-      :class="[shape, size]"
+      :class="[shape, size, status]"
       :placeholder="inputPlaceholder"
       :disabled="disabled"
     />
@@ -22,10 +22,13 @@
 export default {
   props: {
     shape: {
-      type: String
+      type: String // 'rectangle', 'semi-round' or 'round'
     },
     size: {
-      type: String
+      type: String // 'small' or 'large' medium is default value
+    },
+    status: {
+      type: String // 'primary', 'success', 'warning', 'danger', 'info'
     },
     inputPlaceholder: {
       type: String
@@ -87,5 +90,36 @@ input[type="text"]:disabled {
 }
 .large {
   padding: 12px;
+}
+
+.info {
+  border: 1px solid #2eceff;
+  &:hover {
+    border: 1px solid #1f2eff;
+  }
+}
+.success {
+  border: 1px solid #08ee00;
+  &:hover {
+    border: 1px solid #059400;
+  }
+}
+.warning {
+  border: 1px solid #ffd036;
+  &:hover {
+    border: 1px solid #db9601;
+  }
+}
+.danger {
+  border: 1px solid #ff0000;
+  &:hover {
+    border: 1px solid #a30000;
+  }
+}
+.primary {
+  border: 1px solid #0086af;
+  &:hover {
+    border: 1px solid #005670;
+  }
 }
 </style>
