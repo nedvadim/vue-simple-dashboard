@@ -2,8 +2,14 @@
   <div class="my-container">
     <div class="my-row">
       <app-inline-form class="c-12" :inlineFormData="inlineFormData"></app-inline-form>
-      <app-basic-form class="c-12 c-md-6" :basicFormData="basicFormData"></app-basic-form>
-      <app-without-labels class="c-12 c-md-6" :withoutLabelsFormData="withoutLabelsFormData"></app-without-labels>
+      <div class="c-12 c-md-6">
+        <app-basic-form :basicFormData="basicFormData"></app-basic-form>
+        <app-block-form :blockFormData="blockFormData"></app-block-form>
+      </div>
+      <div class="c-12 c-md-6">
+        <app-without-labels :withoutLabelsFormData="withoutLabelsFormData"></app-without-labels>
+        <app-horizontal-form :horizontalFormData="horizontalFormData"></app-horizontal-form>
+      </div>
     </div>
   </div>
 </template>
@@ -11,11 +17,15 @@
 import InlineForm from "./InlineForm";
 import BasicForm from "./BasicForm";
 import WithoutLabels from "./FormWithoutLabels";
+import BlockForm from "./BlockForm";
+import HorizontalForm from "./HorizontalForm";
 export default {
   components: {
     appInlineForm: InlineForm,
     appBasicForm: BasicForm,
-    appWithoutLabels: WithoutLabels
+    appWithoutLabels: WithoutLabels,
+    appBlockForm: BlockForm,
+    appHorizontalForm: HorizontalForm
   },
   data() {
     return {
@@ -49,6 +59,32 @@ export default {
         secondInputPlaceholder: "Your password",
         textareaPlaceholder: "Your comment",
         buttonText: "Comment"
+      },
+      blockFormData: {
+        formName: "Block form",
+        firstInputPlaceholder: "First Name",
+        firstLabel: "First Name",
+        secondInputPlaceholder: "Email",
+        secondLabel: "Email",
+        thirdInputPlaceholder: "Last Name",
+        thirdLabel: "Last Name",
+        fourthInputPlaceholder: "Website",
+        fourthLabel: "Website",
+        buttonText: "Submit"
+      },
+      horizontalFormData: {
+        formName: "Horizontal Form",
+        firstLabel: "Email",
+        firstInputPlaceholder: "Email",
+        secondLabel: "Password",
+        secondInputPlaceholder: "Password",
+        buttonText: "Sign in",
+        checkboxData: {
+          id: 1,
+          name: "Remember me",
+          value: "remember",
+          checked: false
+        }
       }
     };
   }

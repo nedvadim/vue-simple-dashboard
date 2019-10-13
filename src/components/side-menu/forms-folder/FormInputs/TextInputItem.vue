@@ -7,6 +7,7 @@
       :class="[shape, size, status]"
       :placeholder="inputPlaceholder"
       :disabled="disabled"
+      :id="inputId"
     />
     <textarea
       v-else
@@ -39,6 +40,9 @@ export default {
     },
     disabled: {
       type: Boolean
+    },
+    inputId: {
+      type: String
     }
   },
   data() {

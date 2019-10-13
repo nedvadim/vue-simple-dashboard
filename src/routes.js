@@ -15,6 +15,8 @@ import Buttons from "./components/side-menu/forms-folder/Buttons/Buttons.vue";
 import FormLayouts from "./components/side-menu/forms-folder/FormLayouts/FormLayouts.vue";
 // UI Features folder
 import Grid from "./components/side-menu/ui-features-folder/Grid.vue";
+// Modals & Overlays
+import Dialog from "./components/side-menu/modals-and-overlays-folder/Dialog/Dialog.vue";
 
 export const routes = [
   { path: "/", component: Home },
@@ -35,5 +37,7 @@ export const routes = [
   { path: "/buttons", component: Buttons },
   { path: "/form-layouts", component: FormLayouts },
   // UI Features Folder========================================
-  { path: "/grid", component: Grid }
+  { path: "/grid", component: Grid },
+  // Modals & Overlays=========================================
+  { path: "/dialog", component: Dialog }
 ];
