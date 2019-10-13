@@ -3,7 +3,7 @@
     <div class="ghost-buttons-header">
       <p>Ghost Buttons</p>
       <div class="ghost-buttons">
-        <app-button-item class="margin" type="default" btnText="default" :ghost="true"></app-button-item>
+        <app-button-item class="margin" type="primary" btnText="primary" :ghost="true"></app-button-item>
         <app-button-item class="margin" type="success" btnText="success" :ghost="true"></app-button-item>
         <app-button-item class="margin" type="warning" btnText="warning" :ghost="true"></app-button-item>
         <app-button-item class="margin" type="danger" btnText="danger" :ghost="true"></app-button-item>

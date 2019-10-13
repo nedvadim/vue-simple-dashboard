@@ -3,9 +3,9 @@
     <div class="button-shapes-header">
       <p>Button Shapes</p>
       <div class="button-shapes-buttons">
-        <app-button-item class="margin" type="default" btnText="rectangle" :shape="'rectangle'"></app-button-item>
-        <app-button-item class="margin" type="default" btnText="semi-round" :shape="'semi-round'"></app-button-item>
-        <app-button-item class="margin" type="default" btnText="round" :shape="'round'"></app-button-item>
+        <app-button-item class="margin" btnText="rectangle" :shape="'rectangle'"></app-button-item>
+        <app-button-item class="margin" btnText="semi-round" :shape="'semi-round'"></app-button-item>
+        <app-button-item class="margin" btnText="round" :shape="'round'"></app-button-item>
       </div>
     </div>
   </div>

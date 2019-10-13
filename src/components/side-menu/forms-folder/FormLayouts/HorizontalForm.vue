@@ -34,7 +34,7 @@
           <div class="my-row">
             <div class="c-4"></div>
             <div class="c-8">
-              <app-btn class="button" :type="'default'" :btnText="horizontalFormData.buttonText"></app-btn>
+              <app-btn class="button" :btnText="horizontalFormData.buttonText"></app-btn>
             </div>
           </div>
         </div>

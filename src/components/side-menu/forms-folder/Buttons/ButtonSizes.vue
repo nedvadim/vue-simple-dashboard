@@ -3,11 +3,11 @@
     <div class="button-sizes-header">
       <p>Button Sizes</p>
       <div class="button-sizes-buttons">
-        <app-button-item class="margin" type="default" btnText="tiny" :size="'tiny'"></app-button-item>
-        <app-button-item class="margin" type="default" btnText="small" :size="'small'"></app-button-item>
-        <app-button-item class="margin" type="default" btnText="medium" :size="'medium'"></app-button-item>
-        <app-button-item class="margin" type="default" btnText="large" :size="'large'"></app-button-item>
-        <app-button-item class="margin" type="default" btnText="giant" :size="'giant'"></app-button-item>
+        <app-button-item class="margin" btnText="tiny" :size="'tiny'"></app-button-item>
+        <app-button-item class="margin" btnText="small" :size="'small'"></app-button-item>
+        <app-button-item class="margin" btnText="medium" :size="'medium'"></app-button-item>
+        <app-button-item class="margin" btnText="large" :size="'large'"></app-button-item>
+        <app-button-item class="margin" btnText="giant" :size="'giant'"></app-button-item>
       </div>
     </div>
   </div>

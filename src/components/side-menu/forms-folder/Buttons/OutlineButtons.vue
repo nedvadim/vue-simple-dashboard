@@ -3,7 +3,7 @@
     <div class="outline-buttons-header">
       <p>Outline Buttons</p>
       <div class="outline-buttons">
-        <app-button-item class="margin" type="default" btnText="default" :outline="true"></app-button-item>
+        <app-button-item class="margin" type="primary" btnText="primary" :outline="true"></app-button-item>
         <app-button-item class="margin" type="success" btnText="success" :outline="true"></app-button-item>
         <app-button-item class="margin" type="warning" btnText="warning" :outline="true"></app-button-item>
         <app-button-item class="margin" type="danger" btnText="danger" :outline="true"></app-button-item>

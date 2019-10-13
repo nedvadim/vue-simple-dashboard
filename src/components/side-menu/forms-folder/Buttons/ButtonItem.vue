@@ -13,7 +13,27 @@ export default {
       isDisabled: false
     };
   },
-  props: ["type", "outline", "btnText", "ghost", "shape", "size"],
+  props: {
+    type: {
+      type: String,
+      default: "primary"
+    },
+    outline: {
+      type: Boolean
+    },
+    btnText: {
+      type: String
+    },
+    ghost: {
+      type: Boolean
+    },
+    shape: {
+      type: String
+    },
+    size: {
+      type: String
+    }
+  },
   created: function() {
     if (this.type.toLowerCase() === "disabled") {
       this.isDisabled = true;
@@ -34,8 +54,8 @@ export default {
   border-radius: 4px;
   font-weight: 600;
   font-size: 16px;
-  background-color: $primary-color;
-  border: 1px solid $primary-color;
+  // background-color: $primary-color;
+  // border: 1px solid $primary-color;
   color: #fff;
   transition: all 0.3s;
   &:focus {
@@ -48,6 +68,10 @@ export default {
   border: 1px solid $success-color;
 }
 
+.primary {
+  background-color: $primary-color;
+  border: 1px solid $primary-color;
+}
 .warning {
   background-color: $warning-color;
   border: 1px solid $warning-color;
@@ -67,6 +91,16 @@ export default {
   cursor: auto;
 }
 
+.outline.primary {
+  background-color: rgba(51, 102, 255, 0);
+  color: $primary-color;
+  &:hover {
+    background-color: rgba(51, 102, 255, 0.1);
+  }
+  &:focus {
+    background-color: rgba(51, 102, 255, 0.1);
+  }
+}
 .outline.danger {
   background-color: rgba(255, 61, 113, 0);
   color: $danger-color;
@@ -118,7 +152,7 @@ export default {
   }
 }
 
-.ghost.default {
+.ghost.primary {
   background-color: rgba(66, 170, 255, 0);
   border: none;
   color: $primary-color;

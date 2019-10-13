@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       buttonTypes: [
-        "default",
+        "primary",
         "success",
         "warning",
         "danger",
