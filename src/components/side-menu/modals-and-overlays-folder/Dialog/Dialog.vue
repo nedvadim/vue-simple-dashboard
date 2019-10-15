@@ -1,17 +1,17 @@
 <template>
   <div class="my-container">
     <div class="my-row">
-      <app-open-dialog class="c-12 c-md-6"></app-open-dialog>
+      <app-open-with-backdrop class="c-12 c-md-6"></app-open-with-backdrop>
       <!--<app-open-dialog class="c-12 c-md-6"></app-open-dialog> -->
     </div>
   </div>
 </template>
 
 <script>
-import OpenDialog from "./OpenDialog";
+import OpenWithBackdrop from "./OpenWithBackdrop";
 export default {
   components: {
-    appOpenDialog: OpenDialog
+    appOpenWithBackdrop: OpenWithBackdrop
   }
 };
 </script>

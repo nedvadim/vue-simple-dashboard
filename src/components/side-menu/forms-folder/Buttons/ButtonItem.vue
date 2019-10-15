@@ -54,8 +54,6 @@ export default {
   border-radius: 4px;
   font-weight: 600;
   font-size: 16px;
-  // background-color: $primary-color;
-  // border: 1px solid $primary-color;
   color: #fff;
   transition: all 0.3s;
   &:focus {
