@@ -1,19 +1,19 @@
 <template>
   <div class="open-dialog-container">
     <div class="open-dialog-header">
-      <p>Open With Backdrop</p>
+      <p>Open With Backdrop Click</p>
     </div>
     <div class="my-container">
       <div class="my-row">
         <app-btn
           @click.native="toggleDialog1()"
-          :btnText="'open dialog with backdrop'"
+          :btnText="'open dialog with backdrop click'"
           class="c-12 button"
         ></app-btn>
 
         <app-btn
           @click.native="toggleDialog2()"
-          :btnText="'open dialog without backdrop'"
+          :btnText="'open dialog without backdrop click'"
           class="c-12 button margin-top0"
         ></app-btn>
       </div>
@@ -34,19 +34,21 @@ export default {
     return {
       dialog1Data: {
         title: "Title of Dialog 1 Component",
-        content:
-          "You might be concerned that this whole event listening approach violates the good old rules about “separation of concerns”. Rest assured - since all Vue handler functions and expressions are strictly bound to the ViewModel that’s handling the current view, it won’t cause any maintenance difficulty. You might be concerned that this whole event listening approach violates the good old rules about “separation of concerns”. Rest assured - since all Vue handler functions and expressions are strictly bound to the ViewModel that’s handling the current view, it won’t cause any maintenance difficulty.",
+        content: "I love rhcp",
         buttonText: "close",
         isOpen: false,
-        withoutBackdrop: false
+        withoutBackdrop: false,
+        withEscape: true,
+        withBackdropClick: true
       },
       dialog2Data: {
         title: "Title of Dialog 2 Component",
-        content:
-          "You might be concerned that this whole event listening approach violates the good old rules about “separation of concerns”. Rest assured - since all Vue handler functions and expressions are strictly bound to the ViewModel that’s handling the current view, it won’t cause any maintenance difficulty. You might be concerned that this whole event listening approach violates the good old rules about “separation of concerns”. Rest assured - since all Vue handler functions and expressions are strictly bound to the ViewModel that’s handling the current view, it won’t cause any maintenance difficulty.",
+        content: "What was fisrt: egg or hun?",
         buttonText: "close",
         isOpen: false,
-        withoutBackdrop: true
+        withoutBackdrop: false,
+        withEscape: true,
+        withBackdropClick: false
       }
     };
   },
@@ -71,7 +73,7 @@ export default {
     /* Watcher that prevents scrolling, while Dialog Window is opened */
     //
     isDialogOpen: function() {
-      if (this.dialog1Data.isOpen) {
+      if (this.dialog1Data.isOpen || this.dialog2Data.isOpen) {
         document.documentElement.style.overflow = "hidden";
       } else {
         document.documentElement.style.overflow = "auto";

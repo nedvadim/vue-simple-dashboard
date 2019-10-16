@@ -1,17 +1,27 @@
 <template>
   <div class="my-container">
     <div class="my-row">
-      <app-open-with-backdrop class="c-12 c-md-6"></app-open-with-backdrop>
-      <!--<app-open-dialog class="c-12 c-md-6"></app-open-dialog> -->
+      <app-dialog-with-backdrop class="c-12 c-md-6"></app-dialog-with-backdrop>
+      <app-dialog-with-escape-close class="c-12 c-md-6"></app-dialog-with-escape-close>
+    </div>
+    <div class="my-row">
+      <app-dialog-with-backdrop-click class="c-12 c-md-6"></app-dialog-with-backdrop-click>
+      <app-dialog-with-result class="c-12 c-md-6"></app-dialog-with-result>
     </div>
   </div>
 </template>
 
 <script>
-import OpenWithBackdrop from "./OpenWithBackdrop";
+import DialogWithBackdrop from "./DialogWithBackdrop";
+import DialogWithEscapeClose from "./DialogWithEscapeClose";
+import DialogWithBackdropClick from "./DialogWithBackdropClick";
+import DialogWithResult from "./DialogWithResult";
 export default {
   components: {
-    appOpenWithBackdrop: OpenWithBackdrop
+    appDialogWithBackdrop: DialogWithBackdrop,
+    appDialogWithEscapeClose: DialogWithEscapeClose,
+    appDialogWithBackdropClick: DialogWithBackdropClick,
+    appDialogWithResult: DialogWithResult
   }
 };
 </script>

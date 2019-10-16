@@ -8,6 +8,8 @@
       :placeholder="inputPlaceholder"
       :disabled="disabled"
       :id="inputId"
+      ref="customInput"
+      @input="updateValue()"
     />
     <textarea
       v-else
@@ -43,10 +45,20 @@ export default {
     },
     inputId: {
       type: String
+    },
+    value: {
+      type: String
+    }
+  },
+  methods: {
+    updateValue(event) {
+      this.$emit("input", this.$refs.customInput.value);
     }
   },
   data() {
-    return {};
+    return {
+      content: this.value
+    };
   }
 };
 </script>
