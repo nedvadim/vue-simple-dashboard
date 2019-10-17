@@ -3,6 +3,7 @@
     class="button"
     :class="[type.toLowerCase(), {outline:outline}, {ghost:ghost}, shape, size]"
     :disabled="this.isDisabled"
+    :ref="reference"
   >{{btnText}}</button>
 </template>
 
@@ -31,6 +32,9 @@ export default {
       type: String
     },
     size: {
+      type: String
+    },
+    reference: {
       type: String
     }
   },

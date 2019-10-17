@@ -3,34 +3,55 @@
     class="screen-overlay"
     :class="[{displayNone: !this.isOpened}, {withoutBackdrop: data.withoutBackdrop}]"
     @click.self="closeDialog()"
-    tabindex="0"
-    @keyup.esc="escapeDialog()"
-    autofocus="autofocus"
   >
-    <div class="dialog-window">
-      <div class="dialog-header">
-        <h1>{{this.data.title}}</h1>
+    <!-- FOR TESTING PURPOSES. DELETE IT AFTER ALL.
+      <input
+      class="headInp"
+      ref="headerinput"
+      id="hed"
+      @keydown.esc="escapeDialog"
+      style="height:80px"
+    />-->
+
+    <!-- Simple Modal -->
+    <div class="dialog-window" tabindex="0" @keydown.esc="escapeDialog">
+      <div class="dialog-header" tabindex="0" @keydown.esc="escapeDialog">
+        <h1 tabindex="0" @keydown.esc="escapeDialog">{{this.data.title}}</h1>
       </div>
-      <div v-if="!data.withInput" class="dialog-content">
-        <p>{{data.content}}</p>
-        <app-btn class="button" @click.native="closeDialogWithButton()" :btnText="data.buttonText"></app-btn>
+      <div v-if="!data.withInput" class="dialog-content" tabindex="0" @keydown.esc="escapeDialog">
+        <p tabindex="0" @keydown.esc="escapeDialog">{{data.content}}</p>
+        <app-btn
+          class="button"
+          id="closeBtn"
+          :reference="'closeButton'"
+          @click.native="closeDialogWithButton()"
+          @keydown.native.esc="escapeDialog"
+          tabindex="0"
+          :btnText="data.buttonText"
+        ></app-btn>
       </div>
-      <div v-else>
-        <div class="my-container">
-          <div class="my-row">
-            <!-- INPUUUUUUUUT-->
+
+      <!-- Form inside Modal -->
+      <div v-else tabindex="0" @keydown.esc="escapeDialog">
+        <div class="my-container" tabindex="0" @keydown.esc="escapeDialog">
+          <div class="my-row" tabindex="0" @keydown.esc="escapeDialog">
+            <!-- INPUT-->
             <app-inp
               :inputPlaceholder="dialogInputPlaceholder"
               class="c-12 input"
               v-model="inputValue"
+              @keyup.enter.native="sendResult()"
+              @keyup.esc.native="closeDialogWithButton()"
             ></app-inp>
-            <p>{{inputValue}}!!!</p>
+            <!-- !!!!!!!!!!!!!! -->
+            <p>{{this.inputValue}}</p>
           </div>
-          <div class="my-row">
+          <div class="my-row" tabindex="0" @keydown.esc="escapeDialog">
             <app-btn
               class="button c-3"
               :type="'warning'"
               @click.native="closeDialogWithButton()"
+              id="cancelButton"
               :btnText="'Cancel'"
             ></app-btn>
             <app-btn class="button c-3" @click.native="sendResult()" :btnText="'Submit'"></app-btn>
@@ -43,6 +64,7 @@
 <script>
 import Btn from "../../forms-folder/Buttons/ButtonItem";
 import Inp from "../../forms-folder/FormInputs/TextInputItem";
+import Vue from "vue";
 export default {
   data() {
     return {
@@ -80,6 +102,20 @@ export default {
   //     default: true
   //   }
   // }
+  watch: {
+    data: {
+      handler(val) {
+        console.log("data changed");
+      },
+      deep: true
+    },
+    isOpened: function(val) {
+      if (!val) {
+        return;
+      }
+      this.setFocus();
+    }
+  },
   computed: {
     isOpened: function() {
       return this.data.isOpen;
@@ -95,13 +131,22 @@ export default {
       this.$emit("close-dialog");
     },
     escapeDialog() {
+      console.log("in event func");
       if (this.data.withEscape) {
+        console.log("in event if");
         this.$emit("close-dialog");
       }
     },
-    sendResult(value) {},
-    setResult(value) {
-      console.log("value: " + value);
+    sendResult() {
+      var word = this.inputValue;
+      this.$emit("send-result", word);
+      this.inputValue = "";
+    },
+    setFocus() {
+      Vue.nextTick(function() {
+        document.getElementById("closeBtn").focus();
+        console.log(document.getElementById("closeBtn"));
+      });
     }
   }
 };
@@ -142,7 +187,6 @@ $dialog-width: 30%;
     }
   }
 }
-
 .displayNone {
   display: none;
 }
@@ -155,5 +199,10 @@ $dialog-width: 30%;
 }
 .button {
   margin: 10px;
+}
+.withoutVisualFocus {
+  &:focus {
+    outline: none;
+  }
 }
 </style>

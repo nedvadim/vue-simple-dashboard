@@ -10,6 +10,7 @@
       :id="inputId"
       ref="customInput"
       @input="updateValue()"
+      @keydown.enter="clearInput"
     />
     <textarea
       v-else
@@ -45,20 +46,18 @@ export default {
     },
     inputId: {
       type: String
-    },
-    value: {
-      type: String
     }
   },
   methods: {
     updateValue(event) {
       this.$emit("input", this.$refs.customInput.value);
+    },
+    clearInput() {
+      this.$refs.customInput.value = "";
     }
   },
   data() {
-    return {
-      content: this.value
-    };
+    return {};
   }
 };
 </script>

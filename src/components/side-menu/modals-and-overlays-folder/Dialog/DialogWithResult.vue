@@ -7,7 +7,7 @@
       <div class="my-row">
         <app-btn
           @click.native="toggleDialog1()"
-          :btnText="'open dialog with backdrop click'"
+          :btnText="'open dialog with result return'"
           class="c-12 button"
         ></app-btn>
         <div class="list c-12">
@@ -18,14 +18,11 @@
         </div>
       </div>
     </div>
-    <!-- <p
-      v-for="n in 20"
-      :key="n"
-    >Lorem ipsum dolor sit amet consectetur adipisicing elit. Non in sint autem debitis fugiat voluptatibus at nam eligendi doloremque beatae odio nulla rerum, rem deleniti esse. Aliquid qui impedit exercitationem quod. Est rem recusandae eum, repellat rerum inventore corporis iusto.</p>-->
     <app-dialog-item
       :data="dialog1Data"
       :dialogInputPlaceholder="dialogInputPlaceholder"
-      @close-dialog="toggleDialog1()"
+      @close-dialog="toggleDialog1"
+      @send-result="addToList"
     ></app-dialog-item>
   </div>
 </template>
@@ -44,7 +41,7 @@ export default {
         withInput: true
       },
       dialogInputPlaceholder: "Enter Name",
-      allReturnedValues: ["whale", "kitten", "bug"]
+      allReturnedValues: []
     };
   },
   components: {
@@ -58,6 +55,9 @@ export default {
     //
     toggleDialog1() {
       this.dialog1Data.isOpen = !this.dialog1Data.isOpen;
+    },
+    addToList(value) {
+      this.allReturnedValues.push(value);
     }
   },
   watch: {

@@ -1,7 +1,7 @@
 <template>
   <div class="open-dialog-container">
     <div class="open-dialog-header">
-      <p>Open With Backdrop</p>
+      <p>Open With Escape Close</p>
     </div>
     <div class="my-container">
       <div class="my-row">
@@ -15,9 +15,6 @@
           @click.native="toggleDialog2()"
           :btnText="'open dialog without escape close'"
           class="c-12 button margin-top0"
-          tabindex="0"
-          @keyup.esc.native="escapeDialog()"
-          autofocus="autofocus"
         ></app-btn>
       </div>
     </div>
@@ -72,7 +69,7 @@ export default {
       this.dialog2Data.isOpen = !this.dialog2Data.isOpen;
     },
     escapeDialog() {
-      console.log(".!.");
+      this.dialog1Data.isOpen = !this.dialog1Data.isOpen;
     }
   },
   watch: {
