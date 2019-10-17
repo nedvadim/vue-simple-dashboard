@@ -22,7 +22,7 @@
         <p tabindex="0" @keydown.esc="escapeDialog">{{data.content}}</p>
         <app-btn
           class="button"
-          id="closeBtn"
+          :id="dynamicId"
           :reference="'closeButton'"
           @click.native="closeDialogWithButton()"
           @keydown.native.esc="escapeDialog"
@@ -113,12 +113,15 @@ export default {
       if (!val) {
         return;
       }
-      this.setFocus();
+      this.setFocus(this.dynamicId);
     }
   },
   computed: {
     isOpened: function() {
       return this.data.isOpen;
+    },
+    dynamicId: function() {
+      return "closeBtn" + this.data.id;
     }
   },
   methods: {
@@ -142,10 +145,10 @@ export default {
       this.$emit("send-result", word);
       this.inputValue = "";
     },
-    setFocus() {
+    setFocus(id) {
       Vue.nextTick(function() {
-        document.getElementById("closeBtn").focus();
-        console.log(document.getElementById("closeBtn"));
+        document.getElementById(id).focus();
+        console.log(document.getElementById(id));
       });
     }
   }
