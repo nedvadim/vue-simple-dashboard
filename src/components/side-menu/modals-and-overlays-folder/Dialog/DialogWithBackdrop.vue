@@ -18,14 +18,18 @@
         ></app-btn>
       </div>
     </div>
-    <!-- <p
-      v-for="n in 20"
-      :key="n"
-    >Lorem ipsum dolor sit amet consectetur adipisicing elit. Non in sint autem debitis fugiat voluptatibus at nam eligendi doloremque beatae odio nulla rerum, rem deleniti esse. Aliquid qui impedit exercitationem quod. Est rem recusandae eum, repellat rerum inventore corporis iusto.</p>-->
 
-    <app-dialog-item :data="dialog1Data" @close-dialog="toggleDialog1()"></app-dialog-item>
+    <app-dialog-item
+      :data="dialog1Data"
+      @close-dialog="toggleDialog1()"
+      @escape-close-dialog="toggleDialog1"
+    ></app-dialog-item>
 
-    <app-dialog-item :data="dialog2Data" @close-dialog="toggleDialog2()"></app-dialog-item>
+    <app-dialog-item
+      :data="dialog2Data"
+      @close-dialog="toggleDialog2()"
+      @escape-close-dialog="toggleDialog2"
+    ></app-dialog-item>
   </div>
 </template>
 <script>

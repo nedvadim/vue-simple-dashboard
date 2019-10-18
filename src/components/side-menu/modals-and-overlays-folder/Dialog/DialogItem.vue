@@ -4,38 +4,38 @@
     :class="[{displayNone: !this.isOpened}, {withoutBackdrop: data.withoutBackdrop}]"
     @click.self="closeDialog()"
   >
-    <!-- FOR TESTING PURPOSES. DELETE IT AFTER ALL.
-      <input
-      class="headInp"
-      ref="headerinput"
-      id="hed"
-      @keydown.esc="escapeDialog"
-      style="height:80px"
-    />-->
-
     <!-- Simple Modal -->
-    <div class="dialog-window" tabindex="0" @keydown.esc="escapeDialog">
-      <div class="dialog-header" tabindex="0" @keydown.esc="escapeDialog">
-        <h1 tabindex="0" @keydown.esc="escapeDialog">{{this.data.title}}</h1>
+    <div class="dialog-window withoutVisualFocus" tabindex="0" @keydown.esc.self="escapeDialog">
+      <div class="dialog-header withoutVisualFocus" tabindex="0" @keydown.esc.self="escapeDialog">
+        <h1
+          class="withoutVisualFocus"
+          tabindex="0"
+          @keydown.esc.self="escapeDialog"
+        >{{this.data.title}}</h1>
       </div>
-      <div v-if="!data.withInput" class="dialog-content" tabindex="0" @keydown.esc="escapeDialog">
-        <p tabindex="0" @keydown.esc="escapeDialog">{{data.content}}</p>
+
+      <div
+        v-if="!data.withInput"
+        class="dialog-content withoutVisualFocus"
+        tabindex="0"
+        @keydown.esc.self="escapeDialog"
+      >
+        <p class="withoutVisualFocus" tabindex="0" @keydown.esc.self="escapeDialog">{{data.content}}</p>
         <app-btn
           class="button"
-          :id="dynamicId"
+          :id="closeId"
           :reference="'closeButton'"
           @click.native="closeDialogWithButton()"
-          @keydown.native.esc="escapeDialog"
+          @keydown.native.esc.self="escapeDialog"
           tabindex="0"
           :btnText="data.buttonText"
         ></app-btn>
       </div>
 
-      <!-- Form inside Modal -->
-      <div v-else tabindex="0" @keydown.esc="escapeDialog">
-        <div class="my-container" tabindex="0" @keydown.esc="escapeDialog">
-          <div class="my-row" tabindex="0" @keydown.esc="escapeDialog">
-            <!-- INPUT-->
+      <!-- Optional Form inside Modal -->
+      <div class="withoutVisualFocus" v-else tabindex="0" @keydown.esc.self="escapeDialog">
+        <div class="my-container withoutVisualFocus" tabindex="0" @keydown.esc.self="escapeDialog">
+          <div class="my-row withoutVisualFocus" tabindex="0" @keydown.esc.self="escapeDialog">
             <app-inp
               :inputPlaceholder="dialogInputPlaceholder"
               class="c-12 input"
@@ -43,18 +43,17 @@
               @keyup.enter.native="sendResult()"
               @keyup.esc.native="closeDialogWithButton()"
             ></app-inp>
-            <!-- !!!!!!!!!!!!!! -->
-            <p>{{this.inputValue}}</p>
           </div>
-          <div class="my-row" tabindex="0" @keydown.esc="escapeDialog">
+          <div class="my-row withoutVisualFocus" tabindex="0" @keydown.esc.self="escapeDialog">
             <app-btn
-              class="button c-3"
+              class="button c-6"
               :type="'warning'"
               @click.native="closeDialogWithButton()"
-              id="cancelButton"
+              @keydown.native.esc.self="escapeDialog"
+              :id="cancelId"
               :btnText="'Cancel'"
             ></app-btn>
-            <app-btn class="button c-3" @click.native="sendResult()" :btnText="'Submit'"></app-btn>
+            <app-btn class="button c-6" @click.native="sendResult()" :btnText="'Submit'"></app-btn>
           </div>
         </div>
       </div>
@@ -103,25 +102,26 @@ export default {
   //   }
   // }
   watch: {
-    data: {
-      handler(val) {
-        console.log("data changed");
-      },
-      deep: true
-    },
     isOpened: function(val) {
       if (!val) {
         return;
       }
-      this.setFocus(this.dynamicId);
+      if (this.data.withInput) {
+        this.setFocus(this.cancelId);
+      } else {
+        this.setFocus(this.closeId);
+      }
     }
   },
   computed: {
     isOpened: function() {
       return this.data.isOpen;
     },
-    dynamicId: function() {
+    closeId: function() {
       return "closeBtn" + this.data.id;
+    },
+    cancelId: function() {
+      return "cancelBtn" + this.data.id;
     }
   },
   methods: {
@@ -134,10 +134,8 @@ export default {
       this.$emit("close-dialog");
     },
     escapeDialog() {
-      console.log("in event func");
       if (this.data.withEscape) {
-        console.log("in event if");
-        this.$emit("close-dialog");
+        this.$emit("escape-close-dialog");
       }
     },
     sendResult() {
@@ -148,7 +146,6 @@ export default {
     setFocus(id) {
       Vue.nextTick(function() {
         document.getElementById(id).focus();
-        console.log(document.getElementById(id));
       });
     }
   }

@@ -18,12 +18,16 @@
         ></app-btn>
       </div>
     </div>
-    <!-- <p
-      v-for="n in 20"
-      :key="n"
-    >Lorem ipsum dolor sit amet consectetur adipisicing elit. Non in sint autem debitis fugiat voluptatibus at nam eligendi doloremque beatae odio nulla rerum, rem deleniti esse. Aliquid qui impedit exercitationem quod. Est rem recusandae eum, repellat rerum inventore corporis iusto.</p>-->
-    <app-dialog-item :data="dialog1Data" @close-dialog="toggleDialog1()"></app-dialog-item>
-    <app-dialog-item :data="dialog2Data" @close-dialog="toggleDialog2()"></app-dialog-item>
+    <app-dialog-item
+      :data="dialog1Data"
+      @close-dialog="toggleDialog1()"
+      @escape-close-dialog="toggleDialog1"
+    ></app-dialog-item>
+    <app-dialog-item
+      :data="dialog2Data"
+      @close-dialog="toggleDialog2()"
+      @escape-close-dialog="toggleDialog2"
+    ></app-dialog-item>
   </div>
 </template>
 <script>
@@ -33,6 +37,7 @@ export default {
   data() {
     return {
       dialog1Data: {
+        id: 3,
         title: "Title of Dialog 1 Component",
         content:
           "The easiest way to try out Vue.js is using the JSFiddle Hello World example. Feel free to open it in another tab and follow along as we go through some basic examples.",
@@ -43,6 +48,7 @@ export default {
         withBackdropClick: true
       },
       dialog2Data: {
+        id: 4,
         title: "Title of Dialog 2 Component",
         content: "Hello world!",
         buttonText: "close",

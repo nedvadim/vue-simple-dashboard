@@ -22,6 +22,7 @@
       :data="dialog1Data"
       :dialogInputPlaceholder="dialogInputPlaceholder"
       @close-dialog="toggleDialog1"
+      @escape-close-dialog="toggleDialog1"
       @send-result="addToList"
     ></app-dialog-item>
   </div>
@@ -33,6 +34,7 @@ export default {
   data() {
     return {
       dialog1Data: {
+        id: 7,
         title: "We can get Value from that Dialog!",
         isOpen: false,
         withoutBackdrop: false,
