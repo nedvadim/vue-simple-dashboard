@@ -17,6 +17,7 @@ import FormLayouts from "./components/side-menu/forms-folder/FormLayouts/FormLay
 import Grid from "./components/side-menu/ui-features-folder/Grid.vue";
 // Modals & Overlays
 import Dialog from "./components/side-menu/modals-and-overlays-folder/Dialog/Dialog.vue";
+import Popover from "./components/side-menu/modals-and-overlays-folder/Popover/Popover.vue";
 
 export const routes = [
   { path: "/", component: Home },
@@ -39,5 +40,6 @@ export const routes = [
   // UI Features Folder========================================
   { path: "/grid", component: Grid },
   // Modals & Overlays=========================================
-  { path: "/dialog", component: Dialog }
+  { path: "/dialog", component: Dialog },
+  { path: "/popover", component: Popover }
 ];
