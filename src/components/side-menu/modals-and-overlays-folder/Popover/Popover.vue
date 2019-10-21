@@ -1,7 +1,7 @@
 <template>
   <div class="my-container">
     <div class="my-row">
-      <app-simple-popover class="c-12 c-lg-6"></app-simple-popover>
+      <app-simple-popover class="c-12"></app-simple-popover>
     </div>
   </div>
 </template>

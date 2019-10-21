@@ -1,9 +1,7 @@
 <template>
   <div>
-    <div class="wrapper">
-      <div ref="basePopoverContent" class="base-popover">
-        <slot></slot>
-      </div>
+    <div ref="basePopoverContent" class="base-popover">
+      <slot></slot>
     </div>
 
     <div ref="basePopoverOverlay" class="base-popover__overlay" @click.stop="destroyPopover"></div>
