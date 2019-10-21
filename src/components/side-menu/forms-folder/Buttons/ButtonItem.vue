@@ -4,7 +4,10 @@
     :class="[type.toLowerCase(), {outline:outline}, {ghost:ghost}, shape, size]"
     :disabled="this.isDisabled"
     :ref="reference"
-  >{{btnText}}</button>
+  >
+    {{btnText}}
+    <slot></slot>
+  </button>
 </template>
 
 <script>

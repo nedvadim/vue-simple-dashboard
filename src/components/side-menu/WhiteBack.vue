@@ -3,6 +3,7 @@
     <div class="mytemplate-header">
       <p>{{header}}</p>
     </div>
+    <slot></slot>
   </div>
 </template>
 <script>

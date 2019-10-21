@@ -1,16 +1,16 @@
 <template>
   <div class="my-container">
     <div class="my-row">
-      <app-simple-popovers class="c-12 c-md-6"></app-simple-popovers>
+      <app-simple-popover class="c-12 c-lg-6"></app-simple-popover>
     </div>
   </div>
 </template>
 
 <script>
-import SimplePopovers from "./SimplePopovers";
+import SimplePopover from "./SimplePopover";
 export default {
   components: {
-    appSimplePopovers: SimplePopovers
+    appSimplePopover: SimplePopover
   }
 };
 </script>

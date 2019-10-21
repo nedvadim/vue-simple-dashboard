@@ -96,7 +96,8 @@ export default {
   //   withEscape:{
   //     type:Boolean,
   //     default: false
-  //   },withBackdropClick:{
+  //   },
+  //   withBackdropClick:{
   //     type:Boolean,
   //     default: true
   //   }

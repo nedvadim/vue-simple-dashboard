@@ -77,6 +77,17 @@ export default {
     toggleDialog2() {
       this.dialog2Data.isOpen = !this.dialog2Data.isOpen;
     }
+    //================================================================================================================================
+    // selectCustomer(){
+    //   var inst = this.modalInstance.show({
+    //     template: DialogItem,
+    //     resolve: {
+    //       sometext: '123'
+    //     }
+    //   });
+    //   inst.close();
+    // }
+    //================================================================================================================================
   },
   watch: {
     //
