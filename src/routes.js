@@ -18,6 +18,7 @@ import Grid from "./components/side-menu/ui-features-folder/Grid.vue";
 // Modals & Overlays
 import Dialog from "./components/side-menu/modals-and-overlays-folder/Dialog/Dialog.vue";
 import Popover from "./components/side-menu/modals-and-overlays-folder/Popover/Popover.vue";
+import Toastr from "./components/side-menu/modals-and-overlays-folder/Toastr/Toastr.vue";
 
 export const routes = [
   { path: "/", component: Home },
@@ -41,5 +42,6 @@ export const routes = [
   { path: "/grid", component: Grid },
   // Modals & Overlays=========================================
   { path: "/dialog", component: Dialog },
-  { path: "/popover", component: Popover }
+  { path: "/popover", component: Popover },
+  { path: "/toastr", component: Toastr }
 ];

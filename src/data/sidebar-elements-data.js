@@ -26,7 +26,7 @@ export default [
     elementsHeader: "Modal & Overlays",
     pages: [
       { id: 1, componentName: "Dialog", linkToComponent: "/dialog" },
-      { id: 2, componentName: "Toastr", linkToComponent: "/" },
+      { id: 2, componentName: "Toastr", linkToComponent: "/toastr" },
       { id: 3, componentName: "Popover", linkToComponent: "/popover" }
     ]
   },
