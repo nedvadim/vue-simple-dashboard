@@ -1,17 +1,27 @@
 <template>
   <div>
     <bg header="Toastr Configuration">
-      <app-inp :inputPlaceholder="'Header'" v-model="toastrHeader"></app-inp>
-      <app-inp :inputPlaceholder="'Content'" v-model="toastrContent"></app-inp>
-      <app-btn @click.native="createToastrInstance">Get toastr</app-btn>
-      <div ref="toastrContainer"></div>
+      <div class="controls">
+        <app-inp :inputPlaceholder="'Header'" v-model="toastrHeader"></app-inp>
+        <app-inp :inputPlaceholder="'Content'" v-model="toastrContent"></app-inp>
+        <select name="color-pick" id="colorPick" v-model="toastrColor">
+          <option value="primary">Primary</option>
+          <option value="info">Info</option>
+          <option value="success">Success</option>
+          <option value="warning">Warning</option>
+          <option value="danger">Danger</option>
+        </select>
+        <app-btn @click.native="createToastrInstance">Get toastr</app-btn>
+      </div>
+
+      <div ref="toastrContainer" class="toastrBlock"></div>
       <!-- <toastr ref="toast"></toastr> -->
     </bg>
   </div>
 </template>
 <script>
 import Vue from "vue";
-import toastr from "./ToastrItem2";
+import toastr from "./ToastrItem";
 import bg from "../../WhiteBack";
 import Inp from "../../forms-folder/FormInputs/TextInputItem";
 import Btn from "../../forms-folder/Buttons/ButtonItem";
@@ -24,8 +34,9 @@ export default {
     // toastr
   },
   data() {
+    //let id = 0;
     return {
-      toastrHeader: "header from data",
+      toastrHeader: "Header",
       toastrContent: "passed from data",
       toastrColor: "success"
     };
@@ -45,7 +56,10 @@ export default {
       });
       //toastrInstance.$slots.default = ["my toastr"];
       toastrInstance.$mount();
-      this.$refs.toastrContainer.appendChild(toastrInstance.$el);
+      var parent = this.$refs.toastrContainer;
+      var firstChild = parent.firstChild;
+      parent.insertBefore(toastrInstance.$el, firstChild);
+      //this.$refs.toastrContainer.appendChild(toastrInstance.$el);
     },
     destroyToastr() {
       console.log("toastr emit catched");
@@ -61,3 +75,22 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+.toastrBlock {
+  border: 1px solid black;
+  position: absolute;
+  top: 10%;
+  right: 1%;
+  width: 160px;
+  height: auto;
+}
+* {
+  margin: 5px;
+  .controls {
+    margin-top: 20px;
+    select {
+      height: 40px;
+    }
+  }
+}
+</style>
