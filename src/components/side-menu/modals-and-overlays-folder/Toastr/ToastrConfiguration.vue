@@ -4,6 +4,7 @@
       <div class="controls">
         <app-inp :inputPlaceholder="'Header'" v-model="toastrHeader"></app-inp>
         <app-inp :inputPlaceholder="'Content'" v-model="toastrContent"></app-inp>
+        <app-inp :inputPlaceholder="'Miliseconds'" v-model="toastrDuration"></app-inp>
         <select name="color-pick" id="colorPick" v-model="toastrColor">
           <option value="primary">Primary</option>
           <option value="info">Info</option>
@@ -13,9 +14,11 @@
         </select>
         <app-btn @click.native="createToastrInstance">Get toastr</app-btn>
       </div>
-
-      <div ref="toastrContainer" class="toastrBlock"></div>
-      <!-- <toastr ref="toast"></toastr> -->
+      <div></div>
+      <div ref="toastrContainer" class="toastrBlock">
+        <absolute></absolute>
+        <absolute></absolute>
+      </div>
     </bg>
   </div>
 </template>
@@ -38,6 +41,7 @@ export default {
     return {
       toastrHeader: "Header",
       toastrContent: "passed from data",
+      toastrDuration: 2000,
       toastrColor: "success"
     };
   },
@@ -51,7 +55,8 @@ export default {
         propsData: {
           header: this.toastrHeader,
           content: this.toastrContent,
-          color: this.toastrColor
+          color: this.toastrColor,
+          duration: this.toastrDuration
         }
       });
       //toastrInstance.$slots.default = ["my toastr"];
@@ -64,14 +69,6 @@ export default {
     destroyToastr() {
       console.log("toastr emit catched");
     }
-  },
-  mounted() {
-    console.log(1);
-    // this.$on("destroy-toastr", () => this.destroyToastr());
-
-    // this.$on("destroy-toastr", function() {
-    //   console.log("toastr emit catched");
-    // });
   }
 };
 </script>
@@ -88,9 +85,20 @@ export default {
   margin: 5px;
   .controls {
     margin-top: 20px;
+    width: 80%;
     select {
       height: 40px;
     }
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter-active,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
