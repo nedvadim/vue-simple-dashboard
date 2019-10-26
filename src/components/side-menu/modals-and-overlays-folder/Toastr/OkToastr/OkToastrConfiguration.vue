@@ -4,13 +4,12 @@
       <div class="controls">
         <app-inp :inputPlaceholder="'Header'" v-model="okToastrHeader"></app-inp>
         <app-inp :inputPlaceholder="'Content'" v-model="okToastrContent"></app-inp>
-        <app-inp :inputPlaceholder="'Miliseconds'"></app-inp>
+        <app-inp :inputPlaceholder="'Miliseconds'" v-model="okToastrOptions.timeOut"></app-inp>
         <select name="color-pick" id="colorPick" v-model="okToastrColor">
-          <option value="primary">Primary</option>
           <option value="info">Info</option>
           <option value="success">Success</option>
           <option value="warning">Warning</option>
-          <option value="danger">Danger</option>
+          <option value="error">Danger</option>
         </select>
         <app-btn @click.native="toast()">Get toastr</app-btn>
       </div>
@@ -34,8 +33,8 @@ import Btn from "../../../forms-folder/Buttons/ButtonItem";
 export default {
   data() {
     return {
-      okToastrHeader: "Title1",
-      okToastrContent: "Content1",
+      okToastrHeader: "my header", //
+      okToastrContent: "my content", //
       okToastrColor: "success",
       okToastrOptions: {
         closeButton: true,
@@ -47,7 +46,7 @@ export default {
         onclick: null,
         showDuration: "300",
         hideDuration: "1000",
-        timeOut: "5000",
+        timeOut: "5000", //
         extendedTimeOut: "1000",
         showEasing: "swing",
         hideEasing: "linear",
@@ -63,15 +62,17 @@ export default {
   },
   methods: {
     toast() {
-      //   if (okToastColor === "success") {
-      //     this.$toastr.success("That is so simple", "Did you see it?");
-      //   } else if (okToastColor === "warning") {
-      //     this.$toastr.warning("That is so simple", "Did you see it?");
-      //   }
+      toastr.options = this.okToastrOptions;
 
-      this.$toastr.warning(this.okToastrHeader, this.okToastrContent);
-
-      this.$toastr.options = this.okToastrOptions;
+      if (this.okToastrColor === "info") {
+        this.$toastr.info(this.okToastrContent, this.okToastrHeader);
+      } else if (this.okToastrColor === "warning") {
+        this.$toastr.warning(this.okToastrContent, this.okToastrHeader);
+      } else if (this.okToastrColor === "error") {
+        this.$toastr.error(this.okToastrContent, this.okToastrHeader);
+      } else if (this.okToastrColor === "success") {
+        this.$toastr.success(this.okToastrContent, this.okToastrHeader);
+      }
     }
   }
 };
