@@ -15,10 +15,7 @@
         <app-btn @click.native="createToastrInstance">Get toastr</app-btn>
       </div>
       <div></div>
-      <div ref="toastrContainer" class="toastrBlock">
-        <absolute></absolute>
-        <absolute></absolute>
-      </div>
+      <div ref="toastrContainer" class="toastrBlock"></div>
     </bg>
   </div>
 </template>
@@ -37,7 +34,6 @@ export default {
     // toastr
   },
   data() {
-    //let id = 0;
     return {
       toastrHeader: "Header",
       toastrContent: "passed from data",

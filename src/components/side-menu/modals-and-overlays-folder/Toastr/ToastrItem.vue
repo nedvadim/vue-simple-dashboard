@@ -130,13 +130,4 @@ export default {
     background-color: $info-color * 1.15;
   }
 }
-
-.absolute {
-  // border: 1px solid black;
-  // position: absolute;
-  // top: 10%;
-  // right: 1%;
-  // width: 160px;
-  // height: 85vh;
-}
 </style>
