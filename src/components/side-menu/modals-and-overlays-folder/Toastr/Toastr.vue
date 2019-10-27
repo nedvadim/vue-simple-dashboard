@@ -1,7 +1,7 @@
 <template>
   <div class="my-container">
     <div class="my-row">
-      <config class="c-12"></config>
+      <!-- <config class="c-12"></config> -->
       <div class="c-12">
         <tst></tst>
       </div>

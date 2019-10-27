@@ -39,7 +39,7 @@ $top-margin: 1.5em;
 * {
   font-family: "Lato", sans-serif;
   font-size: 20px;
-  color: #4d4d4d;
+  //color: #4d4d4d;
 }
 .page-content {
   display: flex;

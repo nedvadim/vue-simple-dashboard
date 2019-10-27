@@ -7,6 +7,7 @@
         name="data.name"
         value="data.value"
         :checked="data.checked"
+        @click="change()"
       />
       <span class="marked"></span>
     </label>
@@ -19,7 +20,13 @@ export default {
   // "status" props can receive 3 types of data
   //'success', 'warning', 'danger'
   //--------------------------------------------
-  props: ["data", "status"]
+  props: ["data", "status"],
+  methods: {
+    change: function() {
+      this.checked = !this.checked;
+      this.$emit("input", this.checked);
+    }
+  }
 };
 </script>
 

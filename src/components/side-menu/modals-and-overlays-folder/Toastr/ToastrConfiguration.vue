@@ -81,7 +81,6 @@ export default {
   margin: 5px;
   .controls {
     margin-top: 20px;
-    width: 80%;
     select {
       height: 40px;
     }
