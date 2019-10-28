@@ -1,6 +1,6 @@
 <template>
   <div>
-    <bg header="Toastr Configuration">
+    <bg header="vue-toastr-2 Configuration">
       <div class="controls my-container">
         <div class="my-row">
           <div class="c-12 c-lg-3">

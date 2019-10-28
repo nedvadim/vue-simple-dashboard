@@ -32,6 +32,22 @@ export default [
   },
   {
     id: 4,
+    elementsHeader: "Extra Components",
+    pages: [
+      { id: 1, componentName: "Spinner", linkToComponent: "/spinner" },
+      { id: 2, componentName: "Alerts", linkToComponent: "/" }
+    ]
+  },
+  {
+    id: 5,
+    elementsHeader: "Tables & Data",
+    pages: [
+      { id: 1, componentName: "Smart Table", linkToComponent: "/" },
+      { id: 2, componentName: "Tree Grid", linkToComponent: "/" }
+    ]
+  },
+  {
+    id: 6,
     elementsHeader: "UI Features",
     pages: [{ id: 1, componentName: "Grid", linkToComponent: "/grid" }]
   }

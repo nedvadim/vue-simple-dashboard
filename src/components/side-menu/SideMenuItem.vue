@@ -48,6 +48,7 @@ li {
   font-size: 16px;
   a {
     text-decoration: none;
+    color: #2f2f2f;
   }
 }
 .slide-enter-active {

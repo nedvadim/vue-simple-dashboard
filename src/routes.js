@@ -19,10 +19,12 @@ import Grid from "./components/side-menu/ui-features-folder/Grid.vue";
 import Dialog from "./components/side-menu/modals-and-overlays-folder/Dialog/Dialog.vue";
 import Popover from "./components/side-menu/modals-and-overlays-folder/Popover/Popover.vue";
 import Toastr from "./components/side-menu/modals-and-overlays-folder/Toastr/Toastr.vue";
+// Extra Components
+import Spinner from "./components/side-menu/extra-components-folder/Spinner/Spinner.vue";
 
 export const routes = [
   { path: "/", component: Home },
-  // Layouts Folder========================================
+  // Layouts Folder===========================================
   { path: "/lists", component: Lists },
   { path: "/stepper", component: Stepper },
   {
@@ -34,14 +36,16 @@ export const routes = [
       { path: "/tabs/route-tab-2", component: RouteTab2 }
     ]
   },
-  // Forms Folder========================================
+  // Forms Folder==============================================
   { path: "/form-inputs", component: FormInputs },
   { path: "/buttons", component: Buttons },
   { path: "/form-layouts", component: FormLayouts },
-  // UI Features Folder========================================
-  { path: "/grid", component: Grid },
   // Modals & Overlays=========================================
   { path: "/dialog", component: Dialog },
   { path: "/popover", component: Popover },
-  { path: "/toastr", component: Toastr }
+  { path: "/toastr", component: Toastr },
+  // Extra Components Folder===================================
+  { path: "/spinner", component: Spinner },
+  // UI Features Folder========================================
+  { path: "/grid", component: Grid }
 ];
