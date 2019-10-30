@@ -21,6 +21,9 @@ import Popover from "./components/side-menu/modals-and-overlays-folder/Popover/P
 import Toastr from "./components/side-menu/modals-and-overlays-folder/Toastr/Toastr.vue";
 // Extra Components
 import Spinner from "./components/side-menu/extra-components-folder/Spinner/Spinner.vue";
+import Alert from "./components/side-menu/extra-components-folder/Alert/Alert.vue";
+// Tables & Data
+import SmartTable from "./components/side-menu/tables-and-data-folder/SmartTable/SmartTable.vue";
 
 export const routes = [
   { path: "/", component: Home },
@@ -46,6 +49,9 @@ export const routes = [
   { path: "/toastr", component: Toastr },
   // Extra Components Folder===================================
   { path: "/spinner", component: Spinner },
+  { path: "/alert", component: Alert },
+  // Tables & Data ==========================================
+  { path: "/smart-table", component: SmartTable },
   // UI Features Folder========================================
   { path: "/grid", component: Grid }
 ];

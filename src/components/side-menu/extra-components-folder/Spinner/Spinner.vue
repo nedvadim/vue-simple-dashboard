@@ -98,7 +98,7 @@ export default {
       }, 3000);
     }
   }
-};
+}; 
 </script>
 <style lang="scss" scoped>
 .content {

@@ -35,14 +35,14 @@ export default [
     elementsHeader: "Extra Components",
     pages: [
       { id: 1, componentName: "Spinner", linkToComponent: "/spinner" },
-      { id: 2, componentName: "Alerts", linkToComponent: "/" }
+      { id: 2, componentName: "Alert", linkToComponent: "/alert" }
     ]
   },
   {
     id: 5,
     elementsHeader: "Tables & Data",
     pages: [
-      { id: 1, componentName: "Smart Table", linkToComponent: "/" },
+      { id: 1, componentName: "Smart Table", linkToComponent: "/smart-table" },
       { id: 2, componentName: "Tree Grid", linkToComponent: "/" }
     ]
   },
