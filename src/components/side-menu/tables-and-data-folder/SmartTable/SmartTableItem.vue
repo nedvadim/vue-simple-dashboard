@@ -13,13 +13,15 @@
 
       <tr class="searchControls">
         <td>
-          <my-btn type="info" @click.native="showAddPanel = !showAddPanel">Add</my-btn>
+          <my-btn class="addButton" type="info" @click.native="showAddPanel = !showAddPanel">
+            <font-awesome-icon icon="plus"></font-awesome-icon>
+          </my-btn>
         </td>
         <td>
           <my-inp inputPlaceholder="ID"></my-inp>
         </td>
         <td>
-          <my-inp inputPlaceholder="First Name"></my-inp>
+          <my-inp inputPlaceholder="First Name" @input="search"></my-inp>
         </td>
         <td>
           <my-inp inputPlaceholder="Last Name"></my-inp>
@@ -37,8 +39,12 @@
 
       <tr v-if="showAddPanel" class="addRowControls">
         <td>
-          <div class="add" @click="addRow()">V</div>
-          <div class="cancelAdd">X</div>
+          <my-btn :outline="true" type="success" class="add" @click.native="addRow()">
+            <font-awesome-icon icon="check"></font-awesome-icon>
+          </my-btn>
+          <my-btn :outline="true" type="danger" class="cancelAdd">
+            <font-awesome-icon icon="times"></font-awesome-icon>
+          </my-btn>
         </td>
         <td>
           <my-inp inputPlaceholder="ID" v-model="addedRow.id"></my-inp>
@@ -60,7 +66,7 @@
         </td>
       </tr>
 
-      <tr v-for="row in tableContent" :key="row.id">
+      <tr v-for="(row, index) in tableContent" :key="row.index" :class="{darkerRow: (index%2==0)}">
         <td class="editAndDelete">
           <div class="edit">
             <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
@@ -69,7 +75,9 @@
             <font-awesome-icon icon="trash-alt"></font-awesome-icon>
           </div>
         </td>
-        <td>{{row.id}}</td>
+        <td>
+          <div>{{row.id}}</div>
+        </td>
         <td>{{row.firstName}}</td>
         <td>{{row.lastName}}</td>
         <td>{{row.username}}</td>
@@ -132,11 +140,21 @@ export default {
       this.addedRow.username = "";
       this.addedRow.email = "";
       this.addedRow.age = "";
-    }
-  },
-  watch: {
-    getTableData: function() {
-      console.log("table change!");
+    },
+    search(event) {
+      var temp = [];
+      for (var i = 0; i < this.content.length; i++) {
+        var name = this.content[i].firstName.toLowerCase();
+        var tempEvent = event.toLowerCase();
+        if (name.includes(tempEvent)) {
+          temp.push(this.content[i]);
+        }
+      }
+      if (temp.length > 0) {
+        this.tableContent = temp;
+      } else {
+        this.tableContent = null;
+      }
     }
   }
 };
@@ -155,6 +173,9 @@ table {
     text-align: center;
     border: 1px solid #ececec;
     font-size: 20px;
+    &:hover {
+      opacity: 0.8;
+    }
     td {
       border-collapse: collapse;
       text-align: center;
@@ -176,11 +197,17 @@ table {
   .cancelAdd {
     width: 100%;
     height: 100%;
-    border: 2px solid red;
+    color: $danger-color;
+    font-size: 20px;
     cursor: pointer;
   }
   .add {
-    border: 2px solid green;
+    color: $success-color;
+  }
+
+  .succes,
+  .add {
+    margin-bottom: 8px;
   }
 }
 .editAndDelete {
@@ -202,5 +229,11 @@ table {
       color: $danger-color;
     }
   }
+}
+.addButton {
+  width: 100%;
+}
+.darkerRow {
+  background-color: #f9f9f9;
 }
 </style>

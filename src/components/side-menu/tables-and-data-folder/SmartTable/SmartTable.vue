@@ -37,6 +37,22 @@ export default {
           username: "rock229",
           email: "jackie@yahoo.com",
           age: 40
+        },
+        {
+          id: 4,
+          firstName: "Mason",
+          lastName: "Vonleh",
+          username: "beattle2000",
+          email: "mas@gmail.com",
+          age: 19
+        },
+        {
+          id: 5,
+          firstName: "Harry",
+          lastName: "Potter",
+          username: "TheChosenOne",
+          email: "f-ckSlitherin@gmail.com",
+          age: 18
         }
       ]
     };
