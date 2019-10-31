@@ -39,10 +39,15 @@
 
       <tr v-if="showAddPanel" class="addRowControls">
         <td>
-          <my-btn :outline="true" type="success" class="add" @click.native="addRow()">
+          <my-btn :outline="true" type="success" class="add" @click.native="addRow">
             <font-awesome-icon icon="check"></font-awesome-icon>
           </my-btn>
-          <my-btn :outline="true" type="danger" class="cancelAdd">
+          <my-btn
+            :outline="true"
+            type="danger"
+            class="cancelAdd"
+            @click.native="showAddPanel = !showAddPanel"
+          >
             <font-awesome-icon icon="times"></font-awesome-icon>
           </my-btn>
         </td>

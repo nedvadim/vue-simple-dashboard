@@ -1,7 +1,7 @@
 <template>
   <div class="my-container">
     <div class="my-row margin-top">
-      <smart-t class="c-12 my-table" :content="content" @addToTable="add"></smart-t>
+      <smart-t class="c-12 my-table" :content="content" :fields="tableFields" @addToTable="add"></smart-t>
     </div>
   </div>
 </template>
@@ -13,6 +13,14 @@ export default {
   },
   data() {
     return {
+      tableFields: [
+        "ID",
+        "First Name",
+        "Second Name",
+        "Username",
+        "E-Mail",
+        "Age"
+      ],
       content: [
         {
           id: 1,
