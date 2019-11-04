@@ -14,13 +14,19 @@ export default {
   data() {
     return {
       tableFields: [
-        "ID",
-        "First Name",
-        "Second Name",
-        "Username",
-        "E-Mail",
-        "Age"
+        { title: "ID", keyName: "id" },
+        { title: "First Name", keyName: "firstName" },
+        { title: "Last Name", keyName: "lastName" },
+        { title: "Username", keyName: "username" },
+        { title: "E-Mail", keyName: "email" },
+        { title: "Age", keyName: "age" }
       ],
+      //testing array
+      // [
+      //   { title: "ID", keyName: "id" },
+      //   { title: "Name", keyName: "name" },
+      //   { title: "Nickname", keyName: "nickname" }
+      // ],
       content: [
         {
           id: 1,
@@ -63,18 +69,42 @@ export default {
           age: 18
         }
       ]
+      // testing array
+      // [
+      //   {
+      //     id: 228,
+      //     name: "Vasya",
+      //     nickname: "dotaNakat"
+      //   },
+      //   {
+      //     id: 100500,
+      //     name: "Ruslan",
+      //     nickname: "rusak"
+      //   },
+      //   {
+      //     id: 888,
+      //     name: "Jora",
+      //     nickname: "joraaa"
+      //   }
+      // ]
     };
   },
   methods: {
     add(row) {
-      var temp = {
-        id: row.id,
-        firstName: row.firstName,
-        lastName: row.lastName,
-        username: row.username,
-        email: row.email,
-        age: row.age
-      };
+      // TODO FIX ADD
+      var temp = {};
+      for (var key in row) {
+        temp[key] = row[key];
+      }
+      // }
+      // var temp = {
+      //   id: row.id,
+      //   firstName: row.firstName,
+      //   lastName: row.lastName,
+      //   username: row.username,
+      //   email: row.email,
+      //   age: row.age
+      // };
       this.content.push(temp);
     }
   }

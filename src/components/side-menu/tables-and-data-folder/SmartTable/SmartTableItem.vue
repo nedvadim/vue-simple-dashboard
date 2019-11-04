@@ -3,12 +3,7 @@
     <table id="smartTable">
       <tr class="headers">
         <td>Actions</td>
-        <td>ID</td>
-        <td>First Name</td>
-        <td>Last Name</td>
-        <td>Username</td>
-        <td>E-mail</td>
-        <td>Age</td>
+        <td v-for="(nameField, index) in fields" :key="index">{{nameField.title}}</td>
       </tr>
 
       <tr class="searchControls">
@@ -17,23 +12,12 @@
             <font-awesome-icon icon="plus"></font-awesome-icon>
           </my-btn>
         </td>
-        <td>
-          <my-inp inputPlaceholder="ID"></my-inp>
-        </td>
-        <td>
-          <my-inp inputPlaceholder="First Name" @input="search"></my-inp>
-        </td>
-        <td>
-          <my-inp inputPlaceholder="Last Name"></my-inp>
-        </td>
-        <td>
-          <my-inp inputPlaceholder="Username"></my-inp>
-        </td>
-        <td>
-          <my-inp inputPlaceholder="E-mail"></my-inp>
-        </td>
-        <td>
-          <my-inp inputPlaceholder="Age"></my-inp>
+
+        <td v-for="(nameField, index) in fields" :key="index">
+          <my-inp
+            :inputPlaceholder="nameField.title"
+            @input.native="search($event, nameField.keyName)"
+          ></my-inp>
         </td>
       </tr>
 
@@ -51,23 +35,8 @@
             <font-awesome-icon icon="times"></font-awesome-icon>
           </my-btn>
         </td>
-        <td>
-          <my-inp inputPlaceholder="ID" v-model="addedRow.id"></my-inp>
-        </td>
-        <td>
-          <my-inp inputPlaceholder="First Name" v-model="addedRow.firstName"></my-inp>
-        </td>
-        <td>
-          <my-inp inputPlaceholder="Last Name" v-model="addedRow.lastName"></my-inp>
-        </td>
-        <td>
-          <my-inp inputPlaceholder="Username" v-model="addedRow.username"></my-inp>
-        </td>
-        <td>
-          <my-inp inputPlaceholder="E-mail" v-model="addedRow.email"></my-inp>
-        </td>
-        <td>
-          <my-inp inputPlaceholder="Age" v-model="addedRow.age"></my-inp>
+        <td v-for="(nameField, index) in fields" :key="index">
+          <my-inp :inputPlaceholder="nameField.title" v-model="addedRow[nameField.keyName]"></my-inp>
         </td>
       </tr>
 
@@ -80,14 +49,7 @@
             <font-awesome-icon icon="trash-alt"></font-awesome-icon>
           </div>
         </td>
-        <td>
-          <div>{{row.id}}</div>
-        </td>
-        <td>{{row.firstName}}</td>
-        <td>{{row.lastName}}</td>
-        <td>{{row.username}}</td>
-        <td>{{row.email}}</td>
-        <td>{{row.age}}</td>
+        <td v-for="(field, index) in fields" :key="index">{{row[field.keyName]}}</td>
       </tr>
     </table>
   </div>
@@ -101,18 +63,14 @@ export default {
     return {
       tableContent: this.content,
       showAddPanel: true,
-      addedRow: {
-        id: "", // check to be number when added
-        firstName: "",
-        lastName: "",
-        username: "",
-        email: "",
-        age: "" // check to be number when added
-      }
+      addedRow: {}
     };
   },
   props: {
     content: {
+      type: Array
+    },
+    fields: {
       type: Array
     },
     fieldOne: "",
@@ -132,13 +90,15 @@ export default {
   },
   methods: {
     addRow() {
+      // make string numbers a pure numbers
+      // isNaN() and parseInt();
       this.$emit("addToTable", this.addedRow);
       this.showAddPanel = false;
       //this.tableContent.push(this.addedRow);
-
       this.resetAddedRow();
     },
     resetAddedRow() {
+      //TODO change
       this.addedRow.id = "";
       this.addedRow.firstName = "";
       this.addedRow.lastName = "";
@@ -146,19 +106,28 @@ export default {
       this.addedRow.email = "";
       this.addedRow.age = "";
     },
-    search(event) {
-      var temp = [];
+    search(event, value) {
+      //console.log(value + " " + typeof value);
+      var tempTableContent = [];
       for (var i = 0; i < this.content.length; i++) {
-        var name = this.content[i].firstName.toLowerCase();
-        var tempEvent = event.toLowerCase();
+        var name = this.content[i][value].toString().toLowerCase();
+        var tempEvent = event.target.value.toString().toLowerCase();
+        console.log(name + " " + tempEvent);
         if (name.includes(tempEvent)) {
-          temp.push(this.content[i]);
+          tempTableContent.push(this.content[i]);
         }
       }
-      if (temp.length > 0) {
-        this.tableContent = temp;
+      if (tempTableContent.length > 0) {
+        this.tableContent = tempTableContent;
       } else {
         this.tableContent = null;
+      }
+    },
+    mounted: function() {
+      //TODO change
+      var self = this;
+      for (var field in self.content[0]) {
+        self.addedRow[field] = "";
       }
     }
   }
