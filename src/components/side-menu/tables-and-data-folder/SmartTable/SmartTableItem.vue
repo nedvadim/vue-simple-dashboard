@@ -107,6 +107,7 @@ export default {
       this.showAddPanel = false;
       //this.tableContent.push(this.addedRow);
       this.resetAddedRow();
+      this.tableContent = this.content;
     },
     resetAddedRow() {
       for (var field in this.addedRow) {
@@ -158,6 +159,7 @@ export default {
     // for (var i = 0; i < this.fields.length; i++) {
     //   this.searchObject[this.fields[i].keyName] = "";
     // }
+    console.log(this.lodash.random(10));
   }
 };
 </script>

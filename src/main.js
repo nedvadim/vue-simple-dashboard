@@ -3,6 +3,7 @@ import App from "./App.vue";
 import store from "./store/store";
 import VueRouter from "vue-router";
 import { routes } from "./routes";
+import VueLodash from "vue-lodash";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
@@ -19,10 +20,12 @@ library.add(faPlus);
 library.add(faCheck);
 library.add(faTimes);
 
+const options = { name: "lodash" }; // customize the way you want to call it
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
+Vue.use(VueLodash, options); // options is optional
 
 const router = new VueRouter({
   routes,
