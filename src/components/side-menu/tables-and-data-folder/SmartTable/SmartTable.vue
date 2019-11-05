@@ -67,6 +67,14 @@ export default {
           username: "TheChosenOne",
           email: "f-ckSlitherin@gmail.com",
           age: 18
+        },
+        {
+          id: 6,
+          firstName: "Frank",
+          lastName: "Wilson",
+          username: "will",
+          email: "fw@yahoo.com",
+          age: 25
         }
       ]
       // testing array

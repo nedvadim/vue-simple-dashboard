@@ -17,6 +17,7 @@
           <my-inp
             :inputPlaceholder="nameField.title"
             @input.native="search($event, nameField.keyName)"
+            v-model="searchObject[nameField.keyName]"
           ></my-inp>
         </td>
       </tr>
@@ -63,7 +64,9 @@ export default {
     return {
       tableContent: this.content,
       showAddPanel: true,
-      addedRow: {}
+      enteredInSearch: {},
+      addedRow: {},
+      searchObject: {}
     };
   },
   props: {
@@ -72,12 +75,7 @@ export default {
     },
     fields: {
       type: Array
-    },
-    fieldOne: "",
-    fieldTwo: "",
-    fieldThree: "",
-    fieldFour: "",
-    fieldFive: ""
+    }
   },
   components: {
     myBtn,
@@ -89,6 +87,19 @@ export default {
     }
   },
   methods: {
+    getLowerCaseString(value) {
+      return value.toString().toLowerCase();
+    },
+    isSearchObjectEmpty() {
+      var empty = true;
+      for (var field in this.searchObject) {
+        if (this.searchObject[field]) {
+          empty = false;
+          break;
+        }
+      }
+      return empty;
+    },
     addRow() {
       // make string numbers a pure numbers
       // isNaN() and parseInt();
@@ -98,38 +109,55 @@ export default {
       this.resetAddedRow();
     },
     resetAddedRow() {
-      //TODO change
-      this.addedRow.id = "";
-      this.addedRow.firstName = "";
-      this.addedRow.lastName = "";
-      this.addedRow.username = "";
-      this.addedRow.email = "";
-      this.addedRow.age = "";
+      for (var field in this.addedRow) {
+        this.addedRow[field] = "";
+      }
     },
     search(event, value) {
-      //console.log(value + " " + typeof value);
       var tempTableContent = [];
+      var fieldsToSearchIn = [];
+
+      for (var field in this.searchObject) {
+        if (this.searchObject[field]) {
+          fieldsToSearchIn.push(field);
+        }
+      }
+
       for (var i = 0; i < this.content.length; i++) {
-        var name = this.content[i][value].toString().toLowerCase();
-        var tempEvent = event.target.value.toString().toLowerCase();
-        console.log(name + " " + tempEvent);
-        if (name.includes(tempEvent)) {
+        var same = true;
+        for (var j = 0; j < fieldsToSearchIn.length; j++) {
+          var dataInContentObj = this.getLowerCaseString(
+            this.content[i][fieldsToSearchIn[j]]
+          );
+          var dataInSearchObj = this.getLowerCaseString(
+            this.searchObject[fieldsToSearchIn[j]]
+          );
+          if (!dataInContentObj.includes(dataInSearchObj)) {
+            same = false;
+          }
+        }
+
+        if (same) {
           tempTableContent.push(this.content[i]);
         }
       }
+
       if (tempTableContent.length > 0) {
         this.tableContent = tempTableContent;
+        //tempTableContent = [];
       } else {
-        this.tableContent = null;
-      }
-    },
-    mounted: function() {
-      //TODO change
-      var self = this;
-      for (var field in self.content[0]) {
-        self.addedRow[field] = "";
+        if (this.isSearchObjectEmpty()) {
+          this.tableContent = this.content;
+        } else {
+          this.tableContent = [];
+        }
       }
     }
+  },
+  mounted: function() {
+    // for (var i = 0; i < this.fields.length; i++) {
+    //   this.searchObject[this.fields[i].keyName] = "";
+    // }
   }
 };
 </script>
