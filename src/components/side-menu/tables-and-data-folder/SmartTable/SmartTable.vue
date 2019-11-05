@@ -1,7 +1,13 @@
 <template>
   <div class="my-container">
     <div class="my-row margin-top">
-      <smart-t class="c-12 my-table" :content="content" :fields="tableFields" @addToTable="add"></smart-t>
+      <smart-t
+        class="c-12 my-table"
+        :content="content"
+        :fields="tableFields"
+        @addToTable="add"
+        @deleteFromTable="deleteElement"
+      ></smart-t>
     </div>
   </div>
 </template>
@@ -100,20 +106,14 @@ export default {
   methods: {
     add(row) {
       // TODO FIX ADD
-      var temp = {};
-      for (var key in row) {
-        temp[key] = row[key];
-      }
-      // }
-      // var temp = {
-      //   id: row.id,
-      //   firstName: row.firstName,
-      //   lastName: row.lastName,
-      //   username: row.username,
-      //   email: row.email,
-      //   age: row.age
-      // };
+      var temp = this.lodash.clone(row);
       this.content.push(temp);
+    },
+    deleteElement(idValue) {
+      console.log("id get: " + idValue);
+      console.log("index: " + this.content.findIndex(x => x.id == idValue));
+      console.log(this.content);
+      this.content.splice(this.content.findIndex(x => x.id == idValue), 1);
     }
   }
 };

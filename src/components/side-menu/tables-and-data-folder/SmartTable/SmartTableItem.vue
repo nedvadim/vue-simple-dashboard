@@ -43,10 +43,10 @@
 
       <tr v-for="(row, index) in tableContent" :key="row.index" :class="{darkerRow: (index%2==0)}">
         <td class="editAndDelete">
-          <div class="edit">
+          <div class="edit" @click="editRow()">
             <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
           </div>
-          <div class="delete">
+          <div class="delete" @click="deleteRow(row.id)">
             <font-awesome-icon icon="trash-alt"></font-awesome-icon>
           </div>
         </td>
@@ -87,6 +87,10 @@ export default {
     }
   },
   methods: {
+    deleteRow(value) {
+      this.$emit("deleteFromTable", value);
+      console.log("id send: " + value);
+    },
     getLowerCaseString(value) {
       return value.toString().toLowerCase();
     },
@@ -105,7 +109,6 @@ export default {
       // isNaN() and parseInt();
       this.$emit("addToTable", this.addedRow);
       this.showAddPanel = false;
-      //this.tableContent.push(this.addedRow);
       this.resetAddedRow();
       this.tableContent = this.content;
     },
@@ -147,11 +150,11 @@ export default {
         this.tableContent = tempTableContent;
         //tempTableContent = [];
       } else {
-        if (this.isSearchObjectEmpty()) {
-          this.tableContent = this.content;
-        } else {
-          this.tableContent = [];
-        }
+        this.tableContent = [];
+      }
+
+      if (this.isSearchObjectEmpty()) {
+        this.tableContent = this.content;
       }
     }
   },
@@ -159,7 +162,7 @@ export default {
     // for (var i = 0; i < this.fields.length; i++) {
     //   this.searchObject[this.fields[i].keyName] = "";
     // }
-    console.log(this.lodash.random(10));
+    //console.log(this.lodash.random(10));
   }
 };
 </script>
