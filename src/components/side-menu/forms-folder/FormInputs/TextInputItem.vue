@@ -6,6 +6,7 @@
       class="app-input"
       :class="[shape, size, status]"
       :placeholder="inputPlaceholder"
+      :value="inputValue"
       :disabled="disabled"
       :id="inputId"
       ref="customInput"
@@ -35,6 +36,9 @@ export default {
       type: String // 'primary', 'success', 'warning', 'danger', 'info'
     },
     inputPlaceholder: {
+      type: String
+    },
+    inputValue: {
       type: String
     },
     inputType: {

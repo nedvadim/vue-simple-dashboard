@@ -7,6 +7,7 @@
         :fields="tableFields"
         @addToTable="add"
         @deleteFromTable="deleteElement"
+        @editTableRow="editElement"
       ></smart-t>
     </div>
   </div>
@@ -105,15 +106,16 @@ export default {
   },
   methods: {
     add(row) {
-      // TODO FIX ADD
+      // TODO FIX ADD (without var)
       var temp = this.lodash.clone(row);
       this.content.push(temp);
     },
     deleteElement(idValue) {
-      console.log("id get: " + idValue);
-      console.log("index: " + this.content.findIndex(x => x.id == idValue));
-      console.log(this.content);
       this.content.splice(this.content.findIndex(x => x.id == idValue), 1);
+    },
+    editElement(element, index) {
+      this.content[index] = this.lodash.cloneDeep(element);
+      console.log(element + " // " + index);
     }
   }
 };

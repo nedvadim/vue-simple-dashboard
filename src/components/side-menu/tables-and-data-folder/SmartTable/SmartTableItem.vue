@@ -42,15 +42,31 @@
       </tr>
 
       <tr v-for="(row, index) in tableContent" :key="row.index" :class="{darkerRow: (index%2==0)}">
-        <td class="editAndDelete">
-          <div class="edit" @click="editRow()">
-            <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
-          </div>
-          <div class="delete" @click="deleteRow(row.id)">
-            <font-awesome-icon icon="trash-alt"></font-awesome-icon>
-          </div>
+        <td>
+          <span class="editAndDelete" v-if="!editModes[index]">
+            <div class="edit" @click="toggleEditMode(index)">
+              <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
+            </div>
+            <div class="delete" @click="deleteRow(row.id)">
+              <font-awesome-icon icon="trash-alt"></font-awesome-icon>
+            </div>
+          </span>
+          <span v-if="editModes[index]">
+            <div class="acceptEditBtn" @click="acceptEdit(index)">V</div>
+            <div class="cancelEditBtn" @click="cancelEdit(index)">X</div>
+          </span>
         </td>
-        <td v-for="(field, index) in fields" :key="index">{{row[field.keyName]}}</td>
+        <td v-for="(field, indexCell) in fields" :key="indexCell">
+          <span v-if="!editModes[index]">{{row[field.keyName]}}</span>
+          <my-inp
+            v-if="editModes[index]"
+            :inputValue="row[field.keyName].toString()"
+            size="small"
+            :inputPlaceholder="row[field.keyName].toString()"
+            v-model="editedRows[index][field.keyName]"
+            @input.native="showEditRow(index)"
+          ></my-inp>
+        </td>
       </tr>
     </table>
   </div>
@@ -59,6 +75,7 @@
 // #1e97ff
 import myBtn from "../../forms-folder/Buttons/ButtonItem";
 import myInp from "../../forms-folder/FormInputs/TextInputItem";
+import { watch } from "fs";
 export default {
   data() {
     return {
@@ -66,7 +83,9 @@ export default {
       showAddPanel: true,
       enteredInSearch: {},
       addedRow: {},
-      searchObject: {}
+      editedRows: [],
+      searchObject: {},
+      editModes: []
     };
   },
   props: {
@@ -82,14 +101,39 @@ export default {
     myInp
   },
   computed: {
-    getTableData() {
-      return this.tableContent;
+    getTableContent() {
+      this.content;
     }
   },
   methods: {
+    acceptEdit(index) {
+      this.$emit("editTableRow", this.editedRows[index], index);
+      this.cancelEdit(index);
+    },
+    cancelEdit(index) {
+      this.editModes[index] = false;
+      // This shitty stuff below is just to force vue rerender table
+      var table = this.tableContent;
+      this.tableContent = [];
+      this.tableContent = table;
+    },
+    showEditRow(index) {
+      console.log(this.editedRows[index]);
+      console.log(this.editedRows);
+    },
+    toggleEditMode(index) {
+      this.editModes[index] = !this.editModes[index];
+      //this.editedRows[index] = this.tableContent[index];
+      // This shitty stuff below is just to force vue rerender table
+      var table = this.tableContent;
+      this.tableContent = [];
+      this.tableContent = table;
+    },
     deleteRow(value) {
       this.$emit("deleteFromTable", value);
-      console.log("id send: " + value);
+      //reset edited rows as well to delete a row that not exist now
+      this.editedRows = this.lodash.cloneDeep(this.tableContent);
+      //delete from edited rows
     },
     getLowerCaseString(value) {
       return value.toString().toLowerCase();
@@ -111,6 +155,7 @@ export default {
       this.showAddPanel = false;
       this.resetAddedRow();
       this.tableContent = this.content;
+      this.tableContent = this.tableContent;
     },
     resetAddedRow() {
       for (var field in this.addedRow) {
@@ -159,10 +204,23 @@ export default {
     }
   },
   mounted: function() {
-    // for (var i = 0; i < this.fields.length; i++) {
-    //   this.searchObject[this.fields[i].keyName] = "";
-    // }
-    //console.log(this.lodash.random(10));
+    this.lodash.forIn(this.tableContent, (value, key) => {
+      this.editModes[key] = false;
+    });
+
+    this.editedRows = this.lodash.cloneDeep(this.tableContent);
+    console.log(this.editedRows);
+  },
+  watch: {
+    getTableContent: {
+      // This will let Vue know to look inside the array
+      deep: true,
+
+      // We have to move our method to a handler field
+      handler() {
+        console.log(1);
+      }
+    }
   }
 };
 </script>
@@ -171,13 +229,13 @@ export default {
 table {
   width: 100%;
   border-collapse: collapse;
-  text-align: center;
+  //text-align: center;
   border: 1px solid #ececec;
   background-color: white;
   font-size: 20px;
   tr {
     border-collapse: collapse;
-    text-align: center;
+    //text-align: center;
     border: 1px solid #ececec;
     font-size: 20px;
     &:hover {
@@ -185,7 +243,7 @@ table {
     }
     td {
       border-collapse: collapse;
-      text-align: center;
+      //text-align: center;
       border: 1px solid #ececec;
       font-size: 20px;
       padding: 10px;
@@ -242,5 +300,12 @@ table {
 }
 .darkerRow {
   background-color: #f9f9f9;
+}
+.acceptEditBtn,
+.cancelEditBtn {
+  cursor: pointer;
+  &:hover {
+    color: lightgreen;
+  }
 }
 </style>
