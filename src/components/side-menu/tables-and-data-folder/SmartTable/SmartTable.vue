@@ -105,10 +105,21 @@ export default {
     };
   },
   methods: {
+    logAll() {
+      // for testing purposes
+      console.log("|||||||||||||||||||||||||||||||||||||||||");
+      this.lodash.forIn(this.content, (value, key) => {
+        console.log("----------------------------------------");
+        console.log("index: " + this.lodash.indexOf(this.content, value));
+        this.lodash.forIn(value, (value1, key) => {
+          console.log(value1);
+        });
+      });
+    },
     add(row) {
       // TODO FIX ADD (without var)
-      var temp = this.lodash.clone(row);
-      this.content.push(temp);
+      console.log(row);
+      this.content.push(this.lodash.cloneDeep(row));
     },
     deleteElement(idValue) {
       this.content.splice(this.content.findIndex(x => x.id == idValue), 1);
@@ -117,7 +128,8 @@ export default {
       this.content[index] = this.lodash.cloneDeep(element);
       console.log(element + " // " + index);
     }
-  }
+  },
+  mounted: function() {}
 };
 </script>
 <style lang="scss" scoped>

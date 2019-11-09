@@ -44,7 +44,7 @@
       <tr v-for="(row, index) in tableContent" :key="row.index" :class="{darkerRow: (index%2==0)}">
         <td>
           <span class="editAndDelete" v-if="!editModes[index]">
-            <div class="edit" @click="toggleEditMode(index)">
+            <div class="edit" @click="turnOnEditMode(index)">
               <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
             </div>
             <div class="delete" @click="deleteRow(row.id)">
@@ -53,7 +53,7 @@
           </span>
           <span v-if="editModes[index]">
             <div class="acceptEditBtn" @click="acceptEdit(index)">V</div>
-            <div class="cancelEditBtn" @click="cancelEdit(index)">X</div>
+            <div class="cancelEditBtn" @click="turnOffEditMode(index)">X</div>
           </span>
         </td>
         <td v-for="(field, indexCell) in fields" :key="indexCell">
@@ -64,7 +64,6 @@
             size="small"
             :inputPlaceholder="row[field.keyName].toString()"
             v-model="editedRows[index][field.keyName]"
-            @input.native="showEditRow(index)"
           ></my-inp>
         </td>
       </tr>
@@ -80,6 +79,7 @@ export default {
   data() {
     return {
       tableContent: this.content,
+      tempTableForManipulations: [],
       showAddPanel: true,
       enteredInSearch: {},
       addedRow: {},
@@ -102,32 +102,32 @@ export default {
   },
   computed: {
     getTableContent() {
-      this.content;
+      this.tableContent;
     }
   },
   methods: {
-    acceptEdit(index) {
-      this.$emit("editTableRow", this.editedRows[index], index);
-      this.cancelEdit(index);
-    },
-    cancelEdit(index) {
-      this.editModes[index] = false;
-      // This shitty stuff below is just to force vue rerender table
+    rerenderTable() {
       var table = this.tableContent;
       this.tableContent = [];
       this.tableContent = table;
     },
-    showEditRow(index) {
-      console.log(this.editedRows[index]);
-      console.log(this.editedRows);
+    acceptEdit(index) {
+      this.$emit("editTableRow", this.editedRows[index], index);
+      this.turnOffEditMode(index);
+    },
+    turnOnEditMode(index) {
+      this.editModes[index] = true;
+      this.rerenderTable();
+    },
+    turnOffEditMode(index) {
+      this.editModes[index] = false;
+      this.rerenderTable();
     },
     toggleEditMode(index) {
       this.editModes[index] = !this.editModes[index];
       //this.editedRows[index] = this.tableContent[index];
       // This shitty stuff below is just to force vue rerender table
-      var table = this.tableContent;
-      this.tableContent = [];
-      this.tableContent = table;
+      this.rerenderTable();
     },
     deleteRow(value) {
       this.$emit("deleteFromTable", value);
@@ -151,11 +151,20 @@ export default {
     addRow() {
       // make string numbers a pure numbers
       // isNaN() and parseInt();
+
+      // this.lodash.forIn(this.addedRow, (value, key) => {
+      //   if (!isNaN(value)) {
+      //     value = parseInt(value, 10);
+      //   }
+      // });
+      //console.log(this.addedRow);
       this.$emit("addToTable", this.addedRow);
+      this.editedRows = this.lodash.cloneDeep(this.tableContent);
       this.showAddPanel = false;
       this.resetAddedRow();
       this.tableContent = this.content;
       this.tableContent = this.tableContent;
+      this.rerenderTable();
     },
     resetAddedRow() {
       for (var field in this.addedRow) {
@@ -209,7 +218,6 @@ export default {
     });
 
     this.editedRows = this.lodash.cloneDeep(this.tableContent);
-    console.log(this.editedRows);
   },
   watch: {
     getTableContent: {
