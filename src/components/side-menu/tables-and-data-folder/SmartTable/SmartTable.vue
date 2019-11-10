@@ -118,8 +118,7 @@ export default {
     },
     add(row) {
       // TODO FIX ADD (without var)
-      console.log(row);
-      this.content.push(this.lodash.cloneDeep(row));
+      this.content.unshift(this.lodash.cloneDeep(row));
     },
     deleteElement(idValue) {
       this.content.splice(this.content.findIndex(x => x.id == idValue), 1);

@@ -38,6 +38,7 @@
         </td>
         <td v-for="(nameField, index) in fields" :key="index">
           <my-inp :inputPlaceholder="nameField.title" v-model="addedRow[nameField.keyName]"></my-inp>
+          <p>{{addedRow[nameField.keyName]}}</p>
         </td>
       </tr>
 
@@ -51,9 +52,13 @@
               <font-awesome-icon icon="trash-alt"></font-awesome-icon>
             </div>
           </span>
-          <span v-if="editModes[index]">
-            <div class="acceptEditBtn" @click="acceptEdit(index)">V</div>
-            <div class="cancelEditBtn" @click="turnOffEditMode(index)">X</div>
+          <span class="acceptAndCancelButtons" v-if="editModes[index]">
+            <div class="acceptEditBtn" @click="acceptEdit(index)">
+              <font-awesome-icon icon="check"></font-awesome-icon>
+            </div>
+            <div class="cancelEditBtn" @click="turnOffEditMode(index)">
+              <font-awesome-icon icon="times"></font-awesome-icon>
+            </div>
           </span>
         </td>
         <td v-for="(field, indexCell) in fields" :key="indexCell">
@@ -74,17 +79,16 @@
 // #1e97ff
 import myBtn from "../../forms-folder/Buttons/ButtonItem";
 import myInp from "../../forms-folder/FormInputs/TextInputItem";
-import { watch } from "fs";
+// import { watch } from "fs";
+// import { all } from "q";
 export default {
   data() {
     return {
       tableContent: this.content,
-      tempTableForManipulations: [],
       showAddPanel: true,
-      enteredInSearch: {},
       addedRow: {},
-      editedRows: [],
       searchObject: {},
+      editedRows: [],
       editModes: []
     };
   },
@@ -99,11 +103,6 @@ export default {
   components: {
     myBtn,
     myInp
-  },
-  computed: {
-    getTableContent() {
-      this.tableContent;
-    }
   },
   methods: {
     rerenderTable() {
@@ -121,12 +120,6 @@ export default {
     },
     turnOffEditMode(index) {
       this.editModes[index] = false;
-      this.rerenderTable();
-    },
-    toggleEditMode(index) {
-      this.editModes[index] = !this.editModes[index];
-      //this.editedRows[index] = this.tableContent[index];
-      // This shitty stuff below is just to force vue rerender table
       this.rerenderTable();
     },
     deleteRow(value) {
@@ -149,15 +142,13 @@ export default {
       return empty;
     },
     addRow() {
-      // make string numbers a pure numbers
-      // isNaN() and parseInt();
-
-      // this.lodash.forIn(this.addedRow, (value, key) => {
-      //   if (!isNaN(value)) {
-      //     value = parseInt(value, 10);
-      //   }
-      // });
-      //console.log(this.addedRow);
+      console.log(this.addedRow);
+      for (var field in Object.values(this.addedRow)) {
+        if (Object.values(this.addedRow)[field] === "") {
+          alert("Fill all cells in the row, please");
+          return;
+        }
+      }
       this.$emit("addToTable", this.addedRow);
       this.editedRows = this.lodash.cloneDeep(this.tableContent);
       this.showAddPanel = false;
@@ -213,22 +204,17 @@ export default {
     }
   },
   mounted: function() {
+    // Initialize editModes array
     this.lodash.forIn(this.tableContent, (value, key) => {
       this.editModes[key] = false;
     });
 
-    this.editedRows = this.lodash.cloneDeep(this.tableContent);
-  },
-  watch: {
-    getTableContent: {
-      // This will let Vue know to look inside the array
-      deep: true,
+    // Initialize empty addedRow which is used to add new element to table
+    this.lodash.forIn(this.fields, (value, key) => {
+      this.addedRow[this.fields[key].keyName] = "";
+    });
 
-      // We have to move our method to a handler field
-      handler() {
-        console.log(1);
-      }
-    }
+    this.editedRows = this.lodash.cloneDeep(this.tableContent);
   }
 };
 </script>
@@ -289,6 +275,7 @@ table {
   .delete {
     width: 50%;
     cursor: pointer;
+    text-align: center;
   }
   .edit {
     color: gray;
@@ -309,11 +296,26 @@ table {
 .darkerRow {
   background-color: #f9f9f9;
 }
-.acceptEditBtn,
-.cancelEditBtn {
-  cursor: pointer;
-  &:hover {
-    color: lightgreen;
+
+.acceptAndCancelButtons {
+  display: flex;
+  .acceptEditBtn,
+  .cancelEditBtn {
+    cursor: pointer;
+    width: 50%;
+    text-align: center;
+  }
+  .acceptEditBtn {
+    color: $success-color;
+    &:hover {
+      color: $success-color / 2;
+    }
+  }
+  .cancelEditBtn {
+    color: $danger-color;
+    &:hover {
+      color: $danger-color / 2;
+    }
   }
 }
 </style>
