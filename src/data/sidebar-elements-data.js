@@ -43,7 +43,7 @@ export default [
     elementsHeader: "Tables & Data",
     pages: [
       { id: 1, componentName: "Smart Table", linkToComponent: "/smart-table" },
-      { id: 2, componentName: "Tree Grid", linkToComponent: "/" }
+      { id: 2, componentName: "Tree Grid", linkToComponent: "/tree-grid" }
     ]
   },
   {

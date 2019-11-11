@@ -24,6 +24,7 @@ import Spinner from "./components/side-menu/extra-components-folder/Spinner/Spin
 import Alert from "./components/side-menu/extra-components-folder/Alert/Alert.vue";
 // Tables & Data
 import SmartTable from "./components/side-menu/tables-and-data-folder/SmartTable/SmartTable.vue";
+import TreeGrid from "./components/side-menu/tables-and-data-folder/TreeGrid/TreeGrid.vue";
 
 export const routes = [
   { path: "/", component: Home },
@@ -52,6 +53,7 @@ export const routes = [
   { path: "/alert", component: Alert },
   // Tables & Data ==========================================
   { path: "/smart-table", component: SmartTable },
+  { path: "/tree-grid", component: TreeGrid },
   // UI Features Folder========================================
   { path: "/grid", component: Grid }
 ];

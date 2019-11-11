@@ -82,6 +82,30 @@ export default {
           username: "will",
           email: "fw@yahoo.com",
           age: 25
+        },
+        {
+          id: 7,
+          firstName: "Wesley",
+          lastName: "Knox",
+          username: "wk37",
+          email: "wes@yahoo.com",
+          age: 37
+        },
+        {
+          id: 8,
+          firstName: "Hannah",
+          lastName: "Harold",
+          username: "annie",
+          email: "hannahh@gmail.com",
+          age: 29
+        },
+        {
+          id: 9,
+          firstName: "Jack",
+          lastName: "Kniev",
+          username: "knievJK",
+          email: "jackcoolman@gmail.com",
+          age: 19
         }
       ]
       // testing array

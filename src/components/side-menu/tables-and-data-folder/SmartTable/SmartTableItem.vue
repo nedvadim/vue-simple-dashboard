@@ -85,7 +85,7 @@ export default {
   data() {
     return {
       tableContent: this.content,
-      showAddPanel: true,
+      showAddPanel: false,
       addedRow: {},
       searchObject: {},
       editedRows: [],
