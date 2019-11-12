@@ -1,12 +1,12 @@
 <template>
   <div>
     <bg :header="'Tree Grid'">
-      <tree-grid-item :data="treeData" :headers="treeHeaders"></tree-grid-item>
+      <tree-grid-browser :data="treeData" :headers="treeHeaders"></tree-grid-browser>
     </bg>
   </div>
 </template>
 <script>
-import TreeGridItem from "./TreeGridItem";
+import TreeGridBrowser from "./TreeGridBrowser";
 import bg from "../../WhiteBack";
 export default {
   data() {
@@ -17,37 +17,31 @@ export default {
         { title: "Kind" },
         { title: "Items" }
       ],
-      treeData: [
-        {
-          name: "MyProjects",
-          kind: "dir",
-          items: [
-            { name: "project-1.doc", size: 300, kind: "doc" },
-            { name: "project-2.doc", size: 670, kind: "doc" },
-            { name: "very-important-project.docx", size: 310, kind: "docx" }
-          ]
-        },
-        {
-          name: "OldFiles",
-          kind: "dir",
-          items: [
-            { name: "report-1.doc", size: 80, kind: "doc" },
-            { name: "logs.doc", size: 100, kind: "doc" }
-          ]
-        },
-        {
-          name: "Other",
-          kind: "dir",
-          items: [
-            { name: "backup.bkp", size: 117890, kind: "bkp" },
-            { name: "important-notes.txt", size: 3500, kind: "txt" }
-          ]
-        }
-      ]
+      treeData: {
+        name: "Root Folder",
+        children: [
+          {
+            name: "Projects",
+            children: [
+              { name: "project-1.doc" },
+              { name: "project-2.doc" },
+              { name: "project-3.doc" }
+            ]
+          },
+          {
+            name: "Music",
+            children: [
+              { name: "song-4431.mp3" },
+              { name: "song-23313.mp3" },
+              { name: "song-9833.mp3" }
+            ]
+          }
+        ]
+      }
     };
   },
   components: {
-    TreeGridItem,
+    TreeGridBrowser,
     bg
   }
 };

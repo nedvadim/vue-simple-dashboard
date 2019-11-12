@@ -1,37 +1,44 @@
 <template>
   <div>
-    <table>
-      <tr class="header">
-        <td v-for="(header, index) in headers" :key="index">{{header.title}}</td>
-      </tr>
-    </table>
-    <br />
+    <div :style="{'margin-left': `${depth*10}px`}" @click="expanded=!expanded" class="node-name">
+      <span class="type" v-if="hasChildren">{{expanded ? '&#9660;' : '&#9658;'}}</span>
+      <span v-else>&#9671;</span>
+      {{node.name}}
+    </div>
+
+    <span class="tree-item-wrapper" v-if="expanded">
+      <TreeGridItem v-for="child in node.children" :key="child.name" :node="child" :depth="depth+1"></TreeGridItem>
+    </span>
   </div>
 </template>
 <script>
 export default {
+  name: "TreeGridItem",
   props: {
-    data: {
-      type: Array
-    },
-    headers: {
-      type: Array
+    node: Object,
+    depth: {
+      type: Number,
+      default: 0
+    }
+  },
+  data() {
+    return {
+      expanded: false
+    };
+  },
+  computed: {
+    hasChildren() {
+      return this.node.children;
     }
   }
 };
 </script>
 <style lang="scss" scoped>
-table {
-  width: 100%;
-  border-collapse: collapse;
-  border: 1px solid #000000;
-  tr {
-    border-collapse: collapse;
-    border: 1px solid #000000;
-    td {
-      border-collapse: collapse;
-      border: 1px solid #000000;
-    }
+.node-name {
+  cursor: pointer;
+  .type {
+    font-size: 14px;
+    line-height: 12px;
   }
 }
 </style>
