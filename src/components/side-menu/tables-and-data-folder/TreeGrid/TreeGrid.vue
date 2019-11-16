@@ -23,17 +23,17 @@ export default {
           {
             name: "Projects",
             children: [
-              { name: "project-1.doc" },
-              { name: "project-2.doc" },
-              { name: "project-3.doc" }
+              { name: "project-1.doc", size: 659 },
+              { name: "project-2.doc", size: 1200 },
+              { name: "project-3.doc", size: 350 }
             ]
           },
           {
             name: "Music",
             children: [
-              { name: "song-4431.mp3" },
-              { name: "song-23313.mp3" },
-              { name: "song-9833.mp3" }
+              { name: "song-4431.mp3", size: 4700 },
+              { name: "song-23313.mp3", size: 2980 },
+              { name: "song-9833.mp3", size: 6548 }
             ]
           }
         ]

@@ -11,6 +11,8 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faSortDown } from "@fortawesome/free-solid-svg-icons";
+import { faFile } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -19,6 +21,8 @@ library.add(faTrashAlt);
 library.add(faPlus);
 library.add(faCheck);
 library.add(faTimes);
+library.add(faSortDown);
+library.add(faFile);
 
 const options = { name: "lodash" }; // customize the way you want to call it
 Vue.component("font-awesome-icon", FontAwesomeIcon);
