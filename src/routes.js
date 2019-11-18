@@ -25,6 +25,8 @@ import Alert from "./components/side-menu/extra-components-folder/Alert/Alert.vu
 // Tables & Data
 import SmartTable from "./components/side-menu/tables-and-data-folder/SmartTable/SmartTable.vue";
 import TreeGrid from "./components/side-menu/tables-and-data-folder/TreeGrid/TreeGrid.vue";
+// Auth
+import Login from "./components/side-menu/auth-folder/Login/Login.vue";
 
 export const routes = [
   { path: "/", component: Home },
@@ -54,6 +56,8 @@ export const routes = [
   // Tables & Data ==========================================
   { path: "/smart-table", component: SmartTable },
   { path: "/tree-grid", component: TreeGrid },
+  // Auth =====================================================
+  { path: "/login", component: Login },
   // UI Features Folder========================================
   { path: "/grid", component: Grid }
 ];

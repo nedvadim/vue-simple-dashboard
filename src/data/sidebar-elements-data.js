@@ -48,6 +48,11 @@ export default [
   },
   {
     id: 6,
+    elementsHeader: "Auth",
+    pages: [{ id: 1, componentName: "Login", linkToComponent: "/login" }]
+  },
+  {
+    id: 7,
     elementsHeader: "UI Features",
     pages: [{ id: 1, componentName: "Grid", linkToComponent: "/grid" }]
   }

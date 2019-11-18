@@ -1,7 +1,10 @@
 <template>
   <div>
     <bg :header="'Tree Grid'">
-      <tree-grid-browser :data="treeData" :headers="treeHeaders"></tree-grid-browser>
+      <tree-grid-browser
+        :data="treeData"
+        :headers="treeHeaders"
+      ></tree-grid-browser>
     </bg>
   </div>
 </template>
@@ -24,7 +27,7 @@ export default {
             name: "Projects",
             children: [
               { name: "project-1.doc", size: 659 },
-              { name: "project-2.doc", size: 1200 },
+              { name: "project-2.txt", size: 1200 },
               { name: "project-3.doc", size: 350 }
             ]
           },
@@ -47,5 +50,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
