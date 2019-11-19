@@ -27,37 +27,43 @@ import SmartTable from "./components/side-menu/tables-and-data-folder/SmartTable
 import TreeGrid from "./components/side-menu/tables-and-data-folder/TreeGrid/TreeGrid.vue";
 // Auth
 import Login from "./components/side-menu/auth-folder/Login/Login.vue";
-
+import Dashboard from "./components/DashboardMain.vue";
 export const routes = [
-  { path: "/", component: Home },
-  // Layouts Folder===========================================
-  { path: "/lists", component: Lists },
-  { path: "/stepper", component: Stepper },
   {
-    path: "/tabs",
-    component: Tabs,
+    path: "/",
+    component: Dashboard,
     children: [
-      { path: "/tabs/", component: RouteTab1 },
-      { path: "/tabs/route-tab-1", component: RouteTab1 },
-      { path: "/tabs/route-tab-2", component: RouteTab2 }
+      // Layouts Folder===========================================
+      { path: "/lists", component: Lists },
+      { path: "/stepper", component: Stepper },
+      {
+        path: "/tabs",
+        component: Tabs,
+        children: [
+          { path: "/tabs/", component: RouteTab1 },
+          { path: "/tabs/route-tab-1", component: RouteTab1 },
+          { path: "/tabs/route-tab-2", component: RouteTab2 }
+        ]
+      },
+      // Forms Folder==============================================
+      { path: "/form-inputs", component: FormInputs },
+      { path: "/buttons", component: Buttons },
+      { path: "/form-layouts", component: FormLayouts },
+      // Modals & Overlays=========================================
+      { path: "/dialog", component: Dialog },
+      { path: "/popover", component: Popover },
+      { path: "/toastr", component: Toastr },
+      // Extra Components Folder===================================
+      { path: "/spinner", component: Spinner },
+      { path: "/alert", component: Alert },
+      // Tables & Data ==========================================
+      { path: "/smart-table", component: SmartTable },
+      { path: "/tree-grid", component: TreeGrid },
+
+      // UI Features Folder========================================
+      { path: "/grid", component: Grid }
     ]
   },
-  // Forms Folder==============================================
-  { path: "/form-inputs", component: FormInputs },
-  { path: "/buttons", component: Buttons },
-  { path: "/form-layouts", component: FormLayouts },
-  // Modals & Overlays=========================================
-  { path: "/dialog", component: Dialog },
-  { path: "/popover", component: Popover },
-  { path: "/toastr", component: Toastr },
-  // Extra Components Folder===================================
-  { path: "/spinner", component: Spinner },
-  { path: "/alert", component: Alert },
-  // Tables & Data ==========================================
-  { path: "/smart-table", component: SmartTable },
-  { path: "/tree-grid", component: TreeGrid },
   // Auth =====================================================
-  { path: "/login", component: Login },
-  // UI Features Folder========================================
-  { path: "/grid", component: Grid }
+  { path: "/auth/login", component: Login }
 ];

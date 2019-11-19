@@ -1,21 +1,27 @@
 <template>
-  <router-view></router-view>
+  <div class="app-bg">
+    <app-header></app-header>
+    <div class="page-content">
+      <app-side-menu></app-side-menu>
+      <div class="my-container">
+        <div class="my-row">
+          <transition name="slide" mode="out-in">
+            <router-view class="c-12"></router-view>
+          </transition>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
-
 
 <script>
 //import Home from "./components/Home.vue";
-import SideMenu from "./components/side-menu/SideMenu.vue";
-import Header from "./components/header/Header.vue";
-//import DashboardMain from "./components/DashboardMain.vue";
+import SideMenu from "./side-menu/SideMenu.vue";
+import Header from "./header/Header.vue";
 export default {
-  data() {
-    return {};
-  },
   components: {
     appSideMenu: SideMenu,
     appHeader: Header
-    //DashboardMain
     //appHome: Home
   },
   created() {
@@ -26,7 +32,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./style/grid-mobile-first.css";
+@import "../style/grid-mobile-first.css";
 $top-margin: 1.5em;
 
 * {
