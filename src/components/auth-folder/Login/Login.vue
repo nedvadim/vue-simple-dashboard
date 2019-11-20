@@ -11,7 +11,14 @@
           <p class="small-text">Please, log in with your email.</p>
           <label class="email-label">
             Your E-Mail:
-            <my-inp class="input" :inputPlaceholder="'E-Mail'"></my-inp>
+            <my-inp
+              class="input"
+              :inputPlaceholder="'E-Mail'"
+              :status="!isValidEmail ? 'danger' : 'success'"
+              v-model="emailInput"
+              :value="emailInput"
+            ></my-inp>
+            <p>{{ emailInput }}</p>
           </label>
           <label class="password-label">
             Your Password:
@@ -53,8 +60,23 @@ export default {
         name: "Remember me",
         value: "remember",
         checked: false
-      }
+      },
+      emailInput: ""
     };
+  },
+  mounted: function() {},
+  computed: {
+    isValidEmail() {
+      console.log(this.emailInput);
+      return /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(
+        this.emailInput
+      );
+    }
+  },
+  methods: {
+    log(value) {
+      console.log("isValidEmail " + value);
+    }
   }
 };
 </script>
