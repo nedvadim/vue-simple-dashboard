@@ -26,6 +26,7 @@
           </label>
           <label class="password-label">
             Your Password:
+            <a href="#" class="forgot-label" :style="'float: right'">forgot password</a>
             <my-inp
               class="input"
               :inputPlaceholder="'Password'"
@@ -41,8 +42,6 @@
                 {{error}}
               </p>
             </div>
-
-            <p>{{passwordInput}}</p>
           </label>
           <check-box class="checkbox" :data="checkbox"></check-box>
           <my-btn
@@ -57,7 +56,7 @@
           </div>
           <p class="small-text">
             Don't have an account?
-            <a href="#">Register</a>
+            <a href="#" class="register-link">Register</a>
           </p>
         </div>
 
@@ -181,9 +180,14 @@ export default {
         font-size: 17px;
         font-weight: 300;
         text-align: center;
+        .register-link {
+          color: #96a7be;
+          font-size: 18px;
+        }
       }
       .email-label,
-      .password-label {
+      .password-label,
+      .forgot-label {
         font-size: 12px;
         color: #96a7be;
         font-weight: 700;
