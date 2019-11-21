@@ -2,31 +2,53 @@
   <div class="window-wrapper">
     <div class="login-wrapper my-container">
       <div class="arrow-block">
-        <font-awesome-icon class="arrow" icon="arrow-left"></font-awesome-icon>
+        <font-awesome-icon class="arrow" icon="arrow-left" @click="$router.go(-1)"></font-awesome-icon>
       </div>
       <div class="my-row">
-        <div class="c-md-3 c-1"></div>
-        <div class="c-md-6 c-10 form">
+        <div class="c-md-4 c-1"></div>
+        <div class="c-md-4 c-10 form">
           <p class="header">Login</p>
           <p class="small-text">Please, log in with your email.</p>
+
           <label class="email-label">
             Your E-Mail:
             <my-inp
               class="input"
               :inputPlaceholder="'E-Mail'"
-              :status="setInputStatus"
+              :status="setEmailInputStatus"
               :inputValue="emailInput"
               v-model="emailInput"
               @focus="emailWasFocused = true"
             ></my-inp>
-            <p class="error" v-show="!showEmailError">Invalid e-mail</p>
+            <p class="error" v-show="showEmailError">
+              <font-awesome-icon icon="exclamation-circle"></font-awesome-icon>Invalid e-mail
+            </p>
           </label>
           <label class="password-label">
             Your Password:
-            <my-inp class="input" :inputPlaceholder="'Password'" :inputType="'password'"></my-inp>
+            <my-inp
+              class="input"
+              :inputPlaceholder="'Password'"
+              :inputType="'password'"
+              :inputValue="passwordInput"
+              :status="setPasswordInputStatus"
+              v-model="passwordInput"
+              @focus="passwordWasFocused = true"
+            ></my-inp>
+            <div v-if="passwordWasFocused" class="password-errors-block">
+              <p class="error" v-for="error in listOfPasswordErrors" :key="error">
+                <font-awesome-icon icon="exclamation-circle"></font-awesome-icon>
+                {{error}}
+              </p>
+            </div>
+
+            <p>{{passwordInput}}</p>
           </label>
           <check-box class="checkbox" :data="checkbox"></check-box>
-          <my-btn class="form-button" type="disabled">Login</my-btn>
+          <my-btn
+            class="form-button"
+            :type="(passwordValidator&&emailValidator) ? 'primary' : 'disabled' "
+          >Login</my-btn>
           <p class="small-text" :style="'text-align: center'">or enter with:</p>
           <div class="icon-group">
             <font-awesome-icon class="icon" :icon="['fab', 'github']" />
@@ -38,7 +60,8 @@
             <a href="#">Register</a>
           </p>
         </div>
-        <div class="c-md-3 c-1"></div>
+
+        <div class="c-md-4 c-1"></div>
       </div>
     </div>
   </div>
@@ -62,8 +85,16 @@ export default {
         value: "remember",
         checked: false
       },
-      emailInput: "",
-      emailWasFocused: false
+      emailInput: null,
+      passwordInput: "",
+      emailWasFocused: false,
+      passwordWasFocused: false,
+      validPasswordRules: [
+        { message: "One lowercase letter required.", regex: /[a-z]+/ },
+        { message: "One uppercase letter required.", regex: /[A-Z]+/ },
+        { message: "8 characters minimum.", regex: /.{8,}/ },
+        { message: "One number required.", regex: /[0-9]+/ }
+      ]
     };
   },
   mounted: function() {},
@@ -72,15 +103,41 @@ export default {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(this.emailInput);
     },
-    showEmailError() {
-      return this.setInputStatus === "danger" ? false : true;
+    passwordValidator() {
+      console.log(
+        !this.validPasswordRules
+          .map(validator => validator.regex.test(this.passwordInput))
+          .includes(false)
+      );
+      return !this.validPasswordRules
+        .map(validator => validator.regex.test(this.passwordInput))
+        .includes(false);
     },
-    setInputStatus() {
+    showEmailError() {
+      return this.setEmailInputStatus === "danger" ? true : false;
+    },
+    setEmailInputStatus() {
       if (this.emailWasFocused) {
         return this.emailValidator ? "success" : "danger";
       } else {
         return "";
       }
+    },
+    setPasswordInputStatus() {
+      if (this.passwordWasFocused) {
+        return this.passwordValidator ? "success" : "danger";
+      } else {
+        return "";
+      }
+    },
+    listOfPasswordErrors() {
+      var list = [];
+      this.validPasswordRules.forEach(element => {
+        if (!element.regex.test(this.passwordInput)) {
+          list.push(element.message);
+        }
+      });
+      return list;
     }
   },
   methods: {}
@@ -113,7 +170,7 @@ export default {
     }
     .form {
       width: 100%;
-      margin: 0 auto;
+      margin: 5rem auto;
       .header {
         font-size: 44px;
         text-align: center;
@@ -137,6 +194,8 @@ export default {
       }
       .checkbox {
         margin-bottom: 20px;
+        font-weight: 600;
+        font-size: 16px;
       }
       .form-button {
         width: 100%;
