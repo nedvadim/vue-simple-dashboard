@@ -27,6 +27,8 @@ import SmartTable from "./components/side-menu/tables-and-data-folder/SmartTable
 import TreeGrid from "./components/side-menu/tables-and-data-folder/TreeGrid/TreeGrid.vue";
 // Auth
 import Login from "./components/auth-folder/Login/Login.vue";
+import ForgotPassword from "./components/auth-folder/ForgotPassword/ForgotPassword.vue";
+
 import Dashboard from "./components/DashboardMain.vue";
 export const routes = [
   {
@@ -65,5 +67,6 @@ export const routes = [
     ]
   },
   // Auth =====================================================
-  { path: "/auth/login", component: Login }
+  { path: "/auth/login", component: Login },
+  { path: "/auth/forgot-password", component: ForgotPassword }
 ];

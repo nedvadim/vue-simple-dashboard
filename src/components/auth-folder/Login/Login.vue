@@ -26,7 +26,10 @@
           </label>
           <label class="password-label">
             Your Password:
-            <a href="#" class="forgot-label" :style="'float: right'">forgot password</a>
+            <router-link :to="'/auth/forgot-password'" tag="a">
+              <a class="forgot-label" :style="'float: right'">Forgot Password</a>
+            </router-link>
+
             <my-inp
               class="input"
               :inputPlaceholder="'Password'"
@@ -197,7 +200,7 @@ export default {
         margin-top: 5px;
       }
       .checkbox {
-        margin-bottom: 20px;
+        margin: 20px 0;
         font-weight: 600;
         font-size: 16px;
       }

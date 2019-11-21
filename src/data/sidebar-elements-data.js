@@ -49,7 +49,14 @@ export default [
   {
     id: 6,
     elementsHeader: "Auth",
-    pages: [{ id: 1, componentName: "Login", linkToComponent: "/auth/login" }]
+    pages: [
+      { id: 1, componentName: "Login", linkToComponent: "/auth/login" },
+      {
+        id: 1,
+        componentName: "Password Request",
+        linkToComponent: "/auth/forgot-password"
+      }
+    ]
   },
   {
     id: 7,

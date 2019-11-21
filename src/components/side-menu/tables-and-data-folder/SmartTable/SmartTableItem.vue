@@ -16,6 +16,7 @@
         <td v-for="(nameField, index) in fields" :key="index">
           <my-inp
             :inputPlaceholder="nameField.title"
+            :inputValue="searchObject[nameField.keyName]"
             @input.native="search($event, nameField.keyName)"
             v-model="searchObject[nameField.keyName]"
           ></my-inp>
