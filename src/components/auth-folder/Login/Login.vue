@@ -14,15 +14,16 @@
             <my-inp
               class="input"
               :inputPlaceholder="'E-Mail'"
-              :status="!isValidEmail ? 'danger' : 'success'"
+              :status="setInputStatus"
+              :inputValue="emailInput"
               v-model="emailInput"
-              :value="emailInput"
+              @focus="emailWasFocused = true"
             ></my-inp>
-            <p>{{ emailInput }}</p>
+            <p class="error" v-show="!showEmailError">Invalid e-mail</p>
           </label>
           <label class="password-label">
             Your Password:
-            <my-inp class="input" :inputPlaceholder="'Password'"></my-inp>
+            <my-inp class="input" :inputPlaceholder="'Password'" :inputType="'password'"></my-inp>
           </label>
           <check-box class="checkbox" :data="checkbox"></check-box>
           <my-btn class="form-button" type="disabled">Login</my-btn>
@@ -61,23 +62,28 @@ export default {
         value: "remember",
         checked: false
       },
-      emailInput: ""
+      emailInput: "",
+      emailWasFocused: false
     };
   },
   mounted: function() {},
   computed: {
-    isValidEmail() {
-      console.log(this.emailInput);
-      return /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(
-        this.emailInput
-      );
+    emailValidator() {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(this.emailInput);
+    },
+    showEmailError() {
+      return this.setInputStatus === "danger" ? false : true;
+    },
+    setInputStatus() {
+      if (this.emailWasFocused) {
+        return this.emailValidator ? "success" : "danger";
+      } else {
+        return "";
+      }
     }
   },
-  methods: {
-    log(value) {
-      console.log("isValidEmail " + value);
-    }
-  }
+  methods: {}
 };
 </script>
 <style lang="scss" scoped>
@@ -126,7 +132,7 @@ export default {
         font-weight: 700;
       }
       .input {
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         margin-top: 5px;
       }
       .checkbox {
@@ -150,5 +156,10 @@ export default {
       }
     }
   }
+}
+.error {
+  font-size: 14px;
+  font-weight: 400;
+  color: $danger-color;
 }
 </style>

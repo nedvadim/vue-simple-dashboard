@@ -10,8 +10,7 @@
       :disabled="disabled"
       :id="inputId"
       ref="customInput"
-      @input="updateValue()"
-      @keydown.enter="clearInput"
+      v-on="inputListeners"
     />
     <textarea
       v-else
@@ -19,6 +18,7 @@
       :placeholder="inputPlaceholder"
       :class="[shape, size]"
       :disabled="disabled"
+      v-on="inputListeners"
     ></textarea>
   </div>
 </template>
@@ -62,6 +62,17 @@ export default {
   },
   data() {
     return {};
+  },
+  mounted: function() {},
+  computed: {
+    inputListeners: function() {
+      var vm = this;
+      return Object.assign({}, this.$listeners, {
+        input: function(event) {
+          vm.$emit("input", event.target.value);
+        }
+      });
+    }
   }
 };
 </script>
@@ -118,9 +129,9 @@ input[type="text"]:disabled {
   }
 }
 .success {
-  border: 1px solid #08ee00;
+  border: 1px solid $success-color;
   &:hover {
-    border: 1px solid #059400;
+    border: 1px solid $success-color / 1.3;
   }
 }
 .warning {
@@ -130,9 +141,9 @@ input[type="text"]:disabled {
   }
 }
 .danger {
-  border: 1px solid #ff0000;
+  border: 1px solid $danger-color;
   &:hover {
-    border: 1px solid #a30000;
+    border: 1px solid $danger-color / 1.3;
   }
 }
 .primary {
