@@ -7,8 +7,21 @@
       <div class="my-row">
         <div class="c-md-4 c-1"></div>
         <div class="c-md-4 c-10 form">
-          <p class="header">Login</p>
-          <p class="small-text">Please, log in with your email.</p>
+          <p class="header">Register</p>
+          <label class="name-label">
+            Full name:
+            <my-inp
+              class="input"
+              :inputPlaceholder="'Full name'"
+              :status="setEmailInputStatus"
+              :inputValue="emailInput"
+              v-model="emailInput"
+              @focus="emailWasFocused = true"
+            ></my-inp>
+            <p class="error" v-show="showEmailError">
+              <font-awesome-icon icon="exclamation-circle"></font-awesome-icon>Your name should be 3-20 characters long
+            </p>
+          </label>
 
           <label class="email-label">
             Your E-Mail:
@@ -26,10 +39,6 @@
           </label>
           <label class="password-label">
             Your Password:
-            <router-link :to="'/auth/forgot-password'" tag="a">
-              <a class="forgot-label" :style="'float: right'">Forgot Password</a>
-            </router-link>
-
             <my-inp
               class="input"
               :inputPlaceholder="'Password'"
@@ -46,6 +55,19 @@
               </p>
             </div>
           </label>
+
+          <label class="repeat-password-label">
+            Repeat password:
+            <my-inp
+              class="input"
+              :inputPlaceholder="'Confirm password'"
+              :inputType="'password'"
+              :inputValue="passwordInput"
+              :status="setPasswordInputStatus"
+              v-model="passwordInput"
+              @focus="passwordWasFocused = true"
+            ></my-inp>
+          </label>
           <check-box class="checkbox" :data="checkbox"></check-box>
           <my-btn
             class="form-button"
@@ -58,9 +80,9 @@
             <font-awesome-icon class="icon" :icon="['fab', 'facebook']" />
           </div>
           <p class="small-text">
-            Don't have an account?
-            <router-link to="/auth/register" tag="a">
-              <a class="register-link">Register</a>
+            Already have an account?
+            <router-link :to="'/auth/login'">
+              <a>Log in</a>
             </router-link>
           </p>
         </div>
@@ -85,7 +107,7 @@ export default {
     return {
       checkbox: {
         id: 1,
-        name: "Remember me",
+        name: "Agree to Terms & Conditions",
         value: "remember",
         checked: false
       },
@@ -174,7 +196,7 @@ export default {
     }
     .form {
       width: 100%;
-      margin: 5rem auto;
+      margin: 0 auto;
       .header {
         font-size: 44px;
         text-align: center;
@@ -192,7 +214,8 @@ export default {
       }
       .email-label,
       .password-label,
-      .forgot-label {
+      .name-label,
+      .repeat-password-label {
         font-size: 12px;
         color: #96a7be;
         font-weight: 700;

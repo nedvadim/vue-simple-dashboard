@@ -28,6 +28,7 @@ import TreeGrid from "./components/side-menu/tables-and-data-folder/TreeGrid/Tre
 // Auth
 import Login from "./components/auth-folder/Login/Login.vue";
 import ForgotPassword from "./components/auth-folder/ForgotPassword/ForgotPassword.vue";
+import Register from "./components/auth-folder/Register/Register.vue";
 
 import Dashboard from "./components/DashboardMain.vue";
 export const routes = [
@@ -68,5 +69,6 @@ export const routes = [
   },
   // Auth =====================================================
   { path: "/auth/login", component: Login },
-  { path: "/auth/forgot-password", component: ForgotPassword }
+  { path: "/auth/forgot-password", component: ForgotPassword },
+  { path: "/auth/register", component: Register }
 ];

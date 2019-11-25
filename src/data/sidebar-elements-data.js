@@ -52,9 +52,14 @@ export default [
     pages: [
       { id: 1, componentName: "Login", linkToComponent: "/auth/login" },
       {
-        id: 1,
+        id: 2,
         componentName: "Password Request",
         linkToComponent: "/auth/forgot-password"
+      },
+      {
+        id: 3,
+        componentName: "Register",
+        linkToComponent: "/auth/register"
       }
     ]
   },

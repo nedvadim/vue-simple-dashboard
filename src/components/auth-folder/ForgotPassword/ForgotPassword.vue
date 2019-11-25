@@ -31,10 +31,10 @@
             :type="emailValidator ? 'primary' : 'disabled' "
           >Request password</my-btn>
           <div class="nav-links">
-            <router-link class="navs" :to="'/auth/login'" tag="a">
+            <router-link class="nav1" :to="'/auth/login'" tag="a">
               <a>Back to Log In</a>
             </router-link>
-            <router-link class="navs" :to="'/auth/login'" tag="a">
+            <router-link class="nav2" :to="'/auth/login'" tag="a">
               <a>Register</a>
             </router-link>
           </div>
@@ -138,10 +138,13 @@ export default {
         margin: 20px 0;
       }
       .nav-links {
-        display: flex;
-        .navs {
-          router-link {
-          }
+        width: 200px;
+        margin: 0 auto;
+        .nav1 {
+          margin-right: 46px;
+        }
+        .nav1,
+        .nav2 {
           a {
             font-size: 14px;
             color: #96a7be;
