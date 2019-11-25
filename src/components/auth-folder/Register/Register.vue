@@ -8,17 +8,18 @@
         <div class="c-md-4 c-1"></div>
         <div class="c-md-4 c-10 form">
           <p class="header">Register</p>
+
           <label class="name-label">
             Full name:
             <my-inp
               class="input"
               :inputPlaceholder="'Full name'"
-              :status="setEmailInputStatus"
-              :inputValue="emailInput"
-              v-model="emailInput"
-              @focus="emailWasFocused = true"
+              :status="setNameInputStatus"
+              :inputValue="nameInput"
+              v-model="nameInput"
+              @focus="nameWasFocused = true"
             ></my-inp>
-            <p class="error" v-show="showEmailError">
+            <p class="error" v-show="showNameError">
               <font-awesome-icon icon="exclamation-circle"></font-awesome-icon>Your name should be 3-20 characters long
             </p>
           </label>
@@ -111,8 +112,10 @@ export default {
         value: "remember",
         checked: false
       },
+      nameInput: "",
       emailInput: null,
       passwordInput: "",
+      nameWasFocused: false,
       emailWasFocused: false,
       passwordWasFocused: false,
       validPasswordRules: [
@@ -120,27 +123,44 @@ export default {
         { message: "One uppercase letter required.", regex: /[A-Z]+/ },
         { message: "8 characters minimum.", regex: /.{8,}/ },
         { message: "One number required.", regex: /[0-9]+/ }
+      ],
+      validNameRules: [
+        { message: "3 characters minimum.", regex: /.{3,}/ },
+        { message: "20 characters minimum.", regex: /^[A-Za-zА-Яа-я]{0,5}$/ }
       ]
     };
   },
   mounted: function() {},
   computed: {
+    nameValidator() {
+      return !this.validNameRules
+        .map(validator => validator.regex.test(this.nameInput))
+        .includes(false);
+    },
     emailValidator() {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(this.emailInput);
     },
     passwordValidator() {
-      console.log(
-        !this.validPasswordRules
-          .map(validator => validator.regex.test(this.passwordInput))
-          .includes(false)
-      );
       return !this.validPasswordRules
         .map(validator => validator.regex.test(this.passwordInput))
         .includes(false);
     },
+    // Refactor show methods
     showEmailError() {
       return this.setEmailInputStatus === "danger" ? true : false;
+    },
+    showNameError() {
+      return this.setNameInputStatus === "danger" ? true : false;
+    },
+    // Refactor set methods
+    setNameInputStatus() {
+      if (this.nameWasFocused) {
+        console.log("Name valid result: " + this.nameValidator);
+        return this.nameValidator ? "success" : "danger";
+      } else {
+        return "";
+      }
     },
     setEmailInputStatus() {
       if (this.emailWasFocused) {
