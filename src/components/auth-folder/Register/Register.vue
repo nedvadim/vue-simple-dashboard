@@ -20,7 +20,7 @@
               @focus="nameWasFocused = true"
             ></my-inp>
             <p class="error" v-show="showNameError">
-              <font-awesome-icon icon="exclamation-circle"></font-awesome-icon>Your name should be 3-20 characters long
+              <font-awesome-icon icon="exclamation-circle"></font-awesome-icon>Invalid name value
             </p>
           </label>
 
@@ -49,6 +49,7 @@
               v-model="passwordInput"
               @focus="passwordWasFocused = true"
             ></my-inp>
+            {{passwordInput}}
             <div v-if="passwordWasFocused" class="password-errors-block">
               <p class="error" v-for="error in listOfPasswordErrors" :key="error">
                 <font-awesome-icon icon="exclamation-circle"></font-awesome-icon>
@@ -63,16 +64,17 @@
               class="input"
               :inputPlaceholder="'Confirm password'"
               :inputType="'password'"
-              :inputValue="passwordInput"
-              :status="setPasswordInputStatus"
-              v-model="passwordInput"
-              @focus="passwordWasFocused = true"
+              :inputValue="passwordRepeat"
+              :status="setRepeatPasswordInputStatus"
+              v-model="passwordRepeat"
+              @focus="passwordRepeatWasFocused = true"
             ></my-inp>
+            {{passwordRepeat}}
           </label>
           <check-box class="checkbox" :data="checkbox"></check-box>
           <my-btn
             class="form-button"
-            :type="(passwordValidator&&emailValidator) ? 'primary' : 'disabled' "
+            :type="(passwordValidator&&emailValidator&&nameValidator&&repeatedPasswordValidator) ? 'primary' : 'disabled' "
           >Login</my-btn>
           <p class="small-text" :style="'text-align: center'">or enter with:</p>
           <div class="icon-group">
@@ -115,27 +117,24 @@ export default {
       nameInput: "",
       emailInput: null,
       passwordInput: "",
+      passwordRepeat: null,
       nameWasFocused: false,
       emailWasFocused: false,
       passwordWasFocused: false,
+      passwordRepeatWasFocused: false,
       validPasswordRules: [
         { message: "One lowercase letter required.", regex: /[a-z]+/ },
         { message: "One uppercase letter required.", regex: /[A-Z]+/ },
         { message: "8 characters minimum.", regex: /.{8,}/ },
         { message: "One number required.", regex: /[0-9]+/ }
-      ],
-      validNameRules: [
-        { message: "3 characters minimum.", regex: /.{3,}/ },
-        { message: "20 characters minimum.", regex: /^[A-Za-zА-Яа-я]{0,5}$/ }
       ]
     };
   },
   mounted: function() {},
   computed: {
     nameValidator() {
-      return !this.validNameRules
-        .map(validator => validator.regex.test(this.nameInput))
-        .includes(false);
+      var re = /^([a-zA-Z0-9]+|[a-zA-Z0-9]+\s{1,15}[a-zA-Z0-9]{1,15}|[a-zA-Z0-9]+\s{1,15}[a-zA-Z0-9]{1,15}\s{1,15}[a-zA-Z0-9]{3,})$/;
+      return re.test(this.nameInput);
     },
     emailValidator() {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -145,6 +144,11 @@ export default {
       return !this.validPasswordRules
         .map(validator => validator.regex.test(this.passwordInput))
         .includes(false);
+    },
+    repeatedPasswordValidator() {
+      return this.passwordInput.localeCompare(this.passwordRepeat) === 0
+        ? true
+        : false;
     },
     // Refactor show methods
     showEmailError() {
@@ -172,6 +176,13 @@ export default {
     setPasswordInputStatus() {
       if (this.passwordWasFocused) {
         return this.passwordValidator ? "success" : "danger";
+      } else {
+        return "";
+      }
+    },
+    setRepeatPasswordInputStatus() {
+      if (this.passwordWasFocused) {
+        return this.repeatedPasswordValidator ? "success" : "danger";
       } else {
         return "";
       }
