@@ -14,12 +14,12 @@
             <my-inp
               class="input"
               :inputPlaceholder="'Full name'"
-              :status="setNameInputStatus"
+              :status="nameWasFocused ? (nameValidator ? 'success' : 'danger') : ''"
               :inputValue="nameInput"
               v-model="nameInput"
               @focus="nameWasFocused = true"
             ></my-inp>
-            <p class="error" v-show="showNameError">
+            <p class="error" v-show="nameWasFocused ? (!nameValidator ? true : false) : false">
               <font-awesome-icon icon="exclamation-circle"></font-awesome-icon>Invalid name value
             </p>
           </label>
@@ -29,15 +29,16 @@
             <my-inp
               class="input"
               :inputPlaceholder="'E-Mail'"
-              :status="setEmailInputStatus"
+              :status="emailWasFocused ? (emailValidator ? 'success' : 'danger') : ''"
               :inputValue="emailInput"
               v-model="emailInput"
               @focus="emailWasFocused = true"
             ></my-inp>
-            <p class="error" v-show="showEmailError">
+            <p class="error" v-show="emailWasFocused ? (!emailValidator ? true : false) : false">
               <font-awesome-icon icon="exclamation-circle"></font-awesome-icon>Invalid e-mail
             </p>
           </label>
+
           <label class="password-label">
             Your Password:
             <my-inp
@@ -45,7 +46,7 @@
               :inputPlaceholder="'Password'"
               :inputType="'password'"
               :inputValue="passwordInput"
-              :status="setPasswordInputStatus"
+              :status="passwordWasFocused ? (passwordValidator ? 'success' : 'danger') : ''"
               v-model="passwordInput"
               @focus="passwordWasFocused = true"
             ></my-inp>
@@ -65,17 +66,20 @@
               :inputPlaceholder="'Confirm password'"
               :inputType="'password'"
               :inputValue="passwordRepeat"
-              :status="setRepeatPasswordInputStatus"
+              :status="passwordRepeatWasFocused ? (repeatedPasswordValidator ? 'success' : 'danger') : ''"
               v-model="passwordRepeat"
               @focus="passwordRepeatWasFocused = true"
             ></my-inp>
             {{passwordRepeat}}
           </label>
+
           <check-box class="checkbox" :data="checkbox"></check-box>
+
           <my-btn
             class="form-button"
             :type="(passwordValidator&&emailValidator&&nameValidator&&repeatedPasswordValidator) ? 'primary' : 'disabled' "
           >Login</my-btn>
+
           <p class="small-text" :style="'text-align: center'">or enter with:</p>
           <div class="icon-group">
             <font-awesome-icon class="icon" :icon="['fab', 'github']" />
@@ -118,6 +122,7 @@ export default {
       emailInput: null,
       passwordInput: "",
       passwordRepeat: null,
+      checkboxStatus: false,
       nameWasFocused: false,
       emailWasFocused: false,
       passwordWasFocused: false,
@@ -130,7 +135,6 @@ export default {
       ]
     };
   },
-  mounted: function() {},
   computed: {
     nameValidator() {
       var re = /^([a-zA-Z0-9]+|[a-zA-Z0-9]+\s{1,15}[a-zA-Z0-9]{1,15}|[a-zA-Z0-9]+\s{1,15}[a-zA-Z0-9]{1,15}\s{1,15}[a-zA-Z0-9]{3,})$/;
@@ -150,43 +154,36 @@ export default {
         ? true
         : false;
     },
-    // Refactor show methods
-    showEmailError() {
-      return this.setEmailInputStatus === "danger" ? true : false;
-    },
-    showNameError() {
-      return this.setNameInputStatus === "danger" ? true : false;
-    },
-    // Refactor set methods
-    setNameInputStatus() {
-      if (this.nameWasFocused) {
-        console.log("Name valid result: " + this.nameValidator);
-        return this.nameValidator ? "success" : "danger";
-      } else {
-        return "";
-      }
-    },
-    setEmailInputStatus() {
-      if (this.emailWasFocused) {
-        return this.emailValidator ? "success" : "danger";
-      } else {
-        return "";
-      }
-    },
-    setPasswordInputStatus() {
-      if (this.passwordWasFocused) {
-        return this.passwordValidator ? "success" : "danger";
-      } else {
-        return "";
-      }
-    },
-    setRepeatPasswordInputStatus() {
-      if (this.passwordWasFocused) {
-        return this.repeatedPasswordValidator ? "success" : "danger";
-      } else {
-        return "";
-      }
-    },
+    // Refactor get methods
+    // getNameInputStatus() {
+    //   if (this.nameWasFocused) {
+    //     console.log("Name valid result: " + this.nameValidator);
+    //     return this.nameValidator ? "success" : "danger";
+    //   } else {
+    //     return "";
+    //   }
+    // },
+    // getEmailInputStatus() {
+    //   if (this.emailWasFocused) {
+    //     return this.emailValidator ? "success" : "danger";
+    //   } else {
+    //     return "";
+    //   }
+    // },
+    // getPasswordInputStatus() {
+    //   if (this.passwordWasFocused) {
+    //     return this.passwordValidator ? "success" : "danger";
+    //   } else {
+    //     return "";
+    //   }
+    // },
+    // getRepeatPasswordInputStatus() {
+    //   if (this.passwordRepeatWasFocused) {
+    //     return this.repeatedPasswordValidator ? "success" : "danger";
+    //   } else {
+    //     return "";
+    //   }
+    // },
     listOfPasswordErrors() {
       var list = [];
       this.validPasswordRules.forEach(element => {
