@@ -66,7 +66,7 @@
           <span v-if="!editModes[index]">{{row[field.keyName]}}</span>
           <my-inp
             v-if="editModes[index]"
-            :inputValue="row[field.keyName].toString()"
+            :inputValue="editedRows[index][field.keyName].toString()"
             size="small"
             :inputPlaceholder="row[field.keyName].toString()"
             v-model="editedRows[index][field.keyName]"
@@ -74,6 +74,7 @@
         </td>
       </tr>
     </table>
+    <button @click="showEditRow()">РЕШИТЬ ВОПРОСИК</button>
   </div>
 </template>
 <script>
@@ -106,6 +107,9 @@ export default {
     myInp
   },
   methods: {
+    showEditRow() {
+      console.log(this.editedRows);
+    },
     rerenderTable() {
       var table = this.tableContent;
       this.tableContent = [];

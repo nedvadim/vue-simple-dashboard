@@ -38,8 +38,9 @@
           <div class="my-row withoutVisualFocus" tabindex="0" @keydown.esc.self="escapeDialog">
             <app-inp
               :inputPlaceholder="dialogInputPlaceholder"
+              :inputValue="inputValueData"
               class="c-12 input"
-              v-model="inputValue"
+              v-model="inputValueData"
               @keyup.enter.native="sendResult()"
               @keyup.esc.native="closeDialogWithButton()"
             ></app-inp>
@@ -67,7 +68,7 @@ import Vue from "vue";
 export default {
   data() {
     return {
-      inputValue: ""
+      inputValueData: ""
     };
   },
   components: {
@@ -140,9 +141,9 @@ export default {
       }
     },
     sendResult() {
-      var word = this.inputValue;
+      var word = this.inputValueData;
       this.$emit("send-result", word);
-      this.inputValue = "";
+      this.inputValueData = "";
     },
     setFocus(id) {
       Vue.nextTick(function() {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <input
-      v-if="inputType !== 'textarea'"
+      v-if="inputType !== `textarea`"
       :type="inputType"
       class="app-input"
       :class="[shape, size, status]"
@@ -10,16 +10,15 @@
       :disabled="disabled"
       :id="inputId"
       ref="customInput"
-      v-on="inputListeners"
+      v-on="listeners"
     />
-    <textarea
+    <!-- <textarea
       v-else
       class="app-input app-textarea"
       :placeholder="inputPlaceholder"
       :class="[shape, size]"
       :disabled="disabled"
-      v-on="inputListeners"
-    ></textarea>
+    ></textarea>-->
   </div>
 </template>
 
@@ -63,15 +62,12 @@ export default {
   data() {
     return {};
   },
-  mounted: function() {},
   computed: {
-    inputListeners: function() {
-      var vm = this;
-      return Object.assign({}, this.$listeners, {
-        input: function(event) {
-          vm.$emit("input", event.target.value);
-        }
-      });
+    listeners() {
+      return {
+        ...this.$listeners,
+        input: () => this.$emit("input", event.target.value)
+      };
     }
   }
 };
@@ -79,8 +75,6 @@ export default {
 
 <style lang="scss" scoped>
 .app-input {
-  //display: block;
-  //margin-top: 20px;
   width: 100%;
   padding: 8px 12px;
   border-radius: 5px;
