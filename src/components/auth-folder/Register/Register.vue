@@ -154,36 +154,6 @@ export default {
         ? true
         : false;
     },
-    // Refactor get methods
-    // getNameInputStatus() {
-    //   if (this.nameWasFocused) {
-    //     console.log("Name valid result: " + this.nameValidator);
-    //     return this.nameValidator ? "success" : "danger";
-    //   } else {
-    //     return "";
-    //   }
-    // },
-    // getEmailInputStatus() {
-    //   if (this.emailWasFocused) {
-    //     return this.emailValidator ? "success" : "danger";
-    //   } else {
-    //     return "";
-    //   }
-    // },
-    // getPasswordInputStatus() {
-    //   if (this.passwordWasFocused) {
-    //     return this.passwordValidator ? "success" : "danger";
-    //   } else {
-    //     return "";
-    //   }
-    // },
-    // getRepeatPasswordInputStatus() {
-    //   if (this.passwordRepeatWasFocused) {
-    //     return this.repeatedPasswordValidator ? "success" : "danger";
-    //   } else {
-    //     return "";
-    //   }
-    // },
     listOfPasswordErrors() {
       var list = [];
       this.validPasswordRules.forEach(element => {
@@ -193,8 +163,7 @@ export default {
       });
       return list;
     }
-  },
-  methods: {}
+  }
 };
 </script>
 <style lang="scss" scoped>
