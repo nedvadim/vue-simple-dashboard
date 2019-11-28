@@ -6,13 +6,13 @@
         <td v-for="(nameField, index) in fields" :key="index">{{nameField.title}}</td>
       </tr>
 
+      <!-- SEARCH SECTION -->
       <tr class="searchControls">
         <td>
           <my-btn class="addButton" type="info" @click.native="showAddPanel = !showAddPanel">
             <font-awesome-icon icon="plus"></font-awesome-icon>
           </my-btn>
         </td>
-
         <td v-for="(nameField, index) in fields" :key="index">
           <my-inp
             :inputPlaceholder="nameField.title"
@@ -22,7 +22,7 @@
           ></my-inp>
         </td>
       </tr>
-
+      <!-- ADD SECTION -->
       <tr v-if="showAddPanel" class="addRowControls">
         <td>
           <my-btn :outline="true" type="success" class="add" @click.native="addRow">
@@ -42,19 +42,28 @@
           <p>{{addedRow[nameField.keyName]}}</p>
         </td>
       </tr>
-
+      <!--  DATA & EDIT SECTION -->
       <tr v-for="(row, index) in tableContent" :key="row.index" :class="{darkerRow: (index%2==0)}">
         <td>
-          <span class="editAndDelete" v-if="!editModes[index]">
-            <div class="edit" @click="turnOnEditMode(index)">
+          <span class="editAndDelete" v-if="!editModes[content.findIndex(el => el.id === row.id)]">
+            <div
+              class="edit"
+              @click="turnOnEditMode(content.findIndex(el => el.id === row.id), row)"
+            >
               <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
             </div>
             <div class="delete" @click="deleteRow(row.id)">
               <font-awesome-icon icon="trash-alt"></font-awesome-icon>
             </div>
           </span>
-          <span class="acceptAndCancelButtons" v-if="editModes[index]">
-            <div class="acceptEditBtn" @click="acceptEdit(index)">
+          <span
+            class="acceptAndCancelButtons"
+            v-if="editModes[content.findIndex(el => el.id === row.id)]"
+          >
+            <div
+              class="acceptEditBtn"
+              @click="acceptEdit(editedRows[content.findIndex(el => el.id === row.id)], content.findIndex(el => el.id === row.id))"
+            >
               <font-awesome-icon icon="check"></font-awesome-icon>
             </div>
             <div class="cancelEditBtn" @click="turnOffEditMode(index)">
@@ -63,18 +72,18 @@
           </span>
         </td>
         <td v-for="(field, indexCell) in fields" :key="indexCell">
-          <span v-if="!editModes[index]">{{row[field.keyName]}}</span>
+          <!-- Table data renders in that span -->
+          <span v-if="!editModes[content.findIndex(el => el.id === row.id)]">{{row[field.keyName]}}</span>
           <my-inp
-            v-if="editModes[index]"
-            :inputValue="editedRows[index][field.keyName].toString()"
+            v-if="editModes[content.findIndex(el => el.id === row.id)]"
+            :inputValue="editedRows[content.findIndex(el => el.id === row.id)][field.keyName].toString()"
             size="small"
             :inputPlaceholder="row[field.keyName].toString()"
-            v-model="editedRows[index][field.keyName]"
+            v-model="editedRows[content.findIndex(el => el.id === row.id)][field.keyName]"
           ></my-inp>
         </td>
       </tr>
     </table>
-    <button @click="showEditRow()">РЕШИТЬ ВОПРОСИК</button>
   </div>
 </template>
 <script>
@@ -115,16 +124,29 @@ export default {
       this.tableContent = [];
       this.tableContent = table;
     },
-    acceptEdit(index) {
-      this.$emit("editTableRow", this.editedRows[index], index);
-      this.turnOffEditMode(index);
+    acceptEdit(row, index) {
+      this.turnOffEditMode(index, row);
+      this.$emit("editTableRow", row, index);
+      this.search();
     },
-    turnOnEditMode(index) {
-      this.editModes[index] = true;
+
+    turnOnEditMode(index, row) {
+      console.log("turn on: " + this.content.findIndex(el => el.id === row.id));
+      var find = this.content.findIndex(el => el.id === row.id);
+      this.editModes[find] = true;
       this.rerenderTable();
     },
-    turnOffEditMode(index) {
+
+    turnOffEditMode(index, row) {
+      // change as in turn on func
+      console.log("in turn off");
+      console.log(row);
+      console.log("index: " + index);
+
+      console.log("this.editModes: " + this.editModes);
       this.editModes[index] = false;
+
+      console.log("this.editModes: " + this.editModes);
       this.rerenderTable();
     },
     deleteRow(value) {
@@ -147,7 +169,6 @@ export default {
       return empty;
     },
     addRow() {
-      console.log(this.addedRow);
       for (var field in Object.values(this.addedRow)) {
         if (Object.values(this.addedRow)[field] === "") {
           alert("Fill all cells in the row, please");
@@ -198,7 +219,6 @@ export default {
 
       if (tempTableContent.length > 0) {
         this.tableContent = tempTableContent;
-        //tempTableContent = [];
       } else {
         this.tableContent = [];
       }
