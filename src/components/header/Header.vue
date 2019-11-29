@@ -1,5 +1,6 @@
 <template>
   <div class="header">
+    <div class="hamburger" @click="toggleHamburger"></div>
     <router-link to="/" tag="h1" class="logo">
       <span>V</span>ue
       <span>D</span>ashboard
@@ -9,10 +10,22 @@
 
 <script>
 export default {
+  props: {
+    hamburgerOn: {
+      type: Boolean,
+      required: true
+    }
+  },
   data() {
     return {
       a: 10
     };
+  },
+  methods: {
+    toggleHamburger(event) {
+      console.log("in emit");
+      this.$emit("toggleham");
+    }
   }
 };
 </script>
@@ -33,6 +46,18 @@ export default {
     cursor: pointer;
     span {
       color: #f7f7f7;
+    }
+  }
+  .hamburger {
+    width: 20px;
+    height: 20px;
+    border: 1px solid white;
+    display: block;
+  }
+
+  @media only screen and (min-width: 960px) {
+    .hamburger {
+      display: none;
     }
   }
 }

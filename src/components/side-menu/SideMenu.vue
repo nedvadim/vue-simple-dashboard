@@ -30,9 +30,22 @@ export default {
   left: 0;
   top: 7vh;
   background: rgb(245, 245, 245);
-  height: 93vh;
-  width: 150px;
+  height: auto;
+  width: 100%;
   box-shadow: 2px 1px 7px -5px #000;
   z-index: 10; /* ? */
+}
+
+@media only screen and (min-width: 960px) {
+  .sidebar-container {
+    position: fixed;
+    left: 0;
+    top: 7vh;
+    background: rgb(245, 245, 245);
+    height: 93vh;
+    width: 150px;
+    box-shadow: 2px 1px 7px -5px #000;
+    z-index: 10; /* ? */
+  }
 }
 </style>

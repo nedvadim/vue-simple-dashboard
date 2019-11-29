@@ -1,8 +1,11 @@
 <template>
   <div class="app-bg">
-    <app-header></app-header>
+    <app-header :hamburgerOn="hamburgerOn" @toggleham="toggleHamburger"></app-header>
+    <transition name="slide" mode="out-in">
+      <app-side-menu class="menu-for-mobile" v-if="hamburgerOn"></app-side-menu>
+    </transition>
     <div class="page-content">
-      <app-side-menu></app-side-menu>
+      <app-side-menu class="menu-for-desktop" v-if="!hamburgerOn"></app-side-menu>
       <div class="my-container">
         <div class="my-row">
           <transition name="slide" mode="out-in">
@@ -19,6 +22,11 @@
 import SideMenu from "./side-menu/SideMenu.vue";
 import Header from "./header/Header.vue";
 export default {
+  data() {
+    return {
+      hamburgerOn: false
+    };
+  },
   components: {
     appSideMenu: SideMenu,
     appHeader: Header
@@ -27,6 +35,12 @@ export default {
   created() {
     this.$store.dispatch("initSideBarContent");
     this.$store.dispatch("initListTwoContent");
+  },
+  methods: {
+    toggleHamburger() {
+      console.log("in catch");
+      this.hamburgerOn = !this.hamburgerOn;
+    }
   }
 };
 </script>
@@ -42,7 +56,7 @@ $top-margin: 1.5em;
 }
 .page-content {
   display: flex;
-  padding: 0 10px 0 165px;
+  padding: 0 10px 0 10px;
   padding-top: 7vh;
 }
 .app-bg {
@@ -58,7 +72,12 @@ $top-margin: 1.5em;
 .slide-leave-active {
   animation: slide-out 100ms ease-out forwards;
 }
-
+.menu-for-desktop {
+  display: none;
+}
+.menu-for-mobile {
+  display: block;
+}
 @keyframes slide-in {
   from {
     transform: translateY(-10px);
@@ -67,6 +86,17 @@ $top-margin: 1.5em;
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .page-content {
+    display: flex;
+    padding: 0 10px 0 165px;
+    padding-top: 7vh;
+  }
+  .menu-for-desktop {
+    display: block;
   }
 }
 // #0072ff
