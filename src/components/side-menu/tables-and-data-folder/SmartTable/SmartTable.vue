@@ -20,6 +20,188 @@ export default {
   },
   data() {
     return {
+      testFields: {
+        one: [
+          { title: "ID", keyName: "id" },
+          { title: "Name", keyName: "name" },
+          { title: "Nickname", keyName: "nickname" }
+        ],
+        two: [
+          { title: "ID", keyName: "id" },
+          { title: "First Name", keyName: "firstName" },
+          { title: "Last Name", keyName: "lastName" },
+          { title: "Username", keyName: "username" },
+          { title: "E-Mail", keyName: "email" },
+          { title: "Age", keyName: "age" }
+        ],
+        three: [
+          { title: "ID", keyName: "id" },
+          { title: "Make", keyName: "make" },
+          { title: "Model", keyName: "model" },
+          { title: "Year", keyName: "year" },
+          { title: "Mileage", keyName: "mileage" },
+          { title: "Body Type", keyName: "bodyType" },
+          { title: "Price", keyName: "price" }
+        ]
+      },
+      testContent: {
+        one: [
+          {
+            id: 228,
+            name: "Vasya",
+            nickname: "dotaNakat"
+          },
+          {
+            id: 100500,
+            name: "Ruslan",
+            nickname: "rusak"
+          },
+          {
+            id: 888,
+            name: "Jora",
+            nickname: "joraaa"
+          }
+        ],
+        two: [
+          {
+            id: 1,
+            firstName: "Jack",
+            lastName: "Knox",
+            username: "superDUDE",
+            email: "knox@mail.com",
+            age: 34
+          },
+          {
+            id: 2,
+            firstName: "Nancy",
+            lastName: "Liverpool",
+            username: "superGIRL",
+            email: "lpool@gmail.com",
+            age: 23
+          },
+          {
+            id: 3,
+            firstName: "Frank",
+            lastName: "Jackson",
+            username: "rock229",
+            email: "jackie@yahoo.com",
+            age: 40
+          },
+          {
+            id: 4,
+            firstName: "Mason",
+            lastName: "Vonleh",
+            username: "beattle2000",
+            email: "mas@gmail.com",
+            age: 19
+          },
+          {
+            id: 5,
+            firstName: "Harry",
+            lastName: "Potter",
+            username: "TheChosenOne",
+            email: "f-ckSlitherin@gmail.com",
+            age: 18
+          },
+          {
+            id: 6,
+            firstName: "Frank",
+            lastName: "Wilson",
+            username: "will",
+            email: "fw@yahoo.com",
+            age: 25
+          },
+          {
+            id: 7,
+            firstName: "Wesley",
+            lastName: "Knox",
+            username: "wk37",
+            email: "wes@yahoo.com",
+            age: 37
+          },
+          {
+            id: 8,
+            firstName: "Hannah",
+            lastName: "Harold",
+            username: "annie",
+            email: "hannahh@gmail.com",
+            age: 29
+          },
+          {
+            id: 9,
+            firstName: "Jack",
+            lastName: "Kniev",
+            username: "knievJK",
+            email: "jackcoolman@gmail.com",
+            age: 19
+          }
+        ],
+        three: [
+          {
+            id: 1,
+            make: "Toyota",
+            model: "Prius",
+            year: 2009,
+            mileage: 89443,
+            bodyType: "hatch",
+            price: 6900
+          },
+          {
+            id: 2,
+            make: "BMW",
+            model: "320i",
+            year: 2013,
+            mileage: 38122,
+            bodyType: "sedan",
+            price: 13500
+          },
+          {
+            id: 3,
+            make: "Toyota",
+            model: "Corolla",
+            year: 2004,
+            mileage: 478121,
+            bodyType: "sedan",
+            price: 15000
+          },
+          {
+            id: 4,
+            make: "Nissan",
+            model: "X-Trail",
+            year: 2010,
+            mileage: 93765,
+            bodyType: "SUV",
+            price: 7800
+          },
+          {
+            id: 5,
+            make: "Honda",
+            model: "CR-V",
+            year: 2017,
+            mileage: 7200,
+            bodyType: "SUV",
+            price: 13300
+          },
+          {
+            id: 6,
+            make: "Volkswagen",
+            model: "Touareg",
+            year: 2007,
+            mileage: 142032,
+            bodyType: "SUV",
+            price: 9000
+          },
+          {
+            id: 7,
+            make: "Fiat",
+            model: "500",
+            year: 2015,
+            mileage: 24273,
+            bodyType: "hatch",
+            price: 6500
+          }
+        ]
+      },
       tableFields: [
         { title: "ID", keyName: "id" },
         { title: "First Name", keyName: "firstName" },
@@ -28,12 +210,6 @@ export default {
         { title: "E-Mail", keyName: "email" },
         { title: "Age", keyName: "age" }
       ],
-      //testing array
-      // [
-      //   { title: "ID", keyName: "id" },
-      //   { title: "Name", keyName: "name" },
-      //   { title: "Nickname", keyName: "nickname" }
-      // ],
       content: [
         {
           id: 1,
@@ -108,38 +284,9 @@ export default {
           age: 19
         }
       ]
-      // testing array
-      // [
-      //   {
-      //     id: 228,
-      //     name: "Vasya",
-      //     nickname: "dotaNakat"
-      //   },
-      //   {
-      //     id: 100500,
-      //     name: "Ruslan",
-      //     nickname: "rusak"
-      //   },
-      //   {
-      //     id: 888,
-      //     name: "Jora",
-      //     nickname: "joraaa"
-      //   }
-      // ]
     };
   },
   methods: {
-    logAll() {
-      // for testing purposes
-      console.log("|||||||||||||||||||||||||||||||||||||||||");
-      this.lodash.forIn(this.content, (value, key) => {
-        console.log("----------------------------------------");
-        console.log("index: " + this.lodash.indexOf(this.content, value));
-        this.lodash.forIn(value, (value1, key) => {
-          console.log(value1);
-        });
-      });
-    },
     add(row) {
       // TODO FIX ADD (without var)
       this.content.unshift(this.lodash.cloneDeep(row));
