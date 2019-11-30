@@ -1,9 +1,9 @@
 <template>
   <div class="sidebar-container">
-    <app-item v-for="s in sidebarContent" :content="s" :key="s.id"></app-item>
+    <app-item v-for="s in sidebarContent" :content="s" :key="s.id" @closeMenu="closeMenu"></app-item>
   </div>
 </template>
-
+ 
 <script>
 import SideMenuItem from "./SideMenuItem";
 export default {
@@ -13,6 +13,11 @@ export default {
   computed: {
     sidebarContent() {
       return this.$store.getters.sidebarContent;
+    }
+  },
+  methods: {
+    closeMenu(event) {
+      this.$emit("closeSideMenu");
     }
   }
 };

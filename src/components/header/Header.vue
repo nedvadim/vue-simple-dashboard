@@ -23,7 +23,6 @@ export default {
   },
   methods: {
     toggleHamburger(event) {
-      console.log("in emit");
       this.$emit("toggleham");
     }
   }
@@ -31,11 +30,11 @@ export default {
 </script>
 <style lang="scss" scoped>
 .header {
-  position: fixed;
+  position:fixed;                                                       
   top: 0;
   width: 100%;
   height: 7vh;
-  box-shadow: 0px -2px 8px 0px #000000;
+  box-shadow: 0px -2px 8px 0px #000000;                                
   display: flex;
   align-items: center;
   background-color: #000000;
@@ -49,8 +48,9 @@ export default {
     }
   }
   .hamburger {
-    width: 20px;
-    height: 20px;
+    margin-left: 15px;
+    width: 30px;
+    height: 30px;
     border: 1px solid white;
     display: block;
   }

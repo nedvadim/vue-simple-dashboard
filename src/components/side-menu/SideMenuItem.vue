@@ -8,7 +8,7 @@
     <div class="collapse-container">
       <transition name="slide" mode="out-in">
         <ul v-if="show">
-          <div v-for="pages in content.pages" v-bind:key="pages.id">
+          <div v-for="pages in content.pages" v-bind:key="pages.id" @click="closeMenu">
             <router-link :to="pages.linkToComponent" tag="li">
               <a>{{pages.componentName}}</a>
             </router-link>
@@ -28,7 +28,12 @@ export default {
       show: false
     };
   },
-  props: ["content"]
+  props: ["content"],
+  methods: {
+    closeMenu(event) {
+      this.$emit("closeMenu");
+    }
+  }
 };
 </script>
 

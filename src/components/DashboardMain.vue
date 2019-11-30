@@ -2,7 +2,7 @@
   <div class="app-bg">
     <app-header :hamburgerOn="hamburgerOn" @toggleham="toggleHamburger"></app-header>
     <transition name="slide" mode="out-in">
-      <app-side-menu class="menu-for-mobile" v-if="hamburgerOn"></app-side-menu>
+      <app-side-menu class="menu-for-mobile" v-if="hamburgerOn" @closeSideMenu="toggleHamburger"></app-side-menu>
     </transition>
     <div class="page-content">
       <app-side-menu class="menu-for-desktop" v-if="!hamburgerOn"></app-side-menu>
@@ -38,7 +38,6 @@ export default {
   },
   methods: {
     toggleHamburger() {
-      console.log("in catch");
       this.hamburgerOn = !this.hamburgerOn;
     }
   }
