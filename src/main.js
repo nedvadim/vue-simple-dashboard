@@ -6,6 +6,7 @@ import { routes } from "./routes";
 import VueLodash from "vue-lodash";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -15,8 +16,7 @@ import { faSortDown } from "@fortawesome/free-solid-svg-icons";
 import { faFile } from "@fortawesome/free-solid-svg-icons";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
@@ -33,6 +33,7 @@ library.add(faSortDown);
 library.add(faFile);
 library.add(faArrowLeft);
 library.add(faExclamationCircle);
+library.add(faBars);
 
 const options = { name: "lodash" }; // customize the way you want to call it
 Vue.component("font-awesome-icon", FontAwesomeIcon);
