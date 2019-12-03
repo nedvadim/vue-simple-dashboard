@@ -1,12 +1,13 @@
 <template>
   <div>
-    <label class="checkbox-item" :class="[status]">
+    <label class="checkbox-item" :class="[status, {disabledCheckbox: disabled}]">
       {{data.name}}
       <input
         type="checkbox"
         name="data.name"
         value="data.value"
         :checked="data.checked"
+        :disabled="disabled"
         @click="change()"
       />
       <span class="marked"></span>
@@ -20,7 +21,7 @@ export default {
   // "status" props can receive 3 types of data
   //'success', 'warning', 'danger'
   //--------------------------------------------
-  props: ["data", "status"],
+  props: ["data", "status", "disabled"],
   methods: {
     change: function() {
       this.checked = !this.checked;
@@ -155,6 +156,31 @@ export default {
     border: 1px solid red;
     &:hover {
       border: 1px solid #ff2626;
+    }
+    &:after {
+      border-bottom: 2px solid #ffffff;
+      border-left: 2px solid #ffffff;
+    }
+  }
+}
+.disabledCheckbox {
+  input[type="checkbox"] {
+    &:checked {
+      ~ {
+        .marked {
+          background-color: #c3c3c3;
+          border: 1px solid #c3c3c3;
+          &:after {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  .marked {
+    border: 1px solid #c3c3c3;
+    &:hover {
+      border: 1px solid #c3c3c3;
     }
     &:after {
       border-bottom: 2px solid #ffffff;
