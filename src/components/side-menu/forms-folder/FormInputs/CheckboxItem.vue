@@ -49,8 +49,8 @@ export default {
     &:checked {
       ~ {
         .marked {
-          background-color: #1969ff;
-          border: 1px solid #2e76fb;
+          background-color: $primary-color;
+          border: 1px solid $primary-color;
           &:after {
             display: block;
           }
@@ -65,12 +65,11 @@ export default {
     left: 0;
     width: 16px;
     height: 16px;
-    background-color: #d8d8d8;
     border-radius: 5px;
-
+    border: 1px solid $primary-color;
     &:hover {
       opacity: 0.7;
-      border: 1px solid #1969ff;
+      border: 1px solid $primary-color * 1.5;
     }
     &:after {
       content: "";
@@ -92,8 +91,8 @@ export default {
     &:checked {
       ~ {
         .marked {
-          background-color: #1f9512;
-          border: 1px solid #1bb400;
+          background-color: $success-color;
+          border: 1px solid $success-color;
           &:after {
             display: block;
           }
@@ -102,9 +101,9 @@ export default {
     }
   }
   .marked {
-    border: 1px solid #008d00;
+    border: 1px solid $success-color;
     &:hover {
-      border: 1px solid #3ffb2e;
+      border: 1px solid $success-color;
     }
     &:after {
       border-bottom: 2px solid #ffffff;
@@ -117,8 +116,8 @@ export default {
     &:checked {
       ~ {
         .marked {
-          background-color: #ffbc00;
-          border: 1px solid #ce9e00;
+          background-color: $warning-color;
+          border: 1px solid $warning-color;
           &:after {
             display: block;
           }
@@ -127,9 +126,9 @@ export default {
     }
   }
   .marked {
-    border: 1px solid darkorange;
+    border: 1px solid $warning-color;
     &:hover {
-      border: 1px solid #ffce2f;
+      border: 1px solid $warning-color;
     }
     &:after {
       border-bottom: 2px solid #ffffff;
@@ -142,9 +141,8 @@ export default {
     &:checked {
       ~ {
         .marked {
-          border-radius: 1px solid #ff0000;
-          background-color: #ff0000;
-          border: 1px solid #ff3c3c;
+          background-color: $danger-color;
+          border: 1px solid $danger-color;
           &:after {
             display: block;
           }
@@ -153,9 +151,9 @@ export default {
     }
   }
   .marked {
-    border: 1px solid red;
+    border: 1px solid $danger-color;
     &:hover {
-      border: 1px solid #ff2626;
+      border: 1px solid $danger-color;
     }
     &:after {
       border-bottom: 2px solid #ffffff;

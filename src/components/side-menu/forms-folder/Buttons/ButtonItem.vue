@@ -71,23 +71,38 @@ export default {
 .success {
   background-color: $success-color;
   border: 1px solid $success-color;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 .primary {
   background-color: $primary-color;
   border: 1px solid $primary-color;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 .warning {
   background-color: $warning-color;
   border: 1px solid $warning-color;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 .danger {
   background-color: $danger-color;
   border: 1px solid $danger-color;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 .info {
   background-color: $info-color;
   border: 1px solid $info-color;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 .disabled {
   background-color: #e4e7ed;

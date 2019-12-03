@@ -35,7 +35,7 @@ export default {
     &:checked {
       ~ {
         .marked {
-          border: 1px solid #1064ff;
+          border: 1px solid $primary-color;
           &:after {
             display: block;
           }
@@ -54,7 +54,7 @@ export default {
     background-color: #eaeaea;
     border: 1px solid gray;
     &:hover {
-      border: 1px solid #1064ff;
+      border: 1px solid $primary-color;
     }
     &:after {
       content: "";
@@ -65,7 +65,7 @@ export default {
       width: 14px;
       height: 14px;
       border-radius: 50%;
-      background-color: #1064ff;
+      background-color: $primary-color;
     }
   }
 }
