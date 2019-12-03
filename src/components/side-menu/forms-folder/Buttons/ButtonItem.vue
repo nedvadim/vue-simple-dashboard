@@ -246,8 +246,6 @@ export default {
   height: 35px;
   font-size: 14px;
 }
-.medium {
-}
 .large {
   //min-width: 145px;
   height: 50px;

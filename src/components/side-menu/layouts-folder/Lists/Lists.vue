@@ -2,7 +2,7 @@
   <div>
     <div class="my-container">
       <div class="my-row">
-        <app-list-one class="c-12 c-md-6"></app-list-one>
+        <app-list-one class="c-12 c-md-6" :content="listOneData"></app-list-one>
         <app-list-two class="c-12 c-md-6" :content="listContent"></app-list-two>
       </div>
     </div>
@@ -21,6 +21,26 @@ export default {
     listContent() {
       return this.$store.getters.list2Content;
     }
+  },
+  data() {
+    return {
+      listOneData: {
+        title: "Countries",
+        list: [
+          "Austria",
+          "Japan",
+          "Hungary",
+          "USA",
+          "Israel",
+          "Slovakia",
+          "France",
+          "Canada",
+          "Iran",
+          "Bulgaria",
+          "India"
+        ]
+      }
+    };
   }
 };
 </script>

@@ -6,7 +6,7 @@
       </div>
       <div class="list">
         <ul>
-          <li v-for="con in content.descriptions">
+          <li v-for="(con, index) in content.descriptions" :key="index">
             <div class="list-element">
               <div class="circle">
                 <p>{{con.firstLetters}}</p>

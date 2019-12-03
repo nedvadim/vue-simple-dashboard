@@ -1,11 +1,11 @@
 <template>
   <div class="list-container">
     <div class="list-header">
-      <p>Countries</p>
+      <p>{{content.title}}</p>
     </div>
     <div class="list">
       <ul>
-        <li v-for="c in countries">{{c}}</li>
+        <li v-for="(c, index) in content.list" :key="index">{{c}}</li>
       </ul>
     </div>
   </div>
@@ -13,20 +13,13 @@
 <script>
 export default {
   data() {
-    return {
-      countries: [
-        "Japan",
-        "Hungary",
-        "USA",
-        "Israel",
-        "Slovakia",
-        "France",
-        "Canada",
-        "Iran",
-        "Bulgaria",
-        "India"
-      ]
-    };
+    return {};
+  },
+  props: {
+    content: {
+      type: Object,
+      required: true
+    }
   }
 };
 </script>
