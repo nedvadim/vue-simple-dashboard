@@ -1,17 +1,15 @@
 <template>
-  <div class="checkboxes-container">
-    <div class="checkboxes-header">
-      <p>Checkboxes</p>
-    </div>
+  <bg header="Checkboxes">
     <div class="checkbox-group">
       <app-checkbox-item v-for="data in CheckboxesData" :key="data.id" :data="data"></app-checkbox-item>
     </div>
-  </div>
+  </bg>
 </template>
 
 
 <script>
 import CheckboxItem from "./CheckboxItem";
+import bg from "../../WhiteBack";
 export default {
   data() {
     return {
@@ -25,25 +23,13 @@ export default {
     };
   },
   components: {
-    appCheckboxItem: CheckboxItem
+    appCheckboxItem: CheckboxItem,
+    bg
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.checkboxes-container {
-  background-color: $component-bg-color;
-  padding: 15px;
-  height: fit-content;
-  width: $component-width;
-  margin: $margin-container;
-  .checkboxes-header {
-    p {
-      font-size: 25px;
-      border-bottom: 1px solid $components-header-border-color;
-    }
-  }
-}
 .checkbox-group {
   margin-top: 10px;
 }

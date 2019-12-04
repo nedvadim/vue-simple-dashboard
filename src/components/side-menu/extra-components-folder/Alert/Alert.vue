@@ -1,10 +1,10 @@
 <template>
   <div class="my-container">
     <div class="my-row">
-      <div class="c-6">
+      <div class="c-md-6 c-12">
         <default></default>
       </div>
-      <div class="c-6">
+      <div class="c-md-6 c-12">
         <outlined></outlined>
       </div>
     </div>

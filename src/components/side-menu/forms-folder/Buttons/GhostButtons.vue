@@ -1,41 +1,26 @@
 <template>
-  <div class="ghost-buttons-container">
-    <div class="ghost-buttons-header">
-      <p>Ghost Buttons</p>
-      <div class="ghost-buttons">
-        <app-button-item class="margin" type="primary" btnText="primary" :ghost="true"></app-button-item>
-        <app-button-item class="margin" type="success" btnText="success" :ghost="true"></app-button-item>
-        <app-button-item class="margin" type="warning" btnText="warning" :ghost="true"></app-button-item>
-        <app-button-item class="margin" type="danger" btnText="danger" :ghost="true"></app-button-item>
-        <app-button-item class="margin" type="info" btnText="info" :ghost="true"></app-button-item>
-        <app-button-item class="margin" type="disabled" btnText="disabled"></app-button-item>
-      </div>
+  <bg header="Ghost Buttons">
+    <div class="ghost-buttons">
+      <app-button-item class="margin" type="primary" btnText="primary" :ghost="true"></app-button-item>
+      <app-button-item class="margin" type="success" btnText="success" :ghost="true"></app-button-item>
+      <app-button-item class="margin" type="warning" btnText="warning" :ghost="true"></app-button-item>
+      <app-button-item class="margin" type="danger" btnText="danger" :ghost="true"></app-button-item>
+      <app-button-item class="margin" type="info" btnText="info" :ghost="true"></app-button-item>
+      <app-button-item class="margin" type="disabled" btnText="disabled"></app-button-item>
     </div>
-  </div>
+  </bg>
 </template>
 <script>
 import ButtonItem from "./ButtonItem";
+import bg from "../../WhiteBack";
 export default {
   components: {
-    appButtonItem: ButtonItem
+    appButtonItem: ButtonItem,
+    bg
   }
 };
 </script>
 <style lang="scss" scoped>
-.ghost-buttons-container {
-  background-color: $component-bg-color;
-  padding: 15px;
-  height: fit-content;
-  width: $component-width;
-  margin: $margin-container;
-  .ghost-buttons-header {
-    p {
-      font-size: 25px;
-      border-bottom: 1px solid $components-header-border-color;
-    }
-  }
-}
-
 .ghost-buttons {
   margin-top: 20px;
   display: flex;

@@ -98,7 +98,7 @@ export default {
       }, 3000);
     }
   }
-}; 
+};
 </script>
 <style lang="scss" scoped>
 .content {
@@ -106,6 +106,7 @@ export default {
   height: auto;
   padding: 10px;
   background-color: #fff;
+  box-shadow: 0 0.5rem 1rem 0 rgba(44, 51, 73, 0.1);
   p {
     border-bottom: 1px solid #dadada;
   }

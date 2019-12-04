@@ -1,16 +1,14 @@
 <template>
-  <div class="list-container">
-    <div class="list-header">
-      <p>{{content.title}}</p>
-    </div>
+  <bg :header="content.title">
     <div class="list">
-      <ul>
-        <li v-for="(c, index) in content.list" :key="index">{{c}}</li>
+      <ul class="list-container">
+        <li class="list-component" v-for="(c, index) in content.list" :key="index">{{c}}</li>
       </ul>
     </div>
-  </div>
+  </bg>
 </template>
 <script>
+import bg from "../../WhiteBack";
 export default {
   data() {
     return {};
@@ -20,28 +18,22 @@ export default {
       type: Object,
       required: true
     }
+  },
+  components: {
+    bg
   }
 };
 </script>
 <style lang="scss" scoped>
 .list-container {
   background-color: $component-bg-color;
-  padding: 15px;
   height: fit-content;
   width: $component-width;
-  margin: $margin-container;
-  .list-header {
-    p {
-      font-size: 25px;
-      border-bottom: 1px solid $components-header-border-color;
-    }
-  }
-  ul {
-    li {
-      list-style: none;
-      padding: 5px 0;
-      border-bottom: 1px solid #d8d8d8;
-    }
+
+  .list-component {
+    list-style: none;
+    padding: 5px 0;
+    border-bottom: 1px solid #d8d8d8;
   }
 }
 </style>

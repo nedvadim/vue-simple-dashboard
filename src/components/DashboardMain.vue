@@ -59,7 +59,7 @@ $top-margin: 1.5em;
   padding-top: 7vh;
 }
 .app-bg {
-  background-color: #e8e8e8;
+  background-color: #f9f9f9;
   height: 100%;
   min-height: 100vh;
 }

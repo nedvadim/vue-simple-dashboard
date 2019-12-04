@@ -34,7 +34,7 @@ export default {
   position: fixed;
   left: 0;
   top: 7vh;
-  background: rgb(245, 245, 245);
+  background: rgb(255, 255, 255);
   height: auto;
   width: 100%;
   box-shadow: 2px 1px 7px -5px #000;
@@ -46,7 +46,7 @@ export default {
     position: fixed;
     left: 0;
     top: 7vh;
-    background: rgb(245, 245, 245);
+    background: rgb(255, 255, 255);
     height: 93vh;
     width: 150px;
     box-shadow: 2px 1px 7px -5px #000;

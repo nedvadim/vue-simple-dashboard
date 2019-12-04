@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div class="form-container">
-      <div class="form-header">
-        <p>Default Inputs</p>
-      </div>
+    <bg header="Default Inputs">
       <div class="app-inputs">
         <app-text-input-item class="margin" :inputPlaceholder="'Project'"></app-text-input-item>
         <app-text-input-item class="margin" :inputPlaceholder="'FullName'"></app-text-input-item>
@@ -29,31 +26,20 @@
         <app-text-input-item class="margin" :inputPlaceholder="'Small'" :size="'small'"></app-text-input-item>
         <app-text-input-item class="margin" :inputPlaceholder="'Large'" :size="'large'"></app-text-input-item>
       </div>
-    </div>
+    </bg>
   </div>
 </template>
 <script>
 import TextInputItem from "./TextInputItem";
+import bg from "../../WhiteBack";
 export default {
   components: {
-    appTextInputItem: TextInputItem
+    appTextInputItem: TextInputItem,
+    bg
   }
 };
 </script>
 <style lang="scss" scoped>
-.form-container {
-  background-color: $component-bg-color;
-  padding: 15px;
-  height: fit-content;
-  width: $component-width;
-  margin: $margin-container;
-  .form-header {
-    p {
-      font-size: 25px;
-      border-bottom: 1px solid $components-header-border-color;
-    }
-  }
-}
 .app-input {
   //display: block;
   margin-top: 20px;

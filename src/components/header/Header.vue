@@ -39,7 +39,7 @@ export default {
   box-shadow: 0px -2px 8px 0px #000000;
   display: flex;
   align-items: center;
-  background-color: #000000;
+  background-color: $info-color;
   z-index: 20;
   h1 {
     color: #fff;

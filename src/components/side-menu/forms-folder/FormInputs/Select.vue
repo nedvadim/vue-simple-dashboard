@@ -1,21 +1,20 @@
 <template>
-  <div class="select-container">
-    <div class="select-header">
-      <p>Select</p>
-      <div class="select-wrapper" :class="{selectWrapperActive: this.isSelectActive}">
-        <select @blur="isSelectActive = false" @click="toggleActive()">
-          <option v-for="o in options" :key="o.id" :value="o.value">{{o.option}}</option>
-        </select>
-      </div>
+  <bg header="Select">
+    <div class="select-wrapper" :class="{selectWrapperActive: this.isSelectActive}">
+      <select @blur="isSelectActive = false" @click="toggleActive()">
+        <option v-for="o in options" :key="o.id" :value="o.value">{{o.option}}</option>
+      </select>
     </div>
-  </div>
+  </bg>
 </template>
 <script>
 import WhiteBackground from "../../WhiteBack";
+import bg from "../../WhiteBack";
 export default {
   props: ["options"],
   components: {
-    appWhiteBackground: WhiteBackground
+    appWhiteBackground: WhiteBackground,
+    bg
   },
   data() {
     return {
@@ -30,20 +29,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.select-container {
-  background-color: $component-bg-color;
-  padding: 15px;
-  height: fit-content;
-  width: $component-width;
-  margin: $margin-container;
-  .select-header {
-    p {
-      font-size: 25px;
-      border-bottom: 1px solid $components-header-border-color;
-    }
-  }
-}
-
 .select-wrapper {
   select {
     width: 40%;

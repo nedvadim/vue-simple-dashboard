@@ -41,19 +41,21 @@ export default {
 button {
   width: 100%;
   border: none;
-  background-color: #e6e6e6;
+  background-color: #ffffff;
+  font-size: 16px;
   height: 50px;
   cursor: pointer;
-  border-bottom: 1px solid #c7c7c7;
-  outline-color: #4b4b4b;
+  border-bottom: 1px solid #ececec;
+  outline-color: $info-color * 2;
 }
 li {
-  border-bottom: 1px solid #a8a8a8;
+  border-bottom: 1px solid #ececec;
   text-align: center;
-  font-size: 16px;
+
   a {
     text-decoration: none;
     color: #2f2f2f;
+    font-size: 14px;
   }
 }
 .slide-enter-active {

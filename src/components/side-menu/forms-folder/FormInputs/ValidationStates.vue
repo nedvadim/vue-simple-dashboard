@@ -1,8 +1,5 @@
 <template>
-  <div class="validation-states-container">
-    <div class="validation-states-header">
-      <p>Validation States</p>
-    </div>
+  <bg header="Validation States">
     <div class="inputs">
       <app-text-input-item class="margin" :inputPlaceholder="'Primary Input'" :status="'primary'"></app-text-input-item>
       <app-text-input-item class="margin" :inputPlaceholder="'Success Input'" :status="'success'"></app-text-input-item>
@@ -16,15 +13,17 @@
       <app-checkbox-item class="margin-right" :data="warningCheck" :status="'warning'"></app-checkbox-item>
       <app-checkbox-item class="margin-right" :data="dangerCheck" :status="'danger'"></app-checkbox-item>
     </div>
-  </div>
+  </bg>
 </template>
 <script>
 import TextInputItem from "./TextInputItem";
 import CheckboxItem from "./CheckboxItem";
+import bg from "../../WhiteBack";
 export default {
   components: {
     appTextInputItem: TextInputItem,
-    appCheckboxItem: CheckboxItem
+    appCheckboxItem: CheckboxItem,
+    bg
   },
   data() {
     return {
@@ -46,19 +45,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.validation-states-container {
-  background-color: $component-bg-color;
-  padding: 15px;
-  height: fit-content;
-  width: $component-width;
-  margin: $margin-container;
-  .validation-states-header {
-    p {
-      font-size: 25px;
-      border-bottom: 1px solid $components-header-border-color;
-    }
-  }
-}
 .margin {
   margin: 10px 0;
 }

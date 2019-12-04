@@ -18,6 +18,7 @@ export default {
   height: fit-content;
   width: $component-width;
   margin: $margin-container;
+  box-shadow: 0 0.5rem 1rem 0 rgba(44, 51, 73, 0.1);
   .mytemplate-header {
     p {
       font-size: 25px;

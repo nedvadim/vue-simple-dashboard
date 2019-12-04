@@ -1,8 +1,5 @@
 <template>
-  <div class="inline-form-container">
-    <div class="inline-form-header">
-      <p>{{inlineFormData.formName}}</p>
-    </div>
+  <bg header="Inline Form">
     <div class="my-container">
       <div class="my-row">
         <app-inp class="inp c-12 c-md-4" :inputPlaceholder="inlineFormData.firstInputPlaceholder"></app-inp>
@@ -15,35 +12,24 @@
         <app-btn class="button c-6 c-md-3" type="primary" :btnText="inlineFormData.buttonText"></app-btn>
       </div>
     </div>
-  </div>
+  </bg>
 </template>
 <script>
 import Inp from "../FormInputs/TextInputItem";
 import Check from "../FormInputs/CheckboxItem";
 import Btn from "../Buttons/ButtonItem";
+import bg from "../../WhiteBack";
 export default {
   props: ["inlineFormData"],
   components: {
     appInp: Inp,
     appCheck: Check,
-    appBtn: Btn
+    appBtn: Btn,
+    bg
   }
 };
 </script>
 <style lang="scss" scoped>
-.inline-form-container {
-  background-color: $component-bg-color;
-  padding: 15px;
-  height: fit-content;
-  width: $component-width;
-  margin: $margin-container;
-  .inline-form-header {
-    p {
-      font-size: 25px;
-      border-bottom: 1px solid $components-header-border-color;
-    }
-  }
-}
 .inp {
   margin-top: 25px;
 }

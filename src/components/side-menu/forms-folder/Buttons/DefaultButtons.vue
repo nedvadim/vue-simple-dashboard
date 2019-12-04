@@ -1,21 +1,19 @@
 <template>
-  <div class="default-buttons-container">
-    <div class="default-buttons-header">
-      <p>ButtonItems</p>
-      <div class="default-buttons">
-        <app-button-item
-          class="margin"
-          v-for="(buttonType, index) in buttonTypes"
-          :key="index"
-          :type="buttonType"
-          :btnText="buttonType"
-        ></app-button-item>
-      </div>
+  <bg header="Default Buttons">
+    <div class="default-buttons">
+      <app-button-item
+        class="margin"
+        v-for="(buttonType, index) in buttonTypes"
+        :key="index"
+        :type="buttonType"
+        :btnText="buttonType"
+      ></app-button-item>
     </div>
-  </div>
+  </bg>
 </template>
 <script>
 import ButtonItem from "./ButtonItem";
+import bg from "../../WhiteBack";
 export default {
   data() {
     return {
@@ -30,25 +28,12 @@ export default {
     };
   },
   components: {
-    appButtonItem: ButtonItem
+    appButtonItem: ButtonItem,
+    bg
   }
 };
 </script>
 <style lang="scss" scoped>
-.default-buttons-container {
-  background-color: $component-bg-color;
-  padding: 15px 15px 0 15px;
-  height: fit-content;
-  width: $component-width;
-  margin: $margin-container;
-  .default-buttons-header {
-    p {
-      font-size: 25px;
-      border-bottom: 1px solid $components-header-border-color;
-    }
-  }
-}
-
 .default-buttons {
   margin-top: 20px;
   display: flex;
