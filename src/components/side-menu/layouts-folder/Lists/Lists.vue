@@ -3,7 +3,7 @@
     <div class="my-container">
       <div class="my-row">
         <app-list-one class="c-12 c-md-6" :content="listOneData"></app-list-one>
-        <app-list-two class="c-12 c-md-6" :content="listContent"></app-list-two>
+        <app-list-two class="c-12 c-md-6" :content="listTwoData"></app-list-two>
       </div>
     </div>
   </div>
@@ -38,6 +38,39 @@ export default {
           "Iran",
           "Bulgaria",
           "India"
+        ]
+      },
+      listTwoData: {
+        title: "Legends",
+        list: [
+          {
+            name: "Jimmy Page",
+            description: "Guitarist"
+          },
+          {
+            name: "John Bonham",
+            description: "Drummer"
+          },
+          {
+            name: "Robert Plant",
+            description: "Vocalist"
+          },
+          {
+            name: "Les Claypool",
+            description: "Bassist"
+          },
+          {
+            name: "Jimmy Hendrix",
+            description: "Guitarist"
+          },
+          {
+            name: "Ozzy Osbourne",
+            description: "Vocalist"
+          },
+          {
+            name: "Angus Young",
+            description: "Guitarist"
+          }
         ]
       }
     };

@@ -12,10 +12,7 @@ const mutations = {
 
 const actions = {
   initSideBarContent: ({ commit }) => {
-    //console.log(state.sidebarContent);
-    //console.log("===");
     commit("SET_SIDEBAR_CONTENT", sidebarContent);
-    //console.log(state.sidebarContent);
   }
 };
 

@@ -2,17 +2,17 @@
   <div>
     <div class="list-container">
       <div class="list-header">
-        <p>{{content.listHeader}}</p>
+        <p>{{content.title}}</p>
       </div>
       <div class="list">
         <ul>
-          <li v-for="(con, index) in content.descriptions" :key="index">
+          <li v-for="(con, index) in content.list" :key="index">
             <div class="list-element">
               <div class="circle">
-                <p>{{con.firstLetters}}</p>
+                <p>{{getTwo(index)}}</p>
               </div>
               <div class="list-descriptions">
-                <p>{{con.listElementString}}</p>
+                <p>{{con.name}}</p>
                 <p class="description">{{con.description}}</p>
               </div>
             </div>
@@ -24,7 +24,23 @@
 </template>
 <script>
 export default {
-  props: ["content"]
+  props: {
+    content: {
+      type: Object,
+      required: true
+    }
+  },
+  methods: {
+    getTwo(index) {
+      return this.content.list[index].name
+        .split(" ")
+        .map(e => {
+          return e[0];
+        })
+        .join("");
+    }
+  },
+  created: function() {}
 };
 </script>
 <style lang="scss" scoped>
@@ -33,41 +49,44 @@ export default {
   width: $component-width;
   padding: 0 15px 15px 15px;
   margin: $margin-container;
-  height: 263px;
-  overflow-y: scroll;
+  position: relative;
   .list-header {
     width: $component-width;
-    height: 50px;
     background-color: $component-bg-color;
     padding: 15px;
+    position: relative;
+    border-bottom: 1px solid #d3d3d3;
     p {
       font-size: 25px;
-      border-bottom: 1px solid $components-header-border-color;
     }
   }
-  li {
-    list-style: none;
-    padding: 10px;
-    border-bottom: 1px solid #cccccc;
-    .list-element {
-      display: flex;
-      .circle {
-        height: 45px;
-        width: 45px;
-        border-radius: 50%;
-        border: 1px solid rgb(212, 212, 212);
-        p {
-          text-align: center;
-          vertical-align: middle;
-          line-height: 40px;
+  .list {
+    overflow-y: scroll;
+    height: 323px;
+    li {
+      list-style: none;
+      padding: 10px;
+      border-bottom: 1px solid #cccccc;
+      .list-element {
+        display: flex;
+        .circle {
+          height: 45px;
+          width: 45px;
+          border-radius: 50%;
+          border: 1px solid rgb(212, 212, 212);
+          p {
+            text-align: center;
+            vertical-align: middle;
+            line-height: 40px;
+          }
         }
-      }
-      .list-descriptions {
-        justify-self: center;
-        align-self: center;
-        margin-left: 10px;
-        .description {
-          font-size: 12px;
+        .list-descriptions {
+          justify-self: center;
+          align-self: center;
+          margin-left: 10px;
+          .description {
+            font-size: 12px;
+          }
         }
       }
     }
