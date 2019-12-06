@@ -2,7 +2,7 @@ import Home from "./components/Home.vue";
 
 // Layouts folder
 import Lists from "./components/side-menu/layouts-folder/Lists/Lists.vue";
-import Stepper from "./components/side-menu/layouts-folder/Stepper/Stepper.vue";
+import Stepper from "./components/side-menu/layouts-folder/BetterStepper/BetterStepper.vue";
 import Tabs from "./components/side-menu/layouts-folder/Tabs/Tabs.vue";
 
 // sub routes for Tabs/tab2.vue component

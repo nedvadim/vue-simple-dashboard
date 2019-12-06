@@ -21,6 +21,7 @@
 //import Home from "./components/Home.vue";
 import SideMenu from "./side-menu/SideMenu.vue";
 import Header from "./header/Header.vue";
+import Home from "./Home";
 export default {
   data() {
     return {
@@ -29,8 +30,8 @@ export default {
   },
   components: {
     appSideMenu: SideMenu,
-    appHeader: Header
-    //appHome: Home
+    appHeader: Header,
+    appHome: Home
   },
   created() {
     this.$store.dispatch("initSideBarContent");
