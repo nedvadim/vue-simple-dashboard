@@ -2,7 +2,7 @@
   <bg header="Default Stepper">
     <div class="my-container">
       <div class="my-row">
-        <stepper class="c-12" :data="stepperData"></stepper>
+        <stepper class="c-12" :dataStepper="stepperData"></stepper>
       </div>
     </div>
   </bg>
@@ -22,15 +22,19 @@ export default {
         content: [
           {
             header: "Stepper #1",
-            content: "Hello World!"
+            text: "Hello World!"
           },
           {
             header: "Stepper #2",
-            content: "Hello World!"
+            text: "Hello World!"
           },
           {
             header: "Stepper #3",
-            content: "Hello World!"
+            text: "Hello World!"
+          },
+          {
+            header: "Success!",
+            text: "Hello success!"
           }
         ]
       }

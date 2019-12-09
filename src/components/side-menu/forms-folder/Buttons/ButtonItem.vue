@@ -4,6 +4,7 @@
     :class="[type.toLowerCase(), {outline:outline}, {ghost:ghost}, shape, size]"
     :disabled="this.isDisabled"
     :ref="reference"
+    v-on="listeners"
   >
     {{btnText}}
     <slot></slot>
@@ -44,6 +45,13 @@ export default {
   created: function() {
     if (this.type.toLowerCase() === "disabled") {
       this.isDisabled = true;
+    }
+  },
+  computed: {
+    listeners() {
+      return {
+        ...this.$listeners
+      };
     }
   }
 };

@@ -1,28 +1,29 @@
 <template>
   <div class="stepper-wrapper">
     <div class="steps">
-      <div class="step" v-for="(s, index) in data.steps" :key="s">
-        <div class="circle" v-bind:class="{markedCircle: markedSteps[index]}">
+      <div class="step" v-for="s in dataStepper.steps" :key="s">
+        <div class="circle" v-bind:class="{markedCircle: markedSteps[s-1]}">
           <!-- <div class="tick"></div> -->
           <span>{{s}}</span>
         </div>
-        <div class="line" v-if="s!==data.steps" :class="[getLineSizeClass]"></div>
+        <div class="line" v-if="s!==dataStepper.steps" :class="[getLineSizeClass]"></div>
       </div>
     </div>
-
+    <p>{{markedSteps}}</p>
     <div class="content">
-      <div v-for="(content, index) in data.content" :key="index">
-        <h1 v-if="markedSteps[index] === true">{{content.header}}</h1>
+      <div v-for="(c, index) in dataStepper.content" :key="index">
+        <h1 v-if="getLastMarkedStepIndex === index">{{c.header}}</h1>
       </div>
     </div>
     <div class="buttons">
-      <my-btn>Prev</my-btn>
-      <my-btn @click.native="nextStep">Next</my-btn>
+      <my-btn @click="prevStep">Prev</my-btn>
+      <my-btn @click="nextStep">Next</my-btn>
     </div>
   </div>
 </template>
 <script>
 import myBtn from "../../forms-folder/Buttons/ButtonItem";
+import Vue from "vue";
 export default {
   data() {
     return {
@@ -31,7 +32,7 @@ export default {
     };
   },
   props: {
-    data: {
+    dataStepper: {
       type: Object,
       default: () => ({
         steps: 4
@@ -45,27 +46,53 @@ export default {
     myBtn
   },
   computed: {
+    getLastMarkedStepIndex() {
+      return this.markedSteps.lastIndexOf(true) === -1
+        ? 0
+        : this.markedSteps.lastIndexOf(true) + 1;
+    },
+    getInitValuesForMarkedSteps() {
+      return this.dataStepper.content.map(() => {
+        return false;
+      });
+    },
     getLineSizeClass() {
-      return this.lineClasses[this.data.steps - 3];
+      return this.lineClasses[this.dataStepper.steps - 3];
+    },
+    getMarkedSteps() {
+      return this.markedSteps;
     }
   },
   methods: {
     nextStep() {
-      console.log("in next()");
-      for (let i = 0; i < this.data.steps; i++) {
-        console.log("in for");
+      console.log(this.getLastMarkedStepIndex);
+      for (let i = 0; i < this.dataStepper.content.length; i++) {
         if (this.markedSteps[i] === false) {
-          console.log(this.markedSteps[i]);
-          this.markedSteps[i] = true;
-          console.log(this.markedSteps[i]);
+          Vue.set(this.markedSteps, i, true);
+          return;
+        }
+      }
+    },
+    prevStep() {
+      for (let i = this.dataStepper.content.length - 1; i >= 0; i--) {
+        console.log(this.markedSteps);
+        if (this.markedSteps[i] === true) {
+          Vue.set(this.markedSteps, i, false);
+          console.log(this.markedSteps);
           return;
         }
       }
     }
   },
-  created: function() {
-    for (var i = 0; i < this.data.steps; i++) {
-      this.markedSteps[i] = false;
+  beforeMount: function() {
+    // for (var i = 0; i < this.dataStepper.steps; i++) {
+    //   Vue.set(this.markedSteps, i, false);
+    // }
+    // for (var i = 0; i < this.dataStepper.steps; i++) {
+    //   this.markedSteps.splice(i, 1, false);
+    // }
+    for (var i = 0; i < this.dataStepper.content.length; i++) {
+      Vue.set(this.markedSteps, i, false);
     }
   }
 };
@@ -120,7 +147,7 @@ export default {
       width: 25em;
     }
     .lineLarge {
-      width: 39.1em;
+      width: 10.1em; //39.1
     }
   }
 }
