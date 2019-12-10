@@ -26,17 +26,25 @@ export default {
           },
           {
             header: "Stepper #2",
-            text: "Hello World!"
+            text: "Hello Worldd!"
           },
           {
             header: "Stepper #3",
-            text: "Hello World!"
-          },
-          {
-            header: "Success!",
-            text: "Hello success!"
+            text: "Hello Worlddd!"
           }
-        ]
+          // {
+          //   header: "Stepper #4",
+          //   text: "Hello Worldddd!"
+          // },
+          // {
+          //   header: "Stepper #5",
+          //   text: "Hello Worldddddd!"
+          // }
+        ],
+        finalStep: {
+          header: "Success!",
+          text: "Hello success!"
+        }
       }
     };
   }

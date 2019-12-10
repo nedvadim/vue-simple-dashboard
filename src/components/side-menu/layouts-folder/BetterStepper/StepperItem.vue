@@ -1,23 +1,50 @@
 <template>
   <div class="stepper-wrapper">
     <div class="steps">
-      <div class="step" v-for="s in dataStepper.steps" :key="s">
+      <div
+        class="step"
+        v-for="s in dataStepper.steps"
+        :key="s"
+        :class="{lastStepWidth : s === dataStepper.steps}"
+      >
         <div class="circle" v-bind:class="{markedCircle: markedSteps[s-1]}">
-          <!-- <div class="tick"></div> -->
-          <span>{{s}}</span>
+          <div class="tick" v-if="markedSteps[s-1] === true"></div>
+          <span v-else>{{s}}</span>
         </div>
-        <div class="line" v-if="s!==dataStepper.steps" :class="[getLineSizeClass]"></div>
+        <div
+          class="line"
+          v-if="s!==dataStepper.steps"
+          :class="[getLineSizeClass, {markedLine: markedSteps[s-1]}]"
+        ></div>
       </div>
     </div>
-    <p>{{markedSteps}}</p>
     <div class="content">
       <div v-for="(c, index) in dataStepper.content" :key="index">
-        <h1 v-if="getLastMarkedStepIndex === index">{{c.header}}</h1>
+        <div
+          v-if="getLastMarkedStepIndex === index && getLastMarkedStepIndex !== dataStepper.steps"
+        >
+          <h1>{{c.header}}</h1>
+          <p>{{c.text}}</p>
+        </div>
+      </div>
+      <div v-if="getLastMarkedStepIndex === dataStepper.steps">
+        <h1>{{dataStepper.finalStep.header}}</h1>
+        <p>{{dataStepper.finalStep.text}}</p>
       </div>
     </div>
     <div class="buttons">
-      <my-btn @click="prevStep">Prev</my-btn>
-      <my-btn @click="nextStep">Next</my-btn>
+      <p>last marked: {{getLastMarkedStepIndex}}</p>
+      <p>{{dataStepper.steps}}</p>
+      <my-btn
+        size="large"
+        :type="getLastMarkedStepIndex === 0 ? 'disabled' : 'primary'"
+        @click.native="prevStep"
+      >Prev</my-btn>
+      <my-btn
+        size="large"
+        :type="getLastMarkedStepIndex === dataStepper.steps ? 'disabled' :  'primary'"
+        @click.native="nextStep"
+      >Next</my-btn>
     </div>
   </div>
 </template>
@@ -85,12 +112,6 @@ export default {
     }
   },
   beforeMount: function() {
-    // for (var i = 0; i < this.dataStepper.steps; i++) {
-    //   Vue.set(this.markedSteps, i, false);
-    // }
-    // for (var i = 0; i < this.dataStepper.steps; i++) {
-    //   this.markedSteps.splice(i, 1, false);
-    // }
     for (var i = 0; i < this.dataStepper.content.length; i++) {
       Vue.set(this.markedSteps, i, false);
     }
@@ -129,26 +150,41 @@ export default {
     }
     .line {
       height: 3px;
-      width: 27%;
+      //width: 27%;
       background-color: #e2e2e2;
       align-self: center;
-      margin: 0 15px 0 15px;
-    }
-    .linelarge {
-      background-color: red;
+      margin: 0 5px;
     }
     .markedLine {
       background-color: #3366ff;
     }
     .lineSmall {
-      width: 18em;
+      width: 100%;
     }
     .lineMiddle {
-      width: 25em;
+      width: 100%;
     }
     .lineLarge {
-      width: 10.1em; //39.1
+      width: 100%; //39.1
     }
   }
+  .lastStepWidth {
+    width: 2%;
+  }
+}
+.content {
+  width: 40vw;
+  text-align: center;
+  margin: 0 auto;
+  h1 {
+    font-size: 44px;
+  }
+  p {
+    font-size: 22px;
+  }
+}
+.buttons {
+  width: 220px;
+  margin: 40px auto 0;
 }
 </style>
