@@ -90,8 +90,6 @@
 // #1e97ff
 import myBtn from "../../forms-folder/Buttons/ButtonItem";
 import myInp from "../../forms-folder/FormInputs/TextInputItem";
-// import { watch } from "fs";
-// import { all } from "q";
 export default {
   data() {
     return {

@@ -25,6 +25,12 @@
         >
           <h1>{{c.header}}</h1>
           <p>{{c.text}}</p>
+          <my-inp
+            v-if="withInputs"
+            :inputPlaceholder="'Step #' + (index+1)"
+            :inputValue="inputsData[index]"
+            v-model="inputsData[index]"
+          ></my-inp>
         </div>
       </div>
       <div v-if="getLastMarkedStepIndex === dataStepper.steps">
@@ -32,6 +38,7 @@
         <p>{{dataStepper.finalStep.text}}</p>
       </div>
     </div>
+
     <div class="buttons">
       <my-btn
         size="large"
@@ -40,7 +47,7 @@
       >Prev</my-btn>
       <my-btn
         size="large"
-        :type="getLastMarkedStepIndex === dataStepper.steps ? 'disabled' :  'primary'"
+        :type="isNextDisabled ? 'disabled' : 'primary'"
         @click.native="nextStep"
       >Next</my-btn>
     </div>
@@ -48,12 +55,14 @@
 </template>
 <script>
 import myBtn from "../../forms-folder/Buttons/ButtonItem";
+import myInp from "../../forms-folder/FormInputs/TextInputItem";
 import Vue from "vue";
 export default {
   data() {
     return {
       lineClasses: ["lineLarge", "lineMiddle", "lineSmall"],
-      markedSteps: []
+      markedSteps: [],
+      inputsData: {}
     };
   },
   props: {
@@ -65,32 +74,44 @@ export default {
       validator: function(value) {
         return value.steps > 2 && value.steps < 6;
       }
+    },
+    withInputs: {
+      type: Boolean,
+      default: false
+    },
+    isVertical: {
+      type: Boolean,
+      default: false
     }
   },
   components: {
-    myBtn
+    myBtn,
+    myInp
   },
   computed: {
+    isNextDisabled() {
+      if (this.withInputs) {
+        return this.inputsData[this.getLastMarkedStepIndex] === "" ||
+          this.getLastMarkedStepIndex === this.dataStepper.steps
+          ? true
+          : false;
+      } else {
+        return this.getLastMarkedStepIndex === this.dataStepper.steps
+          ? true
+          : false;
+      }
+    },
     getLastMarkedStepIndex() {
       return this.markedSteps.lastIndexOf(true) === -1
         ? 0
         : this.markedSteps.lastIndexOf(true) + 1;
     },
-    getInitValuesForMarkedSteps() {
-      return this.dataStepper.content.map(() => {
-        return false;
-      });
-    },
     getLineSizeClass() {
       return this.lineClasses[this.dataStepper.steps - 3];
-    },
-    getMarkedSteps() {
-      return this.markedSteps;
     }
   },
   methods: {
     nextStep() {
-      console.log(this.getLastMarkedStepIndex);
       for (let i = 0; i < this.dataStepper.content.length; i++) {
         if (this.markedSteps[i] === false) {
           Vue.set(this.markedSteps, i, true);
@@ -100,10 +121,8 @@ export default {
     },
     prevStep() {
       for (let i = this.dataStepper.content.length - 1; i >= 0; i--) {
-        console.log(this.markedSteps);
         if (this.markedSteps[i] === true) {
           Vue.set(this.markedSteps, i, false);
-          console.log(this.markedSteps);
           return;
         }
       }
@@ -113,11 +132,15 @@ export default {
     for (var i = 0; i < this.dataStepper.content.length; i++) {
       Vue.set(this.markedSteps, i, false);
     }
+    for (var i = 0; i < this.dataStepper.content.length; i++) {
+      Vue.set(this.inputsData, i.toString(), "");
+    }
   }
 };
 </script>
 <style lang="scss" scoped>
 .steps {
+  margin: 1.5rem 0;
   display: flex;
   .step {
     display: flex;

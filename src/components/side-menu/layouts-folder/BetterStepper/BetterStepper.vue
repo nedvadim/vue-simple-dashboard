@@ -1,11 +1,28 @@
 <template>
-  <bg header="Default Stepper">
+  <div>
+    <bg header="Horizontal Stepper">
+      <div class="my-container">
+        <div class="my-row">
+          <stepper class="c-12" :dataStepper="stepper1"></stepper>
+        </div>
+      </div>
+    </bg>
+
     <div class="my-container">
       <div class="my-row">
-        <stepper class="c-12" :dataStepper="stepperData"></stepper>
+        <div class="c-md-6 c-12">
+          <bg header="Stepper with Input">
+            <stepper :withInputs="true" :dataStepper="stepper2"></stepper>
+          </bg>
+        </div>
+        <div class="c-md-6 c-12">
+          <bg header="Stepper with Input">
+            <stepper :isVertical="true" :dataStepper="stepper3"></stepper>
+          </bg>
+        </div>
       </div>
     </div>
-  </bg>
+  </div>
 </template>
 <script>
 import stepper from "./StepperItem";
@@ -17,33 +34,75 @@ export default {
   },
   data() {
     return {
-      stepperData: {
+      stepper1: {
         steps: 3,
         content: [
           {
-            header: "Stepper #1",
-            text: "Hello World!"
+            header: "Step #1",
+            text: "Some interesting content!"
           },
           {
-            header: "Stepper #2",
-            text: "Hello Worldd!"
+            header: "Step #2",
+            text: "Something really exciting!"
           },
           {
-            header: "Stepper #3",
-            text: "Hello Worlddd!"
+            header: "Step #3",
+            text: "Awesome step is here!"
           }
-          // {
-          //   header: "Stepper #4",
-          //   text: "Hello Worldddd!"
-          // },
-          // {
-          //   header: "Stepper #5",
-          //   text: "Hello Worldddddd!"
-          // }
         ],
         finalStep: {
           header: "Success!",
-          text: "Hello success!"
+          text: "Finally!"
+        }
+      },
+      stepper2: {
+        steps: 4,
+        content: [
+          {
+            header: "Step #1",
+            text: "Your First Name:"
+          },
+          {
+            header: "Step #2",
+            text: "Your Last Name:"
+          },
+          {
+            header: "Step #3",
+            text: "Your Age:"
+          },
+          {
+            header: "Step #4",
+            text: "Your country: "
+          }
+        ],
+        finalStep: {
+          header: "Success!",
+          text: "Thank you"
+        }
+      },
+      stepper3: {
+        steps: 4,
+        content: [
+          {
+            header: "Step #1",
+            text: "First"
+          },
+          {
+            header: "Step #2",
+            text: "Second"
+          },
+          {
+            header: "Step #3",
+            text: "Third"
+          },
+          {
+            header: "Step #4",
+            text: "Fourth"
+          }
+        ],
+        finalStep: {
+          header: "Success!",
+          text: "Thank you"
         }
       }
     };
