@@ -33,8 +33,6 @@
       </div>
     </div>
     <div class="buttons">
-      <p>last marked: {{getLastMarkedStepIndex}}</p>
-      <p>{{dataStepper.steps}}</p>
       <my-btn
         size="large"
         :type="getLastMarkedStepIndex === 0 ? 'disabled' : 'primary'"
@@ -186,5 +184,9 @@ export default {
 .buttons {
   width: 220px;
   margin: 40px auto 0;
+  * {
+    width: 47%;
+    margin: 0 3px;
+  }
 }
 </style>

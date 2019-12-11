@@ -2,7 +2,7 @@
   <button
     class="button"
     :class="[type.toLowerCase(), {outline:outline}, {ghost:ghost}, shape, size]"
-    :disabled="this.isDisabled"
+    :disabled="this.isBtnDisabled"
     :ref="reference"
     v-on="listeners"
   >
@@ -48,6 +48,9 @@ export default {
     }
   },
   computed: {
+    isBtnDisabled() {
+      return this.type.toLowerCase() !== "disabled" ? false : true;
+    },
     listeners() {
       return {
         ...this.$listeners
