@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       stepper1: {
-        steps: 3,
+        steps: 4,
         content: [
           {
             header: "Step #1",
@@ -48,6 +48,10 @@ export default {
           {
             header: "Step #3",
             text: "Awesome step is here!"
+          },
+          {
+            header: "Step #4",
+            text: "Even more awesome step is here!"
           }
         ],
         finalStep: {
@@ -56,7 +60,7 @@ export default {
         }
       },
       stepper2: {
-        steps: 4,
+        steps: 3,
         content: [
           {
             header: "Step #1",
@@ -69,10 +73,6 @@ export default {
           {
             header: "Step #3",
             text: "Your Age:"
-          },
-          {
-            header: "Step #4",
-            text: "Your country: "
           }
         ],
         finalStep: {
@@ -81,7 +81,7 @@ export default {
         }
       },
       stepper3: {
-        steps: 4,
+        steps: 5,
         content: [
           {
             header: "Step #1",
@@ -98,6 +98,10 @@ export default {
           {
             header: "Step #4",
             text: "Fourth"
+          },
+          {
+            header: "Step #5",
+            text: "Fifth"
           }
         ],
         finalStep: {
