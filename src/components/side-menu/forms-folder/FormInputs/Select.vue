@@ -1,11 +1,9 @@
 <template>
-  <bg header="Select">
-    <div class="select-wrapper" :class="{selectWrapperActive: this.isSelectActive}">
-      <select @blur="isSelectActive = false" @click="toggleActive()">
-        <option v-for="o in options" :key="o.id" :value="o.value">{{o.option}}</option>
-      </select>
-    </div>
-  </bg>
+  <div class="select-wrapper" :class="{selectWrapperActive: this.isSelectActive}">
+    <select @blur="isSelectActive = false" @click="toggleActive()">
+      <option v-for="o in options" :key="o.id" :value="o.value">{{o.option}}</option>
+    </select>
+  </div>
 </template>
 <script>
 import WhiteBackground from "../../WhiteBack";
@@ -31,7 +29,7 @@ export default {
 <style lang="scss" scoped>
 .select-wrapper {
   select {
-    width: 40%;
+    width: 60%;
     margin: 0.5rem 0;
     padding: 0.5rem;
     border-radius: 5px;

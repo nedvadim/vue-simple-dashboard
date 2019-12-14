@@ -6,7 +6,9 @@
           <app-default-inputs></app-default-inputs>
         </div>
         <div class="c-12 c-md-6">
-          <app-select :options="selectOptions"></app-select>
+          <bg header="Select">
+            <app-select :options="selectOptions"></app-select>
+          </bg>
           <app-validation-states></app-validation-states>
           <div class="my-row">
             <app-radiobuttons class="c-12 c-md-6"></app-radiobuttons>
@@ -27,6 +29,7 @@ import Select from "./Select";
 import ValidationStates from "./ValidationStates";
 import Radiobuttons from "./Radiobuttons";
 import Checkboxes from "./Checkboxes";
+import bg from "../../WhiteBack";
 
 export default {
   components: {
@@ -34,7 +37,8 @@ export default {
     appSelect: Select,
     appValidationStates: ValidationStates,
     appRadiobuttons: Radiobuttons,
-    appCheckboxes: Checkboxes
+    appCheckboxes: Checkboxes,
+    bg
   },
   data() {
     return {

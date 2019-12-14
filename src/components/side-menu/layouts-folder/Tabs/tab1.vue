@@ -56,7 +56,7 @@ export default {
     .tab {
       width: 20%;
       text-align: center;
-      border-bottom: 3px solid #f5f5f5;
+      border-bottom: 3px solid inherit;
       &:hover {
         border-bottom: 3px solid #3366ff;
       }

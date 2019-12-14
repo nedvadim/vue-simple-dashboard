@@ -16,7 +16,7 @@
           </bg>
         </div>
         <div class="c-md-6 c-12">
-          <bg header="Stepper with Input">
+          <bg header="Vertical Stepper">
             <stepper :isVertical="true" :dataStepper="stepper3"></stepper>
           </bg>
         </div>

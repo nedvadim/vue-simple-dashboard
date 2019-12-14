@@ -68,7 +68,7 @@ export default {
   height: fit-content;
   .tabs {
     display: flex;
-    border-bottom: 1px solid #d8d8d8;
+    border-bottom: 1px solid inherit;
     width: $component-width;
 
     .tab {

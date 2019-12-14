@@ -56,7 +56,6 @@ export default {
   },
   methods: {
     showSpin1() {
-      var self = this;
       this.showSpinner1 = true;
       setTimeout(() => {
         self.showSpinner1 = false;

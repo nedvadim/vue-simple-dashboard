@@ -31,9 +31,11 @@ import ForgotPassword from "./components/auth-folder/ForgotPassword/ForgotPasswo
 import Register from "./components/auth-folder/Register/Register.vue";
 
 import Dashboard from "./components/DashboardMain.vue";
+import VueDashboardHome from "./components/VueDashboardHome.vue";
 export const routes = [
   {
     path: "/",
+    redirect: "/vue-dashboard-home",
     component: Dashboard,
     children: [
       // Layouts Folder===========================================
@@ -64,7 +66,8 @@ export const routes = [
       { path: "/tree-grid", component: TreeGrid },
 
       // UI Features Folder========================================
-      { path: "/grid", component: Grid }
+      { path: "/grid", component: Grid },
+      { path: "/vue-dashboard-home", component: VueDashboardHome }
     ]
   },
   // Auth =====================================================
