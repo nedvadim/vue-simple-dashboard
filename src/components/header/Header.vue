@@ -7,6 +7,9 @@
       <span>V</span>ue
       <span>D</span>ashboard
     </router-link>
+    <a href="https://github.com/nedvadim/vue-simple-dashboard">
+      <font-awesome-icon class="github" :icon="['fab', 'github']" />
+    </a>
   </div>
 </template>
 
@@ -64,6 +67,12 @@ export default {
         color: #e0e0e0;
       }
     }
+  }
+  .github {
+    color: #fff;
+    cursor: pointer;
+    font-size: 35px;
+    margin-left: 20px;
   }
 
   @media only screen and (min-width: 960px) {

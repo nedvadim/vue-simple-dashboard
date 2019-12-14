@@ -92,7 +92,7 @@ $top-margin: 1.5em;
 @media only screen and (min-width: 960px) {
   .page-content {
     display: flex;
-    padding: 0 10px 0 165px;
+    padding: 0 10px 0 245px;
     padding-top: 7vh;
   }
   .menu-for-desktop {

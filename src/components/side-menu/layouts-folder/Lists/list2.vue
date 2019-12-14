@@ -47,14 +47,13 @@ export default {
 .list-container {
   background-color: $component-bg-color;
   width: $component-width;
-  padding: 0 15px 15px 15px;
+  padding: 15px;
   margin: $margin-container;
   position: relative;
   box-shadow: 0 0.5rem 1rem 0 rgba(44, 51, 73, 0.1);
   .list-header {
     width: $component-width;
     background-color: $component-bg-color;
-    padding: 15px;
     position: relative;
     border-bottom: 1px solid #d3d3d3;
     p {

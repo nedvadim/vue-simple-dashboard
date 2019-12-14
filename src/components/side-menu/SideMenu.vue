@@ -48,7 +48,7 @@ export default {
     top: 7vh;
     background: rgb(255, 255, 255);
     height: 93vh;
-    width: 150px;
+    width: 230px;
     box-shadow: 2px 1px 7px -5px #000;
     z-index: 10; /* ? */
   }

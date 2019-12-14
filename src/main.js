@@ -20,7 +20,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
-
+import { faFileCode } from "@fortawesome/free-solid-svg-icons";
 library.add(faGithub);
 library.add(faTwitter);
 library.add(faFacebook);
@@ -34,6 +34,7 @@ library.add(faFile);
 library.add(faArrowLeft);
 library.add(faExclamationCircle);
 library.add(faBars);
+library.add(faFileCode);
 
 const options = { name: "lodash" }; // customize the way you want to call it
 Vue.component("font-awesome-icon", FontAwesomeIcon);

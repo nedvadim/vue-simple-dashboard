@@ -1,10 +1,6 @@
 <template>
   <div class="container-elements">
-    <button
-      type="button"
-      class="collapse-button"
-      v-on:click="show = !show"
-    >{{content.elementsHeader}}</button>
+    <div type="button" class="collapse-button" v-on:click="show = !show">{{content.elementsHeader}}</div>
     <div class="collapse-container">
       <transition name="slide" mode="out-in">
         <ul v-if="show">
@@ -38,24 +34,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-button {
+.collapse-button {
   width: 100%;
+  padding: 18px 0 18px 20px;
   border: none;
   background-color: #ffffff;
-  font-size: 16px;
-  height: 50px;
+  font-size: 17px;
+  font-weight: 500;
+  height: 55px;
   cursor: pointer;
   border-bottom: 1px solid #ececec;
   outline-color: $info-color * 2;
 }
 li {
   border-bottom: 1px solid #ececec;
-  text-align: center;
 
   a {
     text-decoration: none;
     color: #2f2f2f;
     font-size: 14px;
+    height: 55px;
+    display: block;
+    padding: 19px 0 19px 25px;
+    transition: 0.2s;
+    &:hover {
+      transform: translateX(-3px);
+    }
   }
 }
 .slide-enter-active {
