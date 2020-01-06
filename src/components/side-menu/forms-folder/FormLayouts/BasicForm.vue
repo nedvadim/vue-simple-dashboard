@@ -3,20 +3,22 @@
     <form action="#">
       <div class="my-container">
         <div class="my-row">
-          <label class="c-12 label">
-            E-mail address
-            <app-inp class="input" :inputPlaceholder="basicFormData.firstInputPlaceholder"></app-inp>
-          </label>
-          <label class="c-12 label">
-            Password
-            <app-inp
-              class="input"
-              :inputPlaceholder="basicFormData.secondInputPlaceholder"
-              :inputType="'password'"
-            ></app-inp>
-          </label>
-          <app-check class="c-12" :data="basicFormData.checkboxData"></app-check>
-          <app-btn :type="'danger'" :btnText="basicFormData.buttonText"></app-btn>
+          <div class="c-12 c-md-6">
+            <label class="label">
+              E-mail address
+              <app-inp class="input" :inputPlaceholder="basicFormData.firstInputPlaceholder"></app-inp>
+            </label>
+            <label class="label">
+              Password
+              <app-inp
+                class="input"
+                :inputPlaceholder="basicFormData.secondInputPlaceholder"
+                :inputType="'password'"
+              ></app-inp>
+            </label>
+            <app-check class="c-12" :data="basicFormData.checkboxData"></app-check>
+            <app-btn :type="'danger'" :btnText="basicFormData.buttonText"></app-btn>
+          </div>
         </div>
       </div>
     </form>
