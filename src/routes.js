@@ -35,7 +35,7 @@ import VueDashboardHome from "./components/VueDashboardHome.vue";
 export const routes = [
   {
     path: "/",
-    // redirect: "/vue-dashboard-home",
+    redirect: "/vue-dashboard-home",
     component: Dashboard,
     children: [
       // Layouts Folder===========================================
