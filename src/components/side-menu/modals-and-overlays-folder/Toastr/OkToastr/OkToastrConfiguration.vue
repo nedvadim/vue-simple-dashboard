@@ -4,8 +4,16 @@
       <div class="controls my-container">
         <div class="my-row">
           <div class="c-12 c-lg-3">
-            <app-inp :inputPlaceholder="'Header'" v-model="okToastrHeader"></app-inp>
-            <app-inp :inputPlaceholder="'Content'" v-model="okToastrContent"></app-inp>
+            <app-inp
+              :inputPlaceholder="'Header'"
+              :inputValue="okToastrHeader"
+              v-model="okToastrHeader"
+            ></app-inp>
+            <app-inp
+              :inputPlaceholder="'Content'"
+              :inputValue="okToastrContent"
+              v-model="okToastrContent"
+            ></app-inp>
 
             <select name="color-pick" id="colorPick" v-model="okToastrColor">
               <option value="info">Info</option>
@@ -121,8 +129,8 @@ import Checkbox from "../../../forms-folder/FormInputs/CheckboxItem";
 export default {
   data() {
     return {
-      okToastrHeader: "my header",
-      okToastrContent: "my content",
+      okToastrHeader: "Default header",
+      okToastrContent: "Default content",
       okToastrColor: "success",
       okToastrOptions: {
         closeButton: false,
