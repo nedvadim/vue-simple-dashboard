@@ -1,5 +1,5 @@
 # Vue Simple Dashboard
-
+Watch LIVE(https://nedvadim.github.io/vue-simple-dashboard/).
 ## Project setup
 ```
 npm install
