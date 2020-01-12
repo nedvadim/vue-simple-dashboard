@@ -1,4 +1,4 @@
-# pet
+# Vue Simple Dashboard
 
 ## Project setup
 ```
