@@ -49,7 +49,6 @@ export default {
   height: fit-content;
   .tabs {
     display: flex;
-    border-bottom: 1px solid #d8d8d8;
     width: $component-width;
 
     .tab {

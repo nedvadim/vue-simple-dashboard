@@ -1,10 +1,7 @@
 <template>
-  <div class="open-dialog-container">
-    <div class="open-dialog-header">
-      <p>Open With Backdrop</p>
-    </div>
+  <bg header="Dialog with Backdrop">
     <div class="my-container">
-      <div class="my-row">
+      <div class="my-row margin-top-10">
         <app-btn
           @click.native="toggleDialog1()"
           :btnText="'open dialog with backdrop'"
@@ -30,11 +27,12 @@
       @close-dialog="toggleDialog2()"
       @escape-close-dialog="toggleDialog2"
     ></app-dialog-item>
-  </div>
+  </bg>
 </template>
 <script>
 import DialogItem from "./DialogItem";
 import Btn from "../../forms-folder/Buttons/ButtonItem";
+import bg from "../../WhiteBack";
 export default {
   data() {
     return {
@@ -64,7 +62,8 @@ export default {
   },
   components: {
     appDialogItem: DialogItem,
-    appBtn: Btn
+    appBtn: Btn,
+    bg
   },
 
   methods: {
@@ -130,5 +129,8 @@ export default {
   .margin-top0 {
     margin-top: 0;
   }
+}
+.margin-top-10 {
+  margin-top: 10px;
 }
 </style>

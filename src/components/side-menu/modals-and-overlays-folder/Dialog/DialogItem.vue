@@ -157,7 +157,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-$dialog-width: 30%;
+$dialog-width: 40%;
 .screen-overlay {
   position: fixed;
   top: 0;
@@ -172,11 +172,15 @@ $dialog-width: 30%;
     width: $dialog-width;
     min-width: 300px;
     height: auto;
-    position: relative;
+    max-height: 550px;
+    overflow: scroll;
     top: 20%;
-    left: 50%;
     padding: 20px;
-    margin-left: -($dialog-width/2);
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
     pointer-events: all;
     .dialog-header {
       h1 {

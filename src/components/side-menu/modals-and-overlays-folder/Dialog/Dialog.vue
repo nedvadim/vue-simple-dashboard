@@ -3,8 +3,7 @@
     <div class="my-row">
       <app-dialog-with-backdrop class="c-12 c-md-6"></app-dialog-with-backdrop>
       <app-dialog-with-escape-close class="c-12 c-md-6"></app-dialog-with-escape-close>
-    </div>
-    <div class="my-row">
+
       <app-dialog-with-backdrop-click class="c-12 c-md-6"></app-dialog-with-backdrop-click>
       <app-dialog-with-result class="c-12 c-md-6"></app-dialog-with-result>
     </div>
