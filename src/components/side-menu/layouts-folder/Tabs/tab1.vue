@@ -23,6 +23,7 @@ export default {
       tabActivness: [true, false, false] // which of tabs are active
     };
   },
+
   methods: {
     setContent(tabContentNumber) {
       this.currentContentNumber = tabContentNumber;
@@ -45,8 +46,6 @@ export default {
 }
 .tabs-wrapper {
   background-color: $component-bg-color;
-  padding: 15px;
-  margin: $margin-container;
   height: fit-content;
   .tabs {
     display: flex;

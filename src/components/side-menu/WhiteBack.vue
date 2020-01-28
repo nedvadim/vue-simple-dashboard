@@ -17,12 +17,14 @@ export default {
   padding: 15px;
   height: fit-content;
   width: $component-width;
-  margin: $margin-container;
+  //margin-bottom: $gap-size;
+  //margin: $margin-container;
   box-shadow: 0 0.5rem 1rem 0 rgba(44, 51, 73, 0.1);
   .mytemplate-header {
     p {
       font-size: 25px;
       border-bottom: 1px solid $components-header-border-color;
+      padding-bottom: 6px;
     }
   }
 }

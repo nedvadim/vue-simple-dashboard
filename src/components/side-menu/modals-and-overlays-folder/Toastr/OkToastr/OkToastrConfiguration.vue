@@ -1,6 +1,6 @@
 <template>
   <div>
-    <bg header="vue-toastr-2 Configuration">
+    <bg header="Configuration !!!vue-toastr-2">
       <div class="controls my-container">
         <div class="my-row">
           <div class="c-12 c-lg-3">
@@ -14,7 +14,7 @@
               :inputValue="okToastrContent"
               v-model="okToastrContent"
             ></app-inp>
-
+            <!-- <my-select :options="selectOptions" v-model="okToastrColor"></my-select> -->
             <select name="color-pick" id="colorPick" v-model="okToastrColor">
               <option value="info">Info</option>
               <option value="success">Success</option>
@@ -125,6 +125,7 @@ import bg from "../../../WhiteBack";
 import Inp from "../../../forms-folder/FormInputs/TextInputItem";
 import Btn from "../../../forms-folder/Buttons/ButtonItem";
 import Checkbox from "../../../forms-folder/FormInputs/CheckboxItem";
+import mySelect from "../../../forms-folder/FormInputs/Select";
 
 export default {
   data() {
@@ -163,11 +164,18 @@ export default {
         name: "With progress bar",
         value: "withProgressBar",
         checked: false
-      }
+      },
+      selectOptions: [
+        { id: 1, value: "info", option: "Info" },
+        { id: 2, value: "success", option: "Success" },
+        { id: 3, value: "warning", option: "Warning" },
+        { id: 4, value: "error", option: "Error" }
+      ]
     };
   },
   components: {
     bg,
+    mySelect,
     appInp: Inp,
     appBtn: Btn,
     appCheckbox: Checkbox

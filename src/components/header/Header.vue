@@ -7,7 +7,7 @@
       <span>V</span>ue
       <span>D</span>ashboard
     </router-link>
-    <a href="https://github.com/nedvadim/vue-simple-dashboard">
+    <a href="https://github.com/nedvadim/vue-simple-dashboard" target="_blank">
       <font-awesome-icon class="github" :icon="['fab', 'github']" />
     </a>
   </div>
@@ -38,10 +38,11 @@ export default {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 7vh;
+  height: $header-height;
   box-shadow: 0px -2px 8px 0px #000000;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: $info-color;
   z-index: 20;
   h1 {
@@ -68,11 +69,12 @@ export default {
       }
     }
   }
+
   .github {
     color: #fff;
     cursor: pointer;
-    font-size: 35px;
-    margin-left: 20px;
+    font-size: 44px;
+    margin-right: 20px;
   }
 
   @media only screen and (min-width: 960px) {

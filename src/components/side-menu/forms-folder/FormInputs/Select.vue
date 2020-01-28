@@ -6,14 +6,8 @@
   </div>
 </template>
 <script>
-import WhiteBackground from "../../WhiteBack";
-import bg from "../../WhiteBack";
 export default {
   props: ["options"],
-  components: {
-    appWhiteBackground: WhiteBackground,
-    bg
-  },
   data() {
     return {
       isSelectActive: false
@@ -28,9 +22,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 .select-wrapper {
+  position: relative;
   select {
-    width: 60%;
-    margin: 0.5rem 0;
+    width: 100%;
     padding: 0.5rem;
     border-radius: 5px;
     appearance: none;
@@ -45,12 +39,11 @@ export default {
     width: 10px;
     border-bottom: 1px solid black;
     border-left: 1px solid black;
-
     transform: rotate(135deg);
     display: inline-block;
-    position: relative;
-    top: 40%;
-    right: 25px;
+    position: absolute;
+    top: 22px;
+    right: 16px;
     pointer-events: none;
     transition: all 0.2s;
   }

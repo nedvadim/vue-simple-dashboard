@@ -63,8 +63,6 @@ export default {
 
 .tabs-wrapper {
   background-color: $component-bg-color;
-  padding: 15px;
-  margin: $margin-container;
   height: fit-content;
   .tabs {
     display: flex;
@@ -80,7 +78,7 @@ export default {
       font-weight: 700;
       padding: 6px 0;
       cursor: pointer;
-      border-bottom: 3px solid #f5f5f5;
+      border-bottom: 3px solid inherit;
       &:hover {
         border-bottom: 3px solid #3366ff;
       }

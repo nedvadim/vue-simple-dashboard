@@ -52,12 +52,12 @@ $top-margin: 1.5em;
 * {
   font-family: "Lato", sans-serif;
   font-size: 20px;
-  //color: #4d4d4d;
 }
 .page-content {
   display: flex;
-  padding: 0 10px 0 10px;
-  padding-top: 7vh;
+  padding-top: calc(#{$header-height} + #{$gap-size});
+  padding-right: 1.2em;
+  padding-left: 1.2em;
 }
 .app-bg {
   background-color: #f9f9f9;
@@ -92,8 +92,7 @@ $top-margin: 1.5em;
 @media only screen and (min-width: 960px) {
   .page-content {
     display: flex;
-    padding: 0 10px 0 245px;
-    padding-top: 7vh;
+    padding: 4.5em 1.2em 0 255px;
   }
   .menu-for-desktop {
     display: block;

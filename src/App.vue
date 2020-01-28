@@ -36,8 +36,6 @@ $top-margin: 1.5em;
 }
 .page-content {
   display: flex;
-  padding: 0 10px 0 165px;
-  padding-top: 7vh;
 }
 .app-bg {
   background-color: #e8e8e8;

@@ -35,7 +35,7 @@ import VueDashboardHome from "./components/VueDashboardHome.vue";
 export const routes = [
   {
     path: "/",
-    redirect: "/vue-dashboard-home",
+    redirect: "/vue-simple-dashboard",
     component: Dashboard,
     children: [
       // Layouts Folder===========================================
@@ -67,7 +67,7 @@ export const routes = [
 
       // UI Features Folder========================================
       { path: "/grid", component: Grid },
-      { path: "/vue-dashboard-home", component: VueDashboardHome }
+      { path: "/vue-simple-dashboard", component: VueDashboardHome }
     ]
   },
   // Auth =====================================================

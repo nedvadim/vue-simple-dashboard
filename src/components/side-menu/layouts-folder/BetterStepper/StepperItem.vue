@@ -189,7 +189,7 @@ export default {
       }
     }
     .lastStepWidth {
-      width: 2%;
+      width: 30px;
     }
   }
 
@@ -267,7 +267,7 @@ export default {
     text-align: center;
     .contentHeader {
       font-size: 44px;
-      margin: 20px 20px;
+      margin: 70px 16px;
     }
     .contentText {
       font-size: 22px;

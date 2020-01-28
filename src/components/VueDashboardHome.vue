@@ -1,29 +1,27 @@
 <template>
-  <div class="my-container">
+  <div>
     <div class="my-row">
       <div class="c-md-4 c-12">
         <bg header="Stepper">
           <stepper :isVertical="true" :dataStepper="dataForStepper"></stepper>
         </bg>
-        <div class="my-container">
-          <div class="my-row">
-            <div class="c-md-6 c-12 relative-pos">
-              <bg header="Spinner">
-                <my-btn
-                  class="spinner-button"
-                  type="success"
-                  size="small"
-                  @click="showSpin"
-                >Show spinner</my-btn>
-                <spinner v-if="showSpinner"></spinner>
-              </bg>
+        <div class="c-md-6 c-12 relative-pos margin-top">
+          <bg header="Spinner">
+            <my-btn
+              class="spinner-button"
+              type="success"
+              size="small"
+              @click="showSpin"
+            >Show spinner</my-btn>
+            <spinner v-if="showSpinner"></spinner>
+          </bg>
+        </div>
+        <div class="c-md-6 c-12 margin-top">
+          <bg class="select-bg" header="Custom Select">
+            <div class="select-padding">
+              <myselect class="select" :options="selectOptions"></myselect>
             </div>
-            <div class="c-md-6 c-12 select-wrapper">
-              <bg class="select-bg" header="Custom Select">
-                <myselect class="select" :options="selectOptions"></myselect>
-              </bg>
-            </div>
-          </div>
+          </bg>
         </div>
       </div>
       <div class="c-md-8 c-12">
@@ -32,12 +30,12 @@
             <div class="c-md-6 c-12">
               <list :content="listTwoData"></list>
             </div>
-            <div class="c-md-6 c-12">
-              <tabs class="tabs" :tabData="tabData"></tabs>
-            </div>
+            <block-form class="min-height-389 c-12 c-md-6" :blockFormData="blockFormData"></block-form>
           </div>
         </div>
-        <basic-form :basicFormData="basicFormData"></basic-form>
+        <bg header="Tabs">
+          <tabs class="c-md-6 c-12" :tabData="tabData"></tabs>
+        </bg>
       </div>
     </div>
   </div>
@@ -46,7 +44,7 @@
 import stepper from "./side-menu/layouts-folder/BetterStepper/StepperItem";
 import tabs from "./side-menu/layouts-folder/Tabs/tab1";
 import spinner from "./side-menu/extra-components-folder/Spinner/SpinnerItem";
-import basicForm from "./side-menu/forms-folder/FormLayouts/BasicForm";
+import blockForm from "./side-menu/forms-folder/FormLayouts/BlockForm";
 import list from "./side-menu/layouts-folder/Lists/list2";
 import myselect from "./side-menu/forms-folder/FormInputs/Select";
 import bg from "./side-menu/WhiteBack";
@@ -57,7 +55,7 @@ export default {
     stepper,
     tabs,
     spinner,
-    basicForm,
+    blockForm,
     list,
     bg,
     myselect,
@@ -104,17 +102,17 @@ export default {
           text: "For more components use a navigation sidebar:)"
         }
       },
-      basicFormData: {
-        checkboxData: {
-          id: 1,
-          name: "Check me out",
-          value: "check",
-          checked: true
-        },
-        firstInputPlaceholder: "Your e-mail",
-        secondInputPlaceholder: "Your password",
-        buttonText: "Submit",
-        formName: "Basic Form"
+      blockFormData: {
+        formName: "Block form",
+        firstInputPlaceholder: "First Name",
+        firstLabel: "First Name",
+        secondInputPlaceholder: "Email",
+        secondLabel: "Email",
+        thirdInputPlaceholder: "Last Name",
+        thirdLabel: "Last Name",
+        fourthInputPlaceholder: "Website",
+        fourthLabel: "Website",
+        buttonText: "Submit"
       },
       listTwoData: {
         title: "People",
@@ -179,25 +177,20 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.my-container {
-  .my-row {
-    .c-md-6,
-    .c-12 {
-      .tabs {
-        min-height: 400px;
-        box-shadow: 0 0.5rem 1rem 0 rgba(44, 51, 73, 0.1);
-      }
-    }
-  }
+.min-height-389 {
+  min-height: 389px;
 }
 .spinner-button {
-  margin: 30px 0;
+  margin: 0.5rem 0 0px 0;
   width: 100%;
-}
-.select-wrapper {
-  min-height: 95px !important;
 }
 .relative-pos {
   position: relative;
+}
+.margin-top {
+  margin-top: $gap-size;
+}
+.select-padding {
+  padding-top: 15px;
 }
 </style>

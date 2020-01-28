@@ -1,25 +1,17 @@
 <template>
   <div>
-    <bg header="Horizontal Stepper">
-      <div class="my-container">
-        <div class="my-row">
-          <stepper class="c-12" :dataStepper="stepper1"></stepper>
-        </div>
-      </div>
-    </bg>
-
     <div class="my-container">
       <div class="my-row">
-        <div class="c-md-6 c-12">
-          <bg header="Stepper with Input">
-            <stepper :withInputs="true" :dataStepper="stepper2"></stepper>
-          </bg>
-        </div>
-        <div class="c-md-6 c-12">
-          <bg header="Vertical Stepper">
-            <stepper :isVertical="true" :dataStepper="stepper3"></stepper>
-          </bg>
-        </div>
+        <bg class="c-12" header="Horizontal Stepper">
+          <stepper :dataStepper="stepper1"></stepper>
+        </bg>
+
+        <bg class="c-md-6 c-12" header="Stepper with Input">
+          <stepper :withInputs="true" :dataStepper="stepper2"></stepper>
+        </bg>
+        <bg class="c-md-6 c-12" header="Vertical Stepper">
+          <stepper :isVertical="true" :dataStepper="stepper3"></stepper>
+        </bg>
       </div>
     </div>
   </div>

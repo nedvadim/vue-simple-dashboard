@@ -86,7 +86,7 @@
 }
 
 /* // Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
+@media (min-width: 768.8px) {
   .c-md-1 {
     grid-column: span 1;
   }

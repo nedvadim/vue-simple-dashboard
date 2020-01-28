@@ -48,7 +48,7 @@ export default {
   background-color: $component-bg-color;
   width: $component-width;
   padding: 15px;
-  margin: $margin-container;
+  margin-bottom: $gap-size;
   position: relative;
   box-shadow: 0 0.5rem 1rem 0 rgba(44, 51, 73, 0.1);
   .list-header {
@@ -58,6 +58,7 @@ export default {
     border-bottom: 1px solid #d3d3d3;
     p {
       font-size: 25px;
+      padding-bottom: 6px;
     }
   }
   .list {

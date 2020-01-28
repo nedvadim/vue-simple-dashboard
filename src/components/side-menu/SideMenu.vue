@@ -24,7 +24,7 @@ export default {
 </script>
 
 
-<style>
+<style lang="scss">
 * {
   margin: 0;
   padding: 0;
@@ -33,7 +33,7 @@ export default {
 .sidebar-container {
   position: fixed;
   left: 0;
-  top: 7vh;
+  top: $header-height;
   background: rgb(255, 255, 255);
   height: auto;
   width: 100%;

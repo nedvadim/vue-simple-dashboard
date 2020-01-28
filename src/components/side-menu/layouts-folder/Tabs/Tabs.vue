@@ -2,11 +2,14 @@
   <div class="tabs-wrapper">
     <div class="my-container">
       <div class="my-row">
-        <app-tab-one class="c-12" :tabData="tab1Data"></app-tab-one>
-        <app-tab-two class="c-12" :tabData="tab2Data"></app-tab-two>
+        <my-bg header="Default Tabs" class="c-md-6 c-12">
+          <app-tab-one :tabData="tab1Data"></app-tab-one>
+        </my-bg>
+        <my-bg header="Router Tabs" class="c-md-6 c-12">
+          <app-tab-two :tabData="tab2Data"></app-tab-two>
+        </my-bg>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -14,6 +17,7 @@
 <script>
 import tabOne from "./tab1";
 import tabTwo from "./tab2";
+import bg from "./../../WhiteBack";
 export default {
   data() {
     return {
@@ -52,12 +56,16 @@ export default {
   },
   components: {
     appTabOne: tabOne,
-    appTabTwo: tabTwo
+    appTabTwo: tabTwo,
+    myBg: bg
   }
 };
 </script>
 <style lang="scss" scoped>
 .tabs-wrapper {
   width: $component-width;
+}
+.width-100 {
+  width: 100%;
 }
 </style>

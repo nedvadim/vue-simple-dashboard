@@ -7,7 +7,9 @@
         </div>
         <div class="c-12 c-md-6">
           <bg header="Select">
-            <app-select :options="selectOptions"></app-select>
+            <div class="padding">
+              <app-select :options="selectOptions"></app-select>
+            </div>
           </bg>
           <app-validation-states></app-validation-states>
           <div class="my-row">
@@ -53,4 +55,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.padding {
+  padding: 0.9em 0 0.6em;
+}
 </style>

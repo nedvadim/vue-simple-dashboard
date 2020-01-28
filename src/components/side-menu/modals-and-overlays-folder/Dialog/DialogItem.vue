@@ -141,6 +141,9 @@ export default {
       }
     },
     sendResult() {
+      if (this.inputValueData === "") {
+        return;
+      }
       var word = this.inputValueData;
       this.$emit("send-result", word);
       this.inputValueData = "";
