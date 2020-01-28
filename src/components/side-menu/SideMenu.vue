@@ -34,6 +34,7 @@ export default {
   position: fixed;
   left: 0;
   top: $header-height;
+  overflow-x: scroll;
   background: rgb(255, 255, 255);
   height: auto;
   width: 100%;
@@ -46,6 +47,7 @@ export default {
     position: fixed;
     left: 0;
     top: 7vh;
+    overflow-x: scroll;
     background: rgb(255, 255, 255);
     height: 93vh;
     width: 230px;

@@ -10,15 +10,16 @@
       :disabled="disabled"
       :id="inputId"
       ref="customInput"
-      v-on="listeners"
     />
-    <!-- <textarea
+    <textarea
       v-else
       class="app-input app-textarea"
       :placeholder="inputPlaceholder"
       :class="[shape, size]"
       :disabled="disabled"
-    ></textarea>-->
+      :value="inputValue"
+      v-on="listeners"
+    ></textarea>
   </div>
 </template>
 
@@ -90,7 +91,7 @@ export default {
 }
 .app-textarea {
   box-sizing: border-box;
-  min-height: 150px;
+  min-height: 100px;
   min-width: 100%;
   resize: none;
 }

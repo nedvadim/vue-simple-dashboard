@@ -2,13 +2,17 @@
   <div class="my-container">
     <div class="my-row">
       <app-inline-form class="c-12" :inlineFormData="inlineFormData"></app-inline-form>
-      <div class="c-12 c-md-6">
-        <app-basic-form :basicFormData="basicFormData"></app-basic-form>
-        <app-block-form :blockFormData="blockFormData"></app-block-form>
+      <div class="my-container c-12 c-md-6">
+        <div class="my-row">
+          <app-basic-form class="c-12" :basicFormData="basicFormData"></app-basic-form>
+          <app-block-form class="c-12" :blockFormData="blockFormData"></app-block-form>
+        </div>
       </div>
-      <div class="c-12 c-md-6">
-        <app-without-labels :withoutLabelsFormData="withoutLabelsFormData"></app-without-labels>
-        <app-horizontal-form :horizontalFormData="horizontalFormData"></app-horizontal-form>
+      <div class="my-container c-12 c-md-6">
+        <div class="my-row">
+          <app-without-labels class="c-12" :withoutLabelsFormData="withoutLabelsFormData"></app-without-labels>
+          <app-horizontal-form class="c-12" :horizontalFormData="horizontalFormData"></app-horizontal-form>
+        </div>
       </div>
     </div>
   </div>

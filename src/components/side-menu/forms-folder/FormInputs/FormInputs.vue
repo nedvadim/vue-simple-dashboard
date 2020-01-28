@@ -1,18 +1,16 @@
 <template>
-  <div>
-    <div class="my-container">
-      <div class="my-row">
-        <div class="c-12 c-md-6">
-          <app-default-inputs></app-default-inputs>
-        </div>
-        <div class="c-12 c-md-6">
-          <bg header="Select">
+  <div class="my-container">
+    <div class="my-row">
+      <app-default-inputs class="c-12 c-md-6"></app-default-inputs>
+      <div class="my-container c-12 c-md-6">
+        <div class="my-row">
+          <bg class="c-12" header="Select">
             <div class="padding">
               <app-select :options="selectOptions"></app-select>
             </div>
           </bg>
-          <app-validation-states></app-validation-states>
-          <div class="my-row">
+          <app-validation-states class="c-12"></app-validation-states>
+          <div class="my-row c-12">
             <app-radiobuttons class="c-12 c-md-6"></app-radiobuttons>
             <app-checkboxes class="c-12 c-md-6"></app-checkboxes>
           </div>

@@ -3,7 +3,7 @@
     <form action="#">
       <div class="my-container">
         <div class="my-row">
-          <div class="c-12 c-md-6">
+          <div class="c-12">
             <label class="label">
               E-mail address
               <app-inp class="input" :inputPlaceholder="basicFormData.firstInputPlaceholder"></app-inp>
@@ -16,7 +16,7 @@
                 :inputType="'password'"
               ></app-inp>
             </label>
-            <app-check class="c-12" :data="basicFormData.checkboxData"></app-check>
+            <app-check class="c-12 check" :data="basicFormData.checkboxData"></app-check>
             <app-btn :type="'danger'" :btnText="basicFormData.buttonText"></app-btn>
           </div>
         </div>
@@ -41,14 +41,17 @@ export default {
 </script>
 <style lang="scss" scoped>
 form {
-  margin-top: 15px;
+  //margin-top: 15px;
 }
 .label {
   font-size: 14px;
   color: gray;
   font-weight: 600;
   .input {
-    margin-top: 5px;
+    //margin-top: 5px;
   }
+}
+.check {
+  margin: 10px 0;
 }
 </style>

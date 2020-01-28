@@ -8,8 +8,10 @@
           :inputPlaceholder="inlineFormData.secondInputPlaceholder"
           :inputType="'password'"
         ></app-inp>
-        <app-check class="checkbox c-6 c-md-1" :data="inlineFormData.checkboxData"></app-check>
-        <app-btn class="button c-6 c-md-3" type="primary" :btnText="inlineFormData.buttonText"></app-btn>
+        <div class="flex c-12 c-md-4">
+          <app-check class="checkbox" :data="inlineFormData.checkboxData"></app-check>
+          <app-btn class="button" type="primary" :btnText="inlineFormData.buttonText"></app-btn>
+        </div>
       </div>
     </div>
   </bg>
@@ -31,12 +33,16 @@ export default {
 </script>
 <style lang="scss" scoped>
 .inp {
-  margin-top: 25px;
+  margin-top: 15px;
 }
-.checkbox {
-  margin: 25px 0 0 0;
+.flex {
+  display: flex;
+  //justify-content: space-around;
+  align-items: baseline;
 }
 .button {
-  margin: 20px 0 0 0;
+  margin-top: 15px;
+  margin-left: auto;
+  width: 50%;
 }
 </style>

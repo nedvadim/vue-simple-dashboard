@@ -19,15 +19,11 @@
             :inputType="'password'"
           ></app-inp>
         </div>
-        <div class="my-row">
+
+        <div class="my-row form-row">
           <div class="c-4"></div>
           <div class="c-8">
             <app-check class="checkbox" :status="'success'" :data="horizontalFormData.checkboxData"></app-check>
-          </div>
-        </div>
-        <div class="my-row">
-          <div class="c-4"></div>
-          <div class="c-8">
             <app-btn class="button" :btnText="horizontalFormData.buttonText"></app-btn>
           </div>
         </div>
@@ -51,9 +47,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-form {
-  margin: 15px;
-}
 .label {
   font-size: 14px;
   color: gray;
@@ -62,10 +55,8 @@ form {
 .form-row {
   margin-top: 10px;
 }
-.checkbox {
-  margin-top: 20px;
-}
 .button {
-  margin-top: 20px;
+  margin-top: 7px;
+  width: 50%;
 }
 </style>

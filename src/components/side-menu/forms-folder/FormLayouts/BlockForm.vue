@@ -12,7 +12,7 @@
               {{blockFormData.secondLabel}}
               <app-inp :inputPlaceholder="blockFormData.secondInputPlaceholder" class="input"></app-inp>
             </label>
-            <app-btn :btnText="blockFormData.buttonText" :type="'info'"></app-btn>
+            <app-btn class="button" :btnText="blockFormData.buttonText" :type="'info'"></app-btn>
           </div>
           <div class="c-12 c-md-6">
             <label class="label">
@@ -46,14 +46,17 @@ export default {
 </script>
 <style lang="scss" scoped>
 form {
-  margin-top: 15px;
+  //margin-top: 15px;
 }
 .label {
   font-size: 14px;
   color: gray;
   font-weight: 600;
   .input {
-    margin: 5px 0 20px 0;
+    //margin: 5px 0 20px 0;
   }
+}
+.button {
+  margin-top: 10px;
 }
 </style>

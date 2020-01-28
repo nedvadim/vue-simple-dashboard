@@ -3,15 +3,21 @@
     <form action="#">
       <div class="my-container">
         <div class="my-row"></div>
-        <app-inp :inputPlaceholder="withoutLabelsFormData.firstInputPlaceholder" class="c-12"></app-inp>
-        <app-inp :inputPlaceholder="withoutLabelsFormData.secondInputPlaceholder" class="c-12"></app-inp>
         <app-inp
-          class="c-12 textarea"
+          :inputPlaceholder="withoutLabelsFormData.firstInputPlaceholder"
+          class="c-12 margin-top-10"
+        ></app-inp>
+        <app-inp
+          :inputPlaceholder="withoutLabelsFormData.secondInputPlaceholder"
+          class="c-12 margin-top-10"
+        ></app-inp>
+        <app-inp
+          class="c-12 textarea margin-top-10"
           :inputPlaceholder="withoutLabelsFormData.textareaPlaceholder"
           :inputType="'textarea'"
         ></app-inp>
 
-        <app-btn :type="'success'" :btnText="withoutLabelsFormData.buttonText"></app-btn>
+        <app-btn class="button" :type="'success'" :btnText="withoutLabelsFormData.buttonText"></app-btn>
       </div>
     </form>
   </bg>
@@ -32,12 +38,13 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-form {
-  * {
-    margin: 10px 0;
-  }
+.margin-top-10 {
+  margin-top: 10px;
+}
+.button {
+  margin-top: 7px;
 }
 .textarea {
-  width: 70%;
+  width: 100%;
 }
 </style>
