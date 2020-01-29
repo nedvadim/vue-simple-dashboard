@@ -35,10 +35,9 @@
     >
       <BasePopoverContent>
         <div class="padding15">
-          <p>SAY MY NAME:</p>
+          <p>Your input:</p>
           <app-inp class="input" :inputPlaceholder="'Name'"></app-inp>
           <app-btn class="btn" :type="'warning'" @click.native="said = !said">say</app-btn>
-          <p v-if="said">you are goddamn right</p>
         </div>
       </BasePopoverContent>
     </BasePopover>

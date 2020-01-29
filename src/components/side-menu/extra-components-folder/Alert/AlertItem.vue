@@ -22,10 +22,10 @@ export default {
 <style lang="scss" scoped>
 .alert {
   display: flex;
-  align-content: center;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 60px;
-  line-height: 60px;
   color: #fff;
   font-weight: 700;
   font-size: 18px;

@@ -274,7 +274,8 @@ export default {
       margin-bottom: 20px;
     }
     .buttons {
-      width: 220px;
+      width: 100%;
+      max-width: 220px;
       margin: 40px auto 0;
       * {
         width: 47%;

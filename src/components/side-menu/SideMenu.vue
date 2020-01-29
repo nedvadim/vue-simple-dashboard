@@ -36,7 +36,7 @@ export default {
   top: $header-height;
   overflow-x: scroll;
   background: rgb(255, 255, 255);
-  height: auto;
+  height: 90vh;
   width: 100%;
   box-shadow: 2px 1px 7px -5px #000;
   z-index: 10; /* ? */
@@ -46,7 +46,7 @@ export default {
   .sidebar-container {
     position: fixed;
     left: 0;
-    top: 7vh;
+    top: 70px;
     overflow-x: scroll;
     background: rgb(255, 255, 255);
     height: 93vh;

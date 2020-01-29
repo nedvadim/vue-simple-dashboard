@@ -108,11 +108,6 @@ export default {
       return re.test(this.emailInput);
     },
     passwordValidator() {
-      console.log(
-        !this.validPasswordRules
-          .map(validator => validator.regex.test(this.passwordInput))
-          .includes(false)
-      );
       return !this.validPasswordRules
         .map(validator => validator.regex.test(this.passwordInput))
         .includes(false);
@@ -229,5 +224,17 @@ export default {
   font-size: 14px;
   font-weight: 400;
   color: $danger-color;
+}
+
+@media only screen and (max-width: 768px) {
+  .window-wrapper {
+    padding-top: 0.5rem;
+    .login-wrapper {
+      height: auto;
+      .form {
+        margin: 2.5rem auto;
+      }
+    }
+  }
 }
 </style>

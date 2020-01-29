@@ -1,6 +1,6 @@
 <template>
   <div class="window-wrapper">
-    <div class="login-wrapper my-container">
+    <div class="register-wrapper my-container">
       <div class="arrow-block">
         <font-awesome-icon class="arrow" icon="arrow-left" @click="$router.go(-1)"></font-awesome-icon>
       </div>
@@ -78,7 +78,7 @@
           <my-btn
             class="form-button"
             :type="(passwordValidator&&emailValidator&&nameValidator&&repeatedPasswordValidator) ? 'primary' : 'disabled' "
-          >Login</my-btn>
+          >Register</my-btn>
 
           <p class="small-text" :style="'text-align: center'">or enter with:</p>
           <div class="icon-group">
@@ -172,7 +172,7 @@ export default {
   height: 100vh;
   padding-top: 2.5rem;
   background-color: #edf1f7;
-  .login-wrapper {
+  .register-wrapper {
     width: 95vw;
     margin: auto;
     height: 90%;
@@ -249,5 +249,17 @@ export default {
   font-size: 14px;
   font-weight: 400;
   color: $danger-color;
+}
+
+@media only screen and (max-width: 768px) {
+  .window-wrapper {
+    padding-top: 0.5rem;
+    .register-wrapper {
+      height: auto;
+      .form {
+        margin: 1.5rem auto;
+      }
+    }
+  }
 }
 </style>

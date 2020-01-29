@@ -1,38 +1,41 @@
 <template>
   <div class="my-container">
     <div class="my-row margin-top">
-      <div class="c-4 content">
+      <div class="c-12 c-md-4 content">
         <app-spinner v-if="showSpinner1"></app-spinner>
         <p>Here is Absolutly Default Spinner</p>
         <app-btn class="margin-top" @click.native="showSpin1()">Press to see Spinner</app-btn>
       </div>
-      <div class="c-4 content">
+      <div class="c-12 c-md-4 content">
         <app-spinner :size="'small'" :color="'success'" v-if="showSpinner2"></app-spinner>
         <p>Here is Success Small Spinner</p>
         <app-btn class="margin-top" @click.native="showSpin2()">Press to see Spinner</app-btn>
       </div>
-      <div class="c-4 content">
+      <div class="c-12 c-md-4 content">
         <app-spinner size="big" color="danger" v-if="showSpinner3"></app-spinner>
         <p>Here is Big Danger Spinner</p>
         <app-btn class="margin-top" @click.native="showSpin3()">Press to see Spinner</app-btn>
       </div>
-      <div class="c-6 content">
+      <div class="c-12 c-md-6 content">
         <app-spinner color="warning" v-if="showSpinner4"></app-spinner>
         <p>Here is Warning Spinner</p>
         <app-btn class="margin-top" @click.native="showSpin4()">Press to see Spinner</app-btn>
       </div>
-      <div class="c-6 content">
+      <div class="c-12 c-md-6 content">
         <app-spinner color="info" v-if="showSpinner5"></app-spinner>
         <p>Here is Info Spinner</p>
         <app-btn class="margin-top" @click.native="showSpin5()">Press to see Spinner</app-btn>
       </div>
-      <div class="c-6 content my-form">
+      <div class="c-12 c-md-6 content my-form">
         <app-spinner v-if="showSpinner6"></app-spinner>
         <p>Some content</p>
         <div class="my-row my-form-controls">
           <app-inp class="c-6" inputPlaceholder="Nickname"></app-inp>
           <app-inp class="c-6" inputType="password" inputPlaceholder="Password"></app-inp>
-          <app-btn class="margin-top c-3" @click.native="showSpin6()">Press to see Spinner</app-btn>
+          <app-btn
+            class="negative-margin c-md-3 c-6"
+            @click.native="showSpin6()"
+          >Press to see Spinner</app-btn>
         </div>
       </div>
     </div>
@@ -56,6 +59,7 @@ export default {
   },
   methods: {
     showSpin1() {
+      var self = this;
       this.showSpinner1 = true;
       setTimeout(() => {
         self.showSpinner1 = false;
@@ -112,6 +116,9 @@ export default {
 }
 .margin-top {
   margin-top: 10px;
+}
+.negative-margin {
+  margin-top: -10px;
 }
 .my-form {
   padding: 15px;

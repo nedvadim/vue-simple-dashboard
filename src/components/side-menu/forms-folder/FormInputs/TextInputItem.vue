@@ -10,8 +10,9 @@
       :disabled="disabled"
       :id="inputId"
       ref="customInput"
+      v-on="listeners"
     />
-    <textarea
+    <!-- <textarea
       v-else
       class="app-input app-textarea"
       :placeholder="inputPlaceholder"
@@ -19,7 +20,7 @@
       :disabled="disabled"
       :value="inputValue"
       v-on="listeners"
-    ></textarea>
+    ></textarea>-->
   </div>
 </template>
 

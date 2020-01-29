@@ -160,4 +160,16 @@ export default {
   font-weight: 400;
   color: $danger-color;
 }
+
+@media only screen and (max-width: 768px) {
+  .window-wrapper {
+    padding-top: 0.5rem;
+    .page-wrapper {
+      height: auto;
+      .form {
+        margin: 2.5rem auto;
+      }
+    }
+  }
+}
 </style>

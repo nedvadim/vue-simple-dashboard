@@ -114,9 +114,6 @@ export default {
     myInp
   },
   methods: {
-    showEditRow() {
-      console.log(this.editedRows);
-    },
     rerenderTable() {
       var table = this.tableContent;
       this.tableContent = [];
@@ -129,22 +126,12 @@ export default {
     },
 
     turnOnEditMode(index, row) {
-      console.log("turn on: " + this.content.findIndex(el => el.id === row.id));
       var find = this.content.findIndex(el => el.id === row.id);
       this.editModes[find] = true;
       this.rerenderTable();
     },
-
     turnOffEditMode(index, row) {
-      // change as in turn on func
-      console.log("in turn off");
-      console.log(row);
-      console.log("index: " + index);
-
-      console.log("this.editModes: " + this.editModes);
       this.editModes[index] = false;
-
-      console.log("this.editModes: " + this.editModes);
       this.rerenderTable();
     },
     deleteRow(value) {
@@ -195,7 +182,6 @@ export default {
           fieldsToSearchIn.push(field);
         }
       }
-
       for (var i = 0; i < this.content.length; i++) {
         var same = true;
         for (var j = 0; j < fieldsToSearchIn.length; j++) {
@@ -209,18 +195,15 @@ export default {
             same = false;
           }
         }
-
         if (same) {
           tempTableContent.push(this.content[i]);
         }
       }
-
       if (tempTableContent.length > 0) {
         this.tableContent = tempTableContent;
       } else {
         this.tableContent = [];
       }
-
       if (this.isSearchObjectEmpty()) {
         this.tableContent = this.content;
       }
@@ -260,7 +243,7 @@ table {
     }
     td {
       border-collapse: collapse;
-      //text-align: center;
+      min-width: 70px;
       border: 1px solid #ececec;
       font-size: 20px;
       padding: 10px;
