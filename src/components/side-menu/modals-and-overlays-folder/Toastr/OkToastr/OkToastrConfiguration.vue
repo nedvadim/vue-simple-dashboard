@@ -14,13 +14,13 @@
               :inputValue="okToastrContent"
               v-model="okToastrContent"
             ></app-inp>
-            <!-- <my-select :options="selectOptions" v-model="okToastrColor"></my-select> -->
-            <select name="color-pick" id="colorPick" v-model="okToastrColor">
-              <option value="info">Info</option>
-              <option value="success">Success</option>
-              <option value="warning">Warning</option>
-              <option value="error">Danger</option>
-            </select>
+            <my-select
+              :options="colorSelectOptions"
+              id="color-pick"
+              v-model="okToastrColor"
+              :selectValue="okToastrColor"
+              @change="setOkToastrColor($event)"
+            ></my-select>
           </div>
 
           <div class="c-12 c-lg-5">
@@ -91,16 +91,13 @@
           </div>
 
           <div class="c-12 c-lg-4">
-            <select name="position-pick" id="positionPick" v-model="okToastrOptions.positionClass">
-              <option value="toast-top-right">Top Right</option>
-              <option value="toast-bottom-right">Bottom Right</option>
-              <option value="toast-bottom-left">Bottom Left</option>
-              <option value="toast-top-left">Top Left</option>
-              <option value="toast-top-full-width">Top Full Width</option>
-              <option value="toast-bottom-full-width">Bottom Full Width</option>
-              <option value="toast-top-center">Top Center</option>
-              <option value="toast-bottom-center">Bottom Center</option>
-            </select>
+            <my-select
+              :options="positionSelectOptions"
+              id="color-pick"
+              v-model="okToastrOptions.positionClass"
+              :selectValue="okToastrOptions.positionClass"
+              @change="setOkToastrPosition($event)"
+            ></my-select>
             <app-checkbox :data="closeButtonCheckBox" v-model="okToastrOptions.closeButton"></app-checkbox>
             <app-checkbox :data="newestOnTop" v-model="okToastrOptions.newestOnTop"></app-checkbox>
             <app-checkbox :data="progressBar" v-model="okToastrOptions.progressBar"></app-checkbox>
@@ -165,11 +162,25 @@ export default {
         value: "withProgressBar",
         checked: false
       },
-      selectOptions: [
-        { id: 1, value: "info", option: "Info" },
-        { id: 2, value: "success", option: "Success" },
+      colorSelectOptions: [
+        { id: 1, value: "success", option: "Success" },
+        { id: 2, value: "info", option: "Info" },
         { id: 3, value: "warning", option: "Warning" },
         { id: 4, value: "error", option: "Error" }
+      ],
+      positionSelectOptions: [
+        { id: 1, value: "toast-top-right", option: "Top Right" },
+        { id: 2, value: "toast-bottom-right", option: "Bottom Right" },
+        { id: 3, value: "toast-bottom-left", option: "Bottom Left" },
+        { id: 4, value: "toast-top-left", option: "Top Left" },
+        { id: 5, value: "toast-top-full-width", option: "Top Full Width" },
+        {
+          id: 6,
+          value: "toast-bottom-full-width",
+          option: "Bottom Full Width"
+        },
+        { id: 7, value: "toast-top-center", option: "Top Center" },
+        { id: 8, value: "toast-bottom-center", option: "Bottom Center" }
       ]
     };
   },
@@ -193,6 +204,12 @@ export default {
       } else if (this.okToastrColor === "success") {
         this.$toastr.success(this.okToastrContent, this.okToastrHeader);
       }
+    },
+    setOkToastrColor($event) {
+      this.okToastrColor = event.target.value;
+    },
+    setOkToastrPosition($event) {
+      this.okToastrOptions.positionClass = event.target.value;
     }
   }
 };

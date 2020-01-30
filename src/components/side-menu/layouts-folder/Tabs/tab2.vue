@@ -89,6 +89,7 @@ export default {
   }
   .tab-content {
     padding-top: 15px;
+    font-size: 16px;
   }
 }
 </style>

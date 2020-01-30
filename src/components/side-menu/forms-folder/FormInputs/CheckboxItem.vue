@@ -37,9 +37,11 @@ export default {
   position: relative;
   margin-bottom: 2px;
   padding-left: 25px;
+  padding-top: 3px;
   user-select: none;
-  font-size: 17px;
+  font-size: 13px;
   font-weight: 600;
+  cursor: pointer;
   input[type="checkbox"] {
     position: absolute;
     opacity: 0;

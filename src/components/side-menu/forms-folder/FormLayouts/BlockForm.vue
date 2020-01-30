@@ -9,21 +9,21 @@
               <app-inp :inputPlaceholder="blockFormData.firstInputPlaceholder" class="input"></app-inp>
             </label>
             <label class="label">
-              {{blockFormData.secondLabel}}
-              <app-inp :inputPlaceholder="blockFormData.secondInputPlaceholder" class="input"></app-inp>
+              {{blockFormData.thirdLabel}}
+              <app-inp :inputPlaceholder="blockFormData.thirdInputPlaceholder" class="input"></app-inp>
             </label>
-            <app-btn class="button" :btnText="blockFormData.buttonText" :type="'info'"></app-btn>
           </div>
           <div class="c-12 c-md-6">
             <label class="label">
-              {{blockFormData.thirdLabel}}
-              <app-inp :inputPlaceholder="blockFormData.thirdInputPlaceholder" class="input"></app-inp>
+              {{blockFormData.secondLabel}}
+              <app-inp :inputPlaceholder="blockFormData.secondInputPlaceholder" class="input"></app-inp>
             </label>
             <label class="label">
               {{blockFormData.fourthLabel}}
               <app-inp :inputPlaceholder="blockFormData.fourthInputPlaceholder" class="input"></app-inp>
             </label>
           </div>
+          <app-btn class="button" :btnText="blockFormData.buttonText" :type="'info'"></app-btn>
         </div>
       </div>
     </form>
@@ -53,7 +53,7 @@ form {
   color: gray;
   font-weight: 600;
   .input {
-    //margin: 5px 0 20px 0;
+    margin-top: 5px;
   }
 }
 .button {

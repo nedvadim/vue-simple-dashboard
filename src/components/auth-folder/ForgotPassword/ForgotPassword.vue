@@ -65,9 +65,7 @@ export default {
       return this.setEmailInputStatus === "danger" ? true : false;
     },
     setEmailInputStatus() {
-      console.log("email focused " + this.emailWasFocused);
       if (this.emailWasFocused) {
-        console.log("email validator " + this.emailValidator);
         return this.emailValidator ? "success" : "danger";
       }
       return "";

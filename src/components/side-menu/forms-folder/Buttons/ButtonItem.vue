@@ -62,8 +62,7 @@ export default {
 
 <style lang="scss" scoped>
 .button {
-  //min-width: 130px;
-  padding: 0 8px;
+  padding: 0 0.8rem;
   height: 40px;
   cursor: pointer;
   border: none;
@@ -71,7 +70,7 @@ export default {
   letter-spacing: 0.05em;
   border-radius: 4px;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   color: #fff;
   transition: all 0.3s;
   &:focus {

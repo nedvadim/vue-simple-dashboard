@@ -39,15 +39,10 @@
       </div>
       <div class="buttons">
         <my-btn
-          size="large"
           :type="getLastMarkedStepIndex === 0 ? 'disabled' : 'primary'"
           @click.native="prevStep"
         >Prev</my-btn>
-        <my-btn
-          size="large"
-          :type="isNextDisabled ? 'disabled' : 'primary'"
-          @click.native="nextStep"
-        >Next</my-btn>
+        <my-btn :type="isNextDisabled ? 'disabled' : 'primary'" @click.native="nextStep">Next</my-btn>
       </div>
     </div>
   </div>

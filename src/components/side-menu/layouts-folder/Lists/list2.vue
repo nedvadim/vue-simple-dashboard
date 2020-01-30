@@ -2,7 +2,7 @@
   <div>
     <div class="list-container">
       <div class="list-header">
-        <p>{{content.title}}</p>
+        <h2>{{content.title}}</h2>
       </div>
       <div class="list">
         <ul>
@@ -56,8 +56,9 @@ export default {
     background-color: $component-bg-color;
     position: relative;
     border-bottom: 1px solid #d3d3d3;
-    p {
-      font-size: 25px;
+    h2 {
+      font-size: 20px;
+      font-weight: 500;
       padding-bottom: 6px;
     }
   }

@@ -40,18 +40,15 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-form {
-  //margin-top: 15px;
-}
 .label {
   font-size: 14px;
   color: gray;
   font-weight: 600;
-  .input {
-    //margin-top: 5px;
-  }
 }
 .check {
   margin: 10px 0;
+}
+.input {
+  margin-top: 5px;
 }
 </style>

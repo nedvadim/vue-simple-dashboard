@@ -110,7 +110,6 @@ export default {
 
   .list-header {
     font-size: 30px;
-    margin-left: 30px;
   }
 }
 .margin-top-10 {
