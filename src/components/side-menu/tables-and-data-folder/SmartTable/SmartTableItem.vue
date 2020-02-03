@@ -42,7 +42,7 @@
           <p>{{addedRow[nameField.keyName]}}</p>
         </td>
       </tr>
-      <!--  DATA & EDIT SECTION -->
+      <!--  TABLE DATA & EDIT SECTION -->
       <tr v-for="(row, index) in tableContent" :key="row.index" :class="{darkerRow: (index%2==0)}">
         <td>
           <span class="editAndDelete" v-if="!editModes[content.findIndex(el => el.id === row.id)]">
@@ -71,6 +71,7 @@
             </div>
           </span>
         </td>
+
         <td v-for="(field, indexCell) in fields" :key="indexCell">
           <!-- Table data renders in that span -->
           <span v-if="!editModes[content.findIndex(el => el.id === row.id)]">{{row[field.keyName]}}</span>
@@ -87,7 +88,6 @@
   </div>
 </template>
 <script>
-// #1e97ff
 import myBtn from "../../forms-folder/Buttons/ButtonItem";
 import myInp from "../../forms-folder/FormInputs/TextInputItem";
 export default {
@@ -139,13 +139,9 @@ export default {
       this.search();
     },
     turnOnEditMode(rowId) {
-      console.log(
-        "contID" +
-          this.content[this.content.findIndex(el => el.id === rowId)].id
-      );
-      console.log(this.content.findIndex(el => el.id === rowId));
-      this.editModes[this.content.findIndex(el => el.id === rowId)] = true;
+      console.log(`turn on edit mode for id:${rowId}`);
 
+      this.editModes[this.content.findIndex(el => el.id === rowId)] = true;
       this.rerenderTable();
     },
     turnOffEditMode(index, row) {
@@ -166,8 +162,7 @@ export default {
       this.editModes.splice(index, 1);
 
       //reset edited rows as well to delete a row that not exist now
-      var tempTableContent = this.tableContent.filter(el => el.id !== id);
-      this.editedRows = this.lodash.cloneDeep(this.tableContent);
+      this.editedRows = this.lodash.cloneDeep(this.content);
       console.log("===========================");
       this.editedRows.forEach(r => console.log(r.id + " " + r.firstName));
 
@@ -197,7 +192,7 @@ export default {
         }
       }
       this.$emit("addToTable", this.addedRow);
-      this.editedRows = this.lodash.cloneDeep(this.tableContent);
+      this.editedRows = this.lodash.cloneDeep(this.tableContent); //reset to content?
       this.showAddPanel = false;
       this.resetAddedRow();
       this.tableContent = this.content;
@@ -209,16 +204,16 @@ export default {
         this.addedRow[field] = "";
       }
     },
-    search(event, value) {
+    search(event, nameField) {
       var tempTableContent = [];
       var fieldsToSearchIn = [];
 
       for (var field in this.searchObject) {
-        console.log(this.searchObject);
         if (this.searchObject[field]) {
           fieldsToSearchIn.push(field);
         }
       }
+
       for (var i = 0; i < this.content.length; i++) {
         var same = true;
         for (var j = 0; j < fieldsToSearchIn.length; j++) {
@@ -237,12 +232,16 @@ export default {
         }
       }
       if (tempTableContent.length > 0) {
+        console.log("we have searched smth");
         this.tableContent = tempTableContent;
       } else {
+        console.log("we have searched smth and found nothing");
         this.tableContent = [];
       }
       if (this.isSearchObjectEmpty()) {
+        console.log("we are aren't searching for smth anymore");
         this.tableContent = this.content;
+        this.rerenderTable();
       }
     }
   },
