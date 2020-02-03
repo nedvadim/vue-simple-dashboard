@@ -46,13 +46,10 @@
       <tr v-for="(row, index) in tableContent" :key="row.index" :class="{darkerRow: (index%2==0)}">
         <td>
           <span class="editAndDelete" v-if="!editModes[content.findIndex(el => el.id === row.id)]">
-            <div
-              class="edit"
-              @click="turnOnEditMode(content.findIndex(el => el.id === row.id), row)"
-            >
+            <div class="edit" @click="turnOnEditMode(row.id)">
               <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
             </div>
-            <div class="delete" @click="deleteRow(row.id)">
+            <div class="delete" @click="deleteRow(row.id, index)">
               <font-awesome-icon icon="trash-alt"></font-awesome-icon>
             </div>
           </span>
@@ -66,7 +63,10 @@
             >
               <font-awesome-icon icon="check"></font-awesome-icon>
             </div>
-            <div class="cancelEditBtn" @click="turnOffEditMode(index)">
+            <div
+              class="cancelEditBtn"
+              @click="turnOffEditMode(content.findIndex(el => el.id === row.id))"
+            >
               <font-awesome-icon icon="times"></font-awesome-icon>
             </div>
           </span>
@@ -93,16 +93,30 @@ import myInp from "../../forms-folder/FormInputs/TextInputItem";
 export default {
   data() {
     return {
+      // tableContent - main array that holds what should be displayed in table.
       tableContent: this.content,
       showAddPanel: false,
+
+      // In addedRow object we put values from inputs in the ADD section
+      // and then emit it with add event in addRow() func
       addedRow: {},
+
+      // searchObject contains names of fields by which search() is performed
+      // and a values that a searched. If you you search by firstName and you search "Jack",
+      // than object will contain only - fisrtName: "Jack"
       searchObject: {},
+
       editedRows: [],
+
+      // In editModes we store current edit modes for all rows in table.
+      // If some row is in the edit mode,
+      // than in editModes array would be true by that index
       editModes: []
     };
   },
   props: {
     content: {
+      // an array from which all data comes
       type: Array
     },
     fields: {
@@ -124,20 +138,42 @@ export default {
       this.$emit("editTableRow", row, index);
       this.search();
     },
+    turnOnEditMode(rowId) {
+      console.log(
+        "contID" +
+          this.content[this.content.findIndex(el => el.id === rowId)].id
+      );
+      console.log(this.content.findIndex(el => el.id === rowId));
+      this.editModes[this.content.findIndex(el => el.id === rowId)] = true;
 
-    turnOnEditMode(index, row) {
-      var find = this.content.findIndex(el => el.id === row.id);
-      this.editModes[find] = true;
       this.rerenderTable();
     },
     turnOffEditMode(index, row) {
       this.editModes[index] = false;
       this.rerenderTable();
     },
-    deleteRow(value) {
-      this.$emit("deleteFromTable", value);
+    deleteRow(id, index) {
+      console.log(id);
+      //disable delete func, when there is true in EditMode, or reset all editModes to false and then delete.
+      for (let i = 0; i < this.editModes.length; i++) {
+        // if (!isSearchObjectEmpty()) {
+        //   // reset search object to be empty
+        // }
+        this.editModes[i] = false;
+      }
+
+      this.$emit("deleteFromTable", id);
+      this.editModes.splice(index, 1);
+
       //reset edited rows as well to delete a row that not exist now
+      var tempTableContent = this.tableContent.filter(el => el.id !== id);
       this.editedRows = this.lodash.cloneDeep(this.tableContent);
+      console.log("===========================");
+      this.editedRows.forEach(r => console.log(r.id + " " + r.firstName));
+
+      this.tableContent = this.content;
+      this.tableContent = this.tableContent;
+      this.rerenderTable();
       //delete from edited rows
     },
     getLowerCaseString(value) {
@@ -178,6 +214,7 @@ export default {
       var fieldsToSearchIn = [];
 
       for (var field in this.searchObject) {
+        console.log(this.searchObject);
         if (this.searchObject[field]) {
           fieldsToSearchIn.push(field);
         }
@@ -229,13 +266,11 @@ export default {
 table {
   width: 100%;
   border-collapse: collapse;
-  //text-align: center;
   border: 1px solid #ececec;
   background-color: white;
   font-size: 20px;
   tr {
     border-collapse: collapse;
-    //text-align: center;
     border: 1px solid #ececec;
     font-size: 20px;
     &:hover {
@@ -302,7 +337,6 @@ table {
 .darkerRow {
   background-color: #f9f9f9;
 }
-
 .acceptAndCancelButtons {
   display: flex;
   .acceptEditBtn,

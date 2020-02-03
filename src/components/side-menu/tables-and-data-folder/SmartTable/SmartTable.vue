@@ -47,19 +47,19 @@ export default {
       testContent: {
         one: [
           {
-            id: 228,
-            name: "Vasya",
-            nickname: "dotaNakat"
+            id: 1,
+            name: "Taras",
+            nickname: "bowlingPro"
           },
           {
-            id: 100500,
-            name: "Ruslan",
-            nickname: "rusak"
+            id: 2,
+            name: "Igor",
+            nickname: "negevExpert"
           },
           {
-            id: 888,
-            name: "Jora",
-            nickname: "joraaa"
+            id: 3,
+            name: "Vadim",
+            nickname: "vadim"
           }
         ],
         two: [
@@ -292,11 +292,16 @@ export default {
       this.content.unshift(this.lodash.cloneDeep(row));
     },
     deleteElement(idValue) {
-      this.content.splice(this.content.findIndex(x => x.id == idValue), 1);
+      console.log(
+        `element: ${this.content.filter(x => x.id == idValue)[0].id}`
+      );
+      this.content.splice(
+        this.content.findIndex(x => x.id == idValue),
+        1
+      );
     },
     editElement(element, index) {
       this.content[index] = this.lodash.cloneDeep(element);
-      console.log(element + " // " + index);
     }
   },
   mounted: function() {}

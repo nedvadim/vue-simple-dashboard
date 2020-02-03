@@ -12,8 +12,7 @@
       ref="customInput"
       v-on="listeners"
     />
-
-    <textarea
+    <!-- <textarea
       v-else
       class="app-input app-textarea"
       :placeholder="inputPlaceholder"
@@ -21,7 +20,7 @@
       :disabled="disabled"
       :value="inputValue"
       v-on="listeners"
-    ></textarea>
+    ></textarea>-->
   </div>
 </template>
 
@@ -55,9 +54,6 @@ export default {
     }
   },
   methods: {
-    // updateValue(event) {
-    //   this.$emit("input", this.$refs.customInput.value);
-    // },
     clearInput() {
       this.$refs.customInput.value = "";
     }
